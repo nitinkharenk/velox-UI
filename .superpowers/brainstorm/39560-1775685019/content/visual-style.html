@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual Style</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0f0f0f;
+    color: #e5e5e5;
+    min-height: 100vh;
+    padding: 40px 32px 80px;
+  }
+  h1 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+  .subtitle { font-size: 14px; color: #555; margin-bottom: 40px; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+  }
+  .card {
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.15s;
+    position: relative;
+  }
+  .card:hover { transform: translateY(-3px); }
+  .card.selected .ring { display: block; }
+  .ring {
+    display: none;
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    border: 2px solid #E8473F;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .selected-pill {
+    display: none;
+    position: absolute;
+    top: 12px; right: 12px;
+    background: #E8473F;
+    color: #fff;
+    font-size: 10px; font-weight: 700;
+    padding: 3px 10px; border-radius: 20px;
+    z-index: 11;
+  }
+  .card.selected .selected-pill { display: block; }
+
+  /* ——— OPTION A: Warm Light (Velox brand) ——— */
+  .preview-a {
+    background: #FAF7F2;
+    padding: 20px;
+    height: 280px;
+    border-bottom: 1px solid #e8e3dc;
+  }
+  .a-topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 14px;
+  }
+  .a-logo { font-size: 11px; font-weight: 700; color: #1C1917; letter-spacing: 0.06em; }
+  .a-dot { width: 28px; height: 28px; border-radius: 50%; background: #E8473F; opacity: 0.85; }
+
+  .a-hero {
+    background: #fff;
+    border: 1px solid #E8E3DC;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .a-hero-num { font-size: 32px; font-weight: 800; color: #1C1917; line-height: 1; }
+  .a-hero-label { font-size: 8px; color: #a8a29e; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+  .a-hero-badge {
+    font-size: 8px; background: #EEF4F1; color: #3D6B52;
+    padding: 3px 8px; border-radius: 20px;
+    border: 1px solid #A8C4B4;
+  }
+
+  .a-mini-row { display: flex; gap: 7px; margin-bottom: 10px; }
+  .a-mini {
+    flex: 1; background: #fff; border: 1px solid #E8E3DC;
+    border-radius: 10px; padding: 8px 10px;
+  }
+  .a-mini-val { font-size: 13px; font-weight: 700; color: #1C1917; }
+  .a-mini-lbl { font-size: 7px; color: #a8a29e; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+  .a-activity { display: flex; flex-direction: column; gap: 4px; }
+  .a-row { display: flex; align-items: center; gap: 7px; font-size: 8px; color: #6B6560; }
+  .a-dot2 { width: 5px; height: 5px; border-radius: 50%; }
+
+  /* ——— OPTION B: Dark Premium ——— */
+  .preview-b {
+    background: #0c0c0c;
+    padding: 20px;
+    height: 280px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .b-topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 14px;
+  }
+  .b-logo { font-size: 11px; font-weight: 700; color: #fff; letter-spacing: 0.06em; }
+  .b-dot { width: 7px; height: 7px; border-radius: 50%; background: #E8473F; box-shadow: 0 0 8px #E8473F88; }
+
+  .b-hero {
+    background: linear-gradient(135deg, #181010, #1a0d0d);
+    border: 1px solid #E8473F33;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .b-hero-num { font-size: 32px; font-weight: 800; color: #E8473F; line-height: 1; }
+  .b-hero-label { font-size: 8px; color: #555; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+  .b-hero-glow {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: radial-gradient(circle, #E8473F44, transparent 70%);
+    border: 1px solid #E8473F33;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+
+  .b-mini-row { display: flex; gap: 7px; margin-bottom: 10px; }
+  .b-mini {
+    flex: 1; background: #161616; border: 1px solid #222;
+    border-radius: 10px; padding: 8px 10px;
+  }
+  .b-mini-val { font-size: 13px; font-weight: 700; color: #fff; }
+  .b-mini-lbl { font-size: 7px; color: #444; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+  .b-mini.accent { border-color: #3D6B5233; background: #0d1510; }
+  .b-mini.accent .b-mini-val { color: #3D6B52; }
+
+  .b-activity { display: flex; flex-direction: column; gap: 4px; }
+  .b-row { display: flex; align-items: center; gap: 7px; font-size: 8px; color: #444; }
+
+  /* ——— OPTION C: Glassmorphism ——— */
+  .preview-c {
+    background: linear-gradient(135deg, #1a0a20 0%, #0a1020 50%, #0a1a18 100%);
+    padding: 20px;
+    height: 280px;
+    border-bottom: 1px solid #2a1a3a;
+    position: relative;
+    overflow: hidden;
+  }
+  .preview-c::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: -20px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, #E8473F22, transparent 70%);
+    pointer-events: none;
+  }
+  .preview-c::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, #3D6B5233, transparent 70%);
+    pointer-events: none;
+  }
+
+  .c-topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 14px; position: relative; z-index: 1;
+  }
+  .c-logo { font-size: 11px; font-weight: 700; color: #fff; letter-spacing: 0.06em; }
+
+  .c-hero {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .c-hero-num { font-size: 32px; font-weight: 800; color: #fff; line-height: 1; }
+  .c-hero-label { font-size: 8px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+  .c-tag {
+    font-size: 8px; background: rgba(232,71,63,0.2); color: #f8a09c;
+    padding: 3px 8px; border-radius: 20px; border: 1px solid rgba(232,71,63,0.3);
+  }
+
+  .c-mini-row { display: flex; gap: 7px; margin-bottom: 10px; position: relative; z-index: 1; }
+  .c-mini {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px; padding: 8px 10px;
+  }
+  .c-mini-val { font-size: 13px; font-weight: 700; color: #fff; }
+  .c-mini-lbl { font-size: 7px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+  .c-activity { display: flex; flex-direction: column; gap: 4px; position: relative; z-index: 1; }
+  .c-row { display: flex; align-items: center; gap: 7px; font-size: 8px; color: rgba(255,255,255,0.35); }
+
+  /* Labels */
+  .card-label {
+    padding: 16px 20px 18px;
+  }
+  .card-label .tag { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #555; font-weight: 600; margin-bottom: 5px; }
+  .card-label h3 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+  .card-label p { font-size: 12px; color: #555; line-height: 1.6; }
+
+  .card-label-a { background: #f5f0e8; border-top: none; }
+  .card-label-a .tag { color: #a8a29e; }
+  .card-label-a h3 { color: #1C1917; }
+  .card-label-a p { color: #6B6560; }
+
+  .card-label-b { background: #111; }
+  .card-label-c { background: rgba(20, 10, 30, 0.95); }
+  .card-label-c h3 { color: #fff; }
+
+  .footer { margin-top: 32px; font-size: 12px; color: #444; }
+</style>
+</head>
+<body>
+<h1>What's the visual tone?</h1>
+<p class="subtitle">Same content, three different aesthetics. Which feels right for VeloxUI's dashboard?</p>
+
+<div class="cards">
+
+  <!-- Option A: Warm Light -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="ring"></div>
+    <div class="selected-pill">Selected</div>
+    <div class="preview-a">
+      <div class="a-topbar">
+        <span class="a-logo">VELOX UI</span>
+        <div class="a-dot"></div>
+      </div>
+      <div class="a-hero">
+        <div>
+          <div class="a-hero-num">94</div>
+          <div class="a-hero-label">Published components</div>
+        </div>
+        <span class="a-hero-badge">↑ 12 this week</span>
+      </div>
+      <div class="a-mini-row">
+        <div class="a-mini"><div class="a-mini-val">12</div><div class="a-mini-lbl">Ideas</div></div>
+        <div class="a-mini"><div class="a-mini-val">3</div><div class="a-mini-lbl">Generating</div></div>
+        <div class="a-mini"><div class="a-mini-val">8</div><div class="a-mini-lbl">Review</div></div>
+        <div class="a-mini"><div class="a-mini-val">48K</div><div class="a-mini-lbl">Views</div></div>
+      </div>
+      <div class="a-activity">
+        <div class="a-row"><div class="a-dot2" style="background:#3D6B52"></div>neon-glow published 2m ago</div>
+        <div class="a-row"><div class="a-dot2" style="background:#3b82f6"></div>magnetic-cursor in review</div>
+        <div class="a-row"><div class="a-dot2" style="background:#f59e0b"></div>glass-card generating…</div>
+      </div>
+    </div>
+    <div class="card-label card-label-a">
+      <div class="tag">Option A</div>
+      <h3>Warm & Editorial</h3>
+      <p>Matches the existing Velox brand: cream whites, warm borders, rose accents. Feels like a crafted studio tool, not a developer dashboard.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Dark Premium -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="ring"></div>
+    <div class="selected-pill">Selected</div>
+    <div class="preview-b">
+      <div class="b-topbar">
+        <span class="b-logo">VELOX UI</span>
+        <div class="b-dot"></div>
+      </div>
+      <div class="b-hero">
+        <div>
+          <div class="b-hero-num">94</div>
+          <div class="b-hero-label">Published components</div>
+        </div>
+        <div class="b-hero-glow">⚡</div>
+      </div>
+      <div class="b-mini-row">
+        <div class="b-mini"><div class="b-mini-val">12</div><div class="b-mini-lbl">Ideas</div></div>
+        <div class="b-mini"><div class="b-mini-val">3</div><div class="b-mini-lbl">Gen</div></div>
+        <div class="b-mini accent"><div class="b-mini-val">8</div><div class="b-mini-lbl">Review</div></div>
+        <div class="b-mini"><div class="b-mini-val">48K</div><div class="b-mini-lbl">Views</div></div>
+      </div>
+      <div class="b-activity">
+        <div class="b-row"><div class="a-dot2" style="background:#34d399;width:5px;height:5px;border-radius:50%"></div>neon-glow published 2m ago</div>
+        <div class="b-row"><div class="a-dot2" style="background:#60a5fa;width:5px;height:5px;border-radius:50%"></div>magnetic-cursor in review</div>
+        <div class="b-row"><div class="a-dot2" style="background:#fbbf24;width:5px;height:5px;border-radius:50%"></div>glass-card generating…</div>
+      </div>
+    </div>
+    <div class="card-label card-label-b">
+      <div class="tag" style="color:#444">Option B — Recommended</div>
+      <h3>Dark & Premium</h3>
+      <p>Deep black base, rose glows, sage accents. Commands attention. Feels like a professional production tool — Linear, Vercel, or Raycast energy.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Glass -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="ring"></div>
+    <div class="selected-pill">Selected</div>
+    <div class="preview-c">
+      <div class="c-topbar">
+        <span class="c-logo">VELOX UI</span>
+        <span class="c-tag">Live</span>
+      </div>
+      <div class="c-hero">
+        <div>
+          <div class="c-hero-num">94</div>
+          <div class="c-hero-label">Published components</div>
+        </div>
+        <svg width="40" height="40" viewBox="0 0 40 40" style="transform:rotate(-90deg)">
+          <circle cx="20" cy="20" r="15" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="4"/>
+          <circle cx="20" cy="20" r="15" fill="none" stroke="#E8473F" stroke-width="4"
+            stroke-dasharray="94.25" stroke-dashoffset="23.56" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="c-mini-row">
+        <div class="c-mini"><div class="c-mini-val">12</div><div class="c-mini-lbl">Ideas</div></div>
+        <div class="c-mini"><div class="c-mini-val">3</div><div class="c-mini-lbl">Gen</div></div>
+        <div class="c-mini"><div class="c-mini-val">8</div><div class="c-mini-lbl">Review</div></div>
+        <div class="c-mini"><div class="c-mini-val">48K</div><div class="c-mini-lbl">Views</div></div>
+      </div>
+      <div class="c-activity">
+        <div class="c-row"><div style="width:5px;height:5px;border-radius:50%;background:#34d399"></div>neon-glow published 2m ago</div>
+        <div class="c-row"><div style="width:5px;height:5px;border-radius:50%;background:#a78bfa"></div>magnetic-cursor in review</div>
+        <div class="c-row"><div style="width:5px;height:5px;border-radius:50%;background:#fbbf24"></div>glass-card generating…</div>
+      </div>
+    </div>
+    <div class="card-label card-label-c">
+      <div class="tag" style="color:#555">Option C</div>
+      <h3>Glassmorphism</h3>
+      <p>Frosted glass panels on a deep gradient backdrop. Moody, atmospheric. High-end but can feel heavy — best if the whole app leans dark.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="footer">Click to select, then tell me in the terminal. The existing design system already has the Velox warm palette built in — but we can absolutely go dark.</p>
+
+<script>
+function toggleSelect(el) {
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  if (window.__recordChoice) window.__recordChoice(el.dataset.choice, el.querySelector('h3').textContent);
+}
+</script>
+</body>
+</html>

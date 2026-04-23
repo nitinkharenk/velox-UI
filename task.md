@@ -1,0 +1,8 @@
+- [x] Update App Route Wrappers <!-- id: 0 -->
+- [x] Update Asset Gallery Components <!-- id: 4 -->
+- [x] Update Asset Detail Components <!-- id: 8 -->
+- [x] Update Template Section Components <!-- id: 14 -->
+- [x] Update Playground <!-- id: 20 -->
+- [x] Final Cleanup & Contrast Polish <!-- id: 22 -->
+- [x] Fix Shadow Black Contrast failures (Templates) - v2 Robust Fix <!-- id: 25 -->
+- [x] Final Verification <!-- id: 13 -->

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/framer-motion@11/dist/framer-motion.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" data-presets="react,typescript">
+    const { useState } = React;
+    const { motion } = window.FramerMotion;
+    
+    interface Props {
+      children: ReactNode;
+      val: MotionValue<number>;
+    }
+    
+    function App({ children, val }: Props) {
+      return <div>Hello {children}</div>;
+    }
+    
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App>World</App>);
+  </script>
+</body>
+</html>

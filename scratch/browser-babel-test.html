@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="output">Running...</div>
+  <script type="text/babel" data-presets="react,typescript">
+    window.onerror = (e) => { document.getElementById('output').textContent = e.message || e; };
+    try {
+      const foo = <motion.div />;
+      document.getElementById('output').textContent = "SUCCESS";
+    } catch (e) {
+      document.getElementById('output').textContent = "ERROR: " + e.message;
+    }
+  </script>
+</body>
+</html>

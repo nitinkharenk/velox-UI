@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    // Override the default font family with our premium font
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'light-grad': 'radial-gradient(circle at top left, #fdfbfb 0%, #ebedee 100%)',
+                        'dark-grad': 'radial-gradient(circle at top left, #232326 0%, #0a0a0a 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* DEPTH STYLING */
+        .depth-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Light Mode Depth */
+        .depth-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 10px 25px -5px rgba(0, 0, 0, 0.05),
+                0 8px 10px -6px rgba(0, 0, 0, 0.01),
+                inset 0 1px 1px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Dark Mode Depth */
+        .dark .depth-card {
+            background: linear-gradient(145deg, #1e1e20, #151516);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow:
+                8px 8px 16px rgba(0, 0, 0, 0.6),
+                -4px -4px 12px rgba(255, 255, 255, 0.02),
+                inset 0 1px 1px rgba(255, 255, 255, 0.05);
+        }
+
+        /* Floating Hover Effects */
+        .depth-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            z-index: 10;
+        }
+
+        .hover-glow-blue:hover {
+            box-shadow: 0 15px 30px -5px rgba(4, 101, 237, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            border-color: rgba(4, 101, 237, 0.3);
+        }
+
+        .hover-glow-green:hover {
+            box-shadow: 0 15px 30px -5px rgba(7, 170, 115, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            border-color: rgba(7, 170, 115, 0.3);
+        }
+
+        .hover-glow-red:hover {
+            box-shadow: 0 15px 30px -5px rgba(249, 62, 57, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            border-color: rgba(249, 62, 57, 0.3);
+        }
+
+        .hover-glow-purple:hover {
+            box-shadow: 0 15px 30px -5px rgba(100, 46, 246, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            border-color: rgba(100, 46, 246, 0.3);
+        }
+
+        .hover-glow-blue:hover .accent-text {
+            color: #0465ED;
+        }
+
+        .hover-glow-green:hover .accent-text {
+            color: #07AA73;
+        }
+
+        .hover-glow-red:hover .accent-text {
+            color: #F93E39;
+        }
+
+        .hover-glow-purple:hover .accent-text {
+            color: #642EF6;
+        }
+
+        /* Glassy Panels */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .dark .glass-panel {
+            background: rgba(15, 15, 16, 0.7);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            transition: background 0.5s ease;
+            /* Optional: smooths out font rendering on modern screens */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+
+<body class="bg-light-grad text-gray-900 dark:bg-dark-grad dark:text-[#F9F9FA] font-sans min-h-screen flex flex-col">
+
+    <header
+        class="glass-panel p-5 flex justify-between items-center border-b border-white/40 dark:border-white/5 sticky top-0 z-50 shadow-sm dark:shadow-md">
+        <div class="flex items-center gap-4">
+            <div
+                class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0465ED] to-[#642EF6] shadow-lg flex items-center justify-center text-white font-extrabold text-lg">
+                V</div>
+            <h1 class="text-xl font-bold tracking-tight drop-shadow-sm">Velox</h1>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <button id="themeToggle" class="p-2 rounded-full depth-card hover:text-[#0465ED] transition-colors">
+                <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round"></svg>
+            </button>
+
+            <button
+                class="px-5 py-2 text-sm font-semibold rounded-lg depth-card hover:text-[#0465ED] transition-colors">
+                Action
+            </button>
+        </div>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden relative">
+
+        <aside
+            class="glass-panel w-56 overflow-y-auto border-r border-white/40 dark:border-white/5 p-5 space-y-6 z-40 relative shadow-[4px_0_24px_rgba(0,0,0,0.02)] dark:shadow-[4px_0_24px_rgba(0,0,0,0.2)]">
+            <nav class="space-y-3 text-sm font-semibold text-gray-500 dark:text-gray-400">
+                <a
+                    class="block p-3 rounded-lg depth-card hover-glow-blue cursor-pointer accent-text text-[#0465ED]">Dashboard</a>
+                <a
+                    class="block p-3 rounded-lg hover:bg-gray-200/50 dark:hover:bg-white/5 transition-colors cursor-pointer hover:text-[#07AA73] hover:text-gray-900 dark:hover:text-white">Analytics</a>
+                <a
+                    class="block p-3 rounded-lg hover:bg-gray-200/50 dark:hover:bg-white/5 transition-colors cursor-pointer hover:text-[#F93E39] hover:text-gray-900 dark:hover:text-white">Projects</a>
+                <a
+                    class="block p-3 rounded-lg hover:bg-gray-200/50 dark:hover:bg-white/5 transition-colors cursor-pointer hover:text-[#642EF6] hover:text-gray-900 dark:hover:text-white">Settings</a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-8 space-y-8 overflow-y-auto relative z-0">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div class="depth-card p-6 rounded-2xl hover-glow-blue">
+                    <div class="flex justify-between items-start">
+                        <p class="text-sm font-semibold text-gray-500 dark:text-gray-400">Users</p>
+                        <span class="p-2 rounded-lg bg-blue-100/50 dark:bg-blue-900/20 text-[#0465ED]"><svg width="16"
+                                height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm0-5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM1 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H1Zm4-8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm0-5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z" />
+                            </svg></span>
+                    </div>
+                    <h2 class="text-4xl font-extrabold mt-4 tracking-tight drop-shadow-sm accent-text">12,340</h2>
+                </div>
+
+                <div class="depth-card p-6 rounded-2xl hover-glow-green">
+                    <div class="flex justify-between items-start">
+                        <p class="text-sm font-semibold text-gray-500 dark:text-gray-400">Revenue</p>
+                        <span class="p-2 rounded-lg bg-green-100/50 dark:bg-green-900/20 text-[#07AA73]"><svg width="16"
+                                height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.265-1.608-.666-1.608-1.201 0-.596.586-1.002 1.608-1.073v2.274h-.001zm1.591 1.85c1.15.286 1.77.7 1.77 1.34 0 .61-.634 1.003-1.77 1.082v-2.422h.001z" />
+                            </svg></span>
+                    </div>
+                    <h2 class="text-4xl font-extrabold mt-4 tracking-tight drop-shadow-sm accent-text">$54,230</h2>
+                </div>
+
+                <div class="depth-card p-6 rounded-2xl hover-glow-red">
+                    <div class="flex justify-between items-start">
+                        <p class="text-sm font-semibold text-gray-500 dark:text-gray-400">Errors</p>
+                        <span class="p-2 rounded-lg bg-red-100/50 dark:bg-red-900/20 text-[#F93E39]"><svg width="16"
+                                height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg></span>
+                    </div>
+                    <h2 class="text-4xl font-extrabold mt-4 tracking-tight drop-shadow-sm accent-text">23</h2>
+                </div>
+
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <div class="depth-card p-7 rounded-2xl">
+                    <h3
+                        class="text-xs font-bold text-gray-400 dark:text-gray-500 mb-5 uppercase tracking-widest drop-shadow-sm">
+                        Recent Activity</h3>
+                    <ul class="space-y-3 text-sm font-semibold">
+                        <li
+                            class="p-3 rounded-xl depth-card hover-glow-blue cursor-pointer flex justify-between items-center group">
+                            <span class="flex items-center gap-3">
+                                <div class="w-2 h-2 rounded-full bg-[#0465ED] shadow-[0_0_8px_#0465ED]"></div> User
+                                signed up
+                            </span>
+                            <span class="text-xs text-gray-400 font-medium">2m ago</span>
+                        </li>
+                        <li
+                            class="p-3 rounded-xl depth-card hover-glow-green cursor-pointer flex justify-between items-center group">
+                            <span class="flex items-center gap-3">
+                                <div class="w-2 h-2 rounded-full bg-[#07AA73] shadow-[0_0_8px_#07AA73]"></div> Payment
+                                received
+                            </span>
+                            <span class="text-xs text-gray-400 font-medium">15m ago</span>
+                        </li>
+                        <li
+                            class="p-3 rounded-xl depth-card hover-glow-red cursor-pointer flex justify-between items-center group">
+                            <span class="flex items-center gap-3">
+                                <div class="w-2 h-2 rounded-full bg-[#F93E39] shadow-[0_0_8px_#F93E39]"></div> Server
+                                alert
+                            </span>
+                            <span class="text-xs text-gray-400 font-medium">1h ago</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="depth-card p-7 rounded-2xl flex flex-col">
+                    <h3
+                        class="text-xs font-bold text-gray-400 dark:text-gray-500 mb-5 uppercase tracking-widest drop-shadow-sm">
+                        Performance View</h3>
+                    <div
+                        class="flex-1 rounded-xl bg-gray-200/30 dark:bg-black/40 shadow-[inset_0_4px_8px_rgba(0,0,0,0.1)] border border-white/20 dark:border-white/5 flex items-center justify-center text-gray-500 font-semibold">
+                        <p class="drop-shadow-sm tracking-wide">Interactive Chart Area</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        const themeIcon = document.getElementById('themeIcon');
+
+        const sunIcon = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="4.22" x2="19.78" y2="5.64"></line>`;
+        const moonIcon = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+
+        themeIcon.innerHTML = htmlElement.classList.contains('dark') ? sunIcon : moonIcon;
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            themeIcon.innerHTML = htmlElement.classList.contains('dark') ? sunIcon : moonIcon;
+        });
+    </script>
+</body>
+
+</html>

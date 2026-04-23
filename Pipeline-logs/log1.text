@@ -1,0 +1,1421 @@
+VELOX AI STUDIO - PIPELINE EXECUTION REPORT
+Idea: high-performance animated landing page for a tech startup
+Date: 23/04/2026, 02:29:17
+Total Stages: 4
+Total Usage: 72,061 IN / 30,330 OUT
+================================================================================
+
+STEP 1: [SYSTEM]
+Time: 02:22:59
+Level: SYSTEM
+Message: Preparing Forge production line...
+--------------------------------------------------------------------------------
+
+STEP 2: [ENRICH]
+Time: 02:23:01
+Level: INFO
+Message: Executing Stage: Enrich...
+--------------------------------------------------------------------------------
+
+STEP 3: [ENRICH]
+Time: 02:23:37
+Level: SUCCESS
+Message: Spec enriched successfully
+Input Payload:
+{
+  "idea": {
+    "id": "46307664-e294-40b4-bd9d-92472410ccad",
+    "name": "high-performance animated landing page for a tech startup",
+    "type": "hover",
+    "category": "animation",
+    "tech": [
+      "Framer Motion",
+      "Tailwind CSS",
+      "GSAP"
+    ],
+    "complexity": "complex",
+    "feel": "smooth, minimal",
+    "enriched_spec": null,
+    "status": "pending",
+    "error_log": null,
+    "created_at": "2026-04-22T20:53:00.198017+00:00",
+    "generated_code": null,
+    "updated_at": "2026-04-22T20:53:00.198017+00:00",
+    "prompt": "Create a modern, high-performance animated landing page for a tech startup with a premium, futuristic feel. The design should include a full-width hero section with a bold headline, gradient background, and smooth entrance animations (fade, slide, and subtle scale). Add an interactive particle or abstract background that reacts to cursor movement.\n\nInclude a sticky transparent navbar that becomes solid on scroll, with smooth scrolling navigation links. Add sections for features, pricing, testimonials, and a call-to-action, each with clean card-based layouts and subtle hover animations.\n\nUse fluid transitions between sections (parallax or scroll-triggered animations). Incorporate micro-interactions on buttons (hover glow, ripple, or magnetic effect). Ensure responsive design across all devices with optimized performance.\n\nTypography should be clean and modern, with strong hierarchy. Use soft shadows, glassmorphism or neumorphism elements where appropriate. Add a dark/light mode toggle with smooth transition.\n\nFocus on performance, accessibility, and reusable component structure. Include smooth loading states and minimal but elegant motion throughout the page.\n",
+    "format": "template"
+  },
+  "config": {
+    "id": "eeb80575-8c15-4633-a66e-079df71e02ed",
+    "name": "Enrich",
+    "provider": "vertex",
+    "model": "gemini-2.5-flash",
+    "base_url": null,
+    "system_prompt": "You are a senior UI motion designer and frontend architect.\n\nConvert the input idea into a HIGH-QUALITY, BUILDABLE UI SPEC for a premium component library.\n\nReturn ONLY valid JSON. No markdown. No explanation.\n\n---\n\n🎯 GOAL\nCreate a spec that produces visually rich, modern, and non-generic UI.\n\n---\n\n🧩 REQUIRED FIELDS\n\n{\n\"name\": \"\",\n\"description\": \"\",\n\"seo_description\": \"\",\n\"motion_style\": \"\",\n\"visual_depth\": {},\n\"animation_spec\": {},\n\"visual_spec\": {},\n\"component_structure\": \"\",\n\"interactions\": [],\n\"implementation_notes\": \"\",\n\"tags\": [],\n\"tech\": [\"Tailwind\",\"Framer Motion\",\"React\"]\n}\n\n---\n\n🎨 VISUAL INTELLIGENCE RULES (MANDATORY)\n\n1. MOTION STYLE (choose ONE and be specific)\n\n* orbital (circular / rotating motion)\n* neural (branching / spreading / thinking)\n* wave (flowing / sinusoidal)\n* pulse (expansion / breathing)\n* parallax (depth-based movement)\n\n👉 Describe EXACT behavior, not generic text\n\n---\n\n2. VISUAL DEPTH (REQUIRED)\n\nDefine layers:\n{\n\"foreground\": \"sharp, brighter elements\",\n\"midground\": \"main content\",\n\"background\": \"blurred / low opacity elements\"\n}\n\nInclude:\n\n* blur levels\n* opacity variation\n* scale differences\n\n---\n\n3. FOCAL POINT\n\n* Must define a central visual anchor\n* Examples:\n\n  * glow core\n  * gradient center\n  * highlighted element\n\n---\n\n4. COLOR SYSTEM\n\n* Use premium dark palette\n* Define exact colors (hex)\n* Use 2–3 main colors only\n* Avoid flat white-only designs\n\n---\n\n5. ANIMATION SPEC\n\nMust include:\n\n* trigger (hover / loop / mouse / etc.)\n* motion type (non-linear, curved, orbital, etc.)\n* easing (spring or cubic-bezier)\n* duration\n* variation rules (delay, randomness)\n\n---\n\n6. COMPONENT STRUCTURE\n\nDescribe REAL UI:\n\n* wrapper\n* core element (focus)\n* secondary elements\n* decorative layers (for motion)\n\nNO generic \"div div div\"\n\n---\n\n7. INTERACTIONS\n\nMust be concrete:\n\n* \"mouse movement shifts particles by ±30px using spring\"\n* \"center glow pulses scale 1 → 1.2 over 2s\"\n\n---\n\n8. IMPLEMENTATION NOTES\n\nMust include:\n\n* hooks needed (useMotionValue, useSpring, etc.)\n* where hooks live (inside component)\n* how depth is calculated\n* how variation is applied\n\n---\n\nCONSTRAINTS:\n\n* All hooks inside component\n* Must be implementable in React + Framer Motion\n* Avoid generic descriptions\n\n---\n\nINPUT:\n{{IDEA_JSON}}\n",
+    "is_default": true
+  }
+}
+Output Payload:
+{
+  "name": "Futuristic Animated Tech Landing Page",
+  "description": "A high-performance, visually rich landing page template for tech startups, featuring a full-width hero with interactive background, sticky transparent navbar, and fluid section transitions. Incorporates subtle micro-interactions, glassmorphism, and a premium dark aesthetic for a modern, futuristic user experience.",
+  "seo_description": "Animated landing page for tech startups, featuring interactive parallax scrolling, responsive design, modern UI, and smooth Framer Motion animations. Includes hero, features, pricing, testimonials, and CTA sections with premium dark theme and glassmorphism elements.",
+  "scale": "page",
+  "format": "template",
+  "motion_style": "Parallax: Depth-based movement where background elements move slower than foreground elements on scroll, creating a 3D effect between sections. Additionally, a neural-like particle system in the hero background reacts to mouse movement with subtle spreading and fading.",
+  "visual_depth": {
+    "foreground": "Sharp, bright interactive elements like buttons, active navigation links, and card outlines on hover. Blur: 0px. Opacity: 100%. Scale: 1.0 to 1.05 on interaction.",
+    "midground": "Main content surfaces such as text blocks, static cards, and images. Blur: 0px. Opacity: 95%. Scale: 1.0.",
+    "background": "Interactive particle system or abstract gradient patterns, especially in the hero section. Blurred (5-10px) and low opacity (20-40%) to provide depth without distracting from content. Scale: 0.95 to 1.05 based on scroll/mouse."
+  },
+  "animation_spec": {
+    "hero_entrance": {
+      "trigger": "onMount",
+      "motion_type": "slideIn, fadeIn, subtleScale",
+      "easing": "smooth (stiffness 80, damping 40)",
+      "duration": "0.8s for text, 1.2s for background",
+      "variation_rules": "delay offsets for sequential elements"
+    },
+    "interactive_background": {
+      "trigger": "mouse",
+      "motion_type": "non-linear position shift, scale variation for particles",
+      "easing": "elastic (stiffness 300, damping 5)",
+      "duration": "0.3s for reaction",
+      "variation_rules": "random initial positions and animation properties"
+    },
+    "card_hover": {
+      "trigger": "hover",
+      "motion_type": "scale, boxShadow, borderColor, backgroundColor",
+      "easing": "minimal (stiffness 200, damping 25)",
+      "duration": "0.2s",
+      "whileHover": {
+        "scale": 1.03,
+        "backgroundColor": "#1A1A1D",
+        "borderColor": "#6366F1",
+        "boxShadow": "0 0 20px rgba(99,102,241,0.2)"
+      }
+    },
+    "button_hover": {
+      "trigger": "hover",
+      "motion_type": "boxShadow (glow), scale",
+      "easing": "bouncy (stiffness 400, damping 10)",
+      "duration": "0.15s",
+      "whileHover": {
+        "scale": 1.05,
+        "boxShadow": "0 0 25px rgba(99,102,241,0.4), 0 0 10px rgba(99,102,241,0.2) inset"
+      }
+    },
+    "section_scroll_transition": {
+      "trigger": "scroll (useInView)",
+      "motion_type": "slideUp, fadeIn, parallax",
+      "easing": "smooth (stiffness 80, damping 40)",
+      "duration": "1.0s",
+      "variation_rules": "delay for staggered element entrance within sections"
+    }
+  },
+  "visual_spec": {
+    "focal_point": "The main headline and call-to-action in the Hero section, highlighted by a subtle radial gradient glow and slightly increased scale on mount.",
+    "color_system": "Premium dark palette: Primary Background: #0A0A0C, Accent Blue: #6366F1, Secondary Accent: #93C5FD (light blue for contrast/glows).",
+    "typography": "Modern sans-serif (e.g., Inter or Plus Jakarta Sans). Bold headlines, clear body text, strong hierarchy with varying weights and sizes. Anti-aliased for crispness.",
+    "elements": "Subtle glassmorphism for card backgrounds (e.g., backdrop-filter: blur(10px); background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);). Soft, diffused shadows for depth."
+  },
+  "component_structure": "The page is structured as a single React component, LandingPage, which orchestrates the layout and animations of its child sections. It utilizes a motion.div as the root container to manage global scroll and mouse events. Each section (Navbar, HeroSection, FeaturesSection, PricingSection, TestimonialsSection, CTASection, Footer) is a distinct child component, responsible for its internal layout and animations. Parallax effects are managed by LandingPage passing scroll progress to relevant section components, or by individual sections using useInView for entrance animations. The interactive background in the Hero is a separate motion.div layer positioned absolutely within the HeroSection.",
+  "sections": [
+    {
+      "id": "navbar",
+      "name": "Navbar",
+      "layout": "Sticky top, full-width, initially transparent with glass effect, becomes solid dark on scroll. Centered logo, right-aligned navigation links, and a CTA button.",
+      "key_elements": [
+        "Logo",
+        "Navigation Links (Home, Features, Pricing, Testimonials, Contact)",
+        "CTA Button (e.g., 'Get Started')",
+        "Dark/Light Mode Toggle"
+      ],
+      "animation": "Fade down on mount (0.5s delay), background color transition on scroll (transparent to rgba(10,10,12,0.8) with backdrop-filter: blur(10px))."
+    },
+    {
+      "id": "hero",
+      "name": "Hero Section",
+      "layout": "Full-width, full-viewport height. Centered content (headline, subtext, CTA) over an interactive particle/abstract background. Relative positioning for content, absolute for background.",
+      "key_elements": [
+        "Bold Headline",
+        "Compelling Subtext",
+        "Primary CTA Button",
+        "Secondary CTA Button",
+        "Interactive Background (particles/gradient)"
+      ],
+      "animation": "Headline and subtext slide up and fade in (staggered, 0.2s delay). CTA buttons fade in and scale up. Interactive background elements subtly shift position and scale based on mouse movement. Overall section elements animate in with a useInView trigger."
+    },
+    {
+      "id": "features",
+      "name": "Features Section",
+      "layout": "Full-width, grid-based layout for feature cards (2-3 columns on desktop). Centered section title and description. Each card has an icon, title, and description.",
+      "key_elements": [
+        "Section Title",
+        "Section Description",
+        "Feature Cards (3-6, with icon, title, description)"
+      ],
+      "animation": "Section title and description slide up and fade in on scroll (useInView). Feature cards stagger fade in and slide up from bottom, with a subtle parallax effect based on scroll depth."
+    },
+    {
+      "id": "pricing",
+      "name": "Pricing Section",
+      "layout": "Full-width, flexible layout for pricing tiers (3-4 columns on desktop). Each tier is a card with plan details, price, and CTA. Toggle for monthly/yearly pricing.",
+      "key_elements": [
+        "Section Title",
+        "Section Description",
+        "Pricing Toggle (Monthly/Yearly)",
+        "Pricing Cards (3-4, with features, price, CTA)"
+      ],
+      "animation": "Section title and description slide up and fade in on scroll. Pricing cards stagger fade in and scale up from bottom, with a subtle hover effect (scale, shadow, border)."
+    },
+    {
+      "id": "testimonials",
+      "name": "Testimonials Section",
+      "layout": "Full-width, carousel or grid layout for testimonial cards. Each card contains a quote, author, and company/rating.",
+      "key_elements": [
+        "Section Title",
+        "Testimonial Cards (3-5, with quote, author, avatar)",
+        "Navigation Arrows/Dots (if carousel)"
+      ],
+      "animation": "Section title and description slide up and fade in on scroll. Testimonial cards fade in and slide from side (if carousel) or scale up (if grid), with a subtle parallax effect."
+    },
+    {
+      "id": "cta",
+      "name": "Call to Action Section",
+      "layout": "Full-width, prominent section with a bold statement and a clear call-to-action button. Often a gradient background or distinct visual style.",
+      "key_elements": [
+        "Bold Call-to-Action Headline",
+        "Supportive Subtext",
+        "Primary CTA Button"
+      ],
+      "animation": "Headline and subtext slide up and fade in on scroll. CTA button scales up and glows on hover."
+    },
+    {
+      "id": "footer",
+      "name": "Footer",
+      "layout": "Full-width, dark background. Contains copyright, legal links, social media icons, and possibly a sitemap.",
+      "key_elements": [
+        "Copyright Info",
+        "Legal Links",
+        "Social Media Icons",
+        "Company Links"
+      ],
+      "animation": "Fade in on scroll."
+    }
+  ],
+  "interactions": [
+    {
+      "description": "Mouse movement over the Hero section shifts the background particle system's position by plus or minus 20px on both X and Y axes, and subtly varies particle scale and opacity, using an elastic spring easing for a responsive, fluid feel."
+    },
+    {
+      "description": "Card hover changes: scale from 1 to 1.03, backgroundColor from rgba(255,255,255,0.05) to #1A1A1D, borderColor from rgba(255,255,255,0.1) to #6366F1, boxShadow from none to 0 0 20px rgba(99,102,241,0.2)."
+    },
+    {
+      "description": "Button hover changes: scale from 1 to 1.05, boxShadow from none to 0 0 25px rgba(99,102,241,0.4), 0 0 10px rgba(99,102,241,0.2) inset (simulating a glow effect)."
+    },
+    {
+      "description": "Navbar background transitions from transparent to rgba(10,10,12,0.8) with backdrop-filter: blur(10px) when window.scrollY is greater than 50px, using a smooth transition."
+    }
+  ],
+  "implementation_notes": "Hooks needed: useMotionValue (for mouse position, scroll progress), useSpring (to smooth mouse values), useInView (for section entrance animations), useScroll (for global scroll progress and parallax effects).\nAll hooks will live inside the respective component or helper components directly within the LandingPage file. useMotionValue and useSpring for mouse tracking will be in the HeroSection. useScroll will be in the root LandingPage component, passed down as context or props to sections requiring scroll-based parallax. useInView will be used within each content section (Features, Pricing, etc.) to trigger entrance animations.\nDepth is calculated by mapping useScroll progress to y or x transform values for parallax elements, with different speed multipliers for foreground vs. background elements. For example, y: scrollYProgress * 100 for foreground, y: scrollYProgress * 50 for background.\nVariation is applied using delay properties in transition objects for staggered entrance animations within sections. Randomness for particle systems can be achieved by generating initial positions and animation properties with Math.random() and then animating them in a loop or with useMotionValue for mouse interaction.",
+  "tags": [
+    "Landing Page",
+    "Animated",
+    "Tech Startup",
+    "Parallax",
+    "Interactive",
+    "Framer Motion",
+    "Tailwind CSS",
+    "Glassmorphism",
+    "Dark Theme",
+    "Responsive"
+  ],
+  "tech": [
+    "Tailwind",
+    "Framer Motion",
+    "React"
+  ]
+}
+--------------------------------------------------------------------------------
+
+STEP 4: [GEN]
+Time: 02:23:37
+Level: INFO
+Message: Executing Stage: Code Gen...
+--------------------------------------------------------------------------------
+
+STEP 5: [GEN]
+Time: 02:24:29
+Level: SUCCESS
+Message: React code generated
+Input Payload:
+{
+  "spec": {
+    "name": "Futuristic Animated Tech Landing Page",
+    "description": "A high-performance, visually rich landing page template for tech startups, featuring a full-width hero with interactive background, sticky transparent navbar, and fluid section transitions. Incorporates subtle micro-interactions, glassmorphism, and a premium dark aesthetic for a modern, futuristic user experience.",
+    "seo_description": "Animated landing page for tech startups, featuring interactive parallax scrolling, responsive design, modern UI, and smooth Framer Motion animations. Includes hero, features, pricing, testimonials, and CTA sections with premium dark theme and glassmorphism elements.",
+    "scale": "page",
+    "format": "template",
+    "motion_style": "Parallax: Depth-based movement where background elements move slower than foreground elements on scroll, creating a 3D effect between sections. Additionally, a neural-like particle system in the hero background reacts to mouse movement with subtle spreading and fading.",
+    "visual_depth": {
+      "foreground": "Sharp, bright interactive elements like buttons, active navigation links, and card outlines on hover. Blur: 0px. Opacity: 100%. Scale: 1.0 to 1.05 on interaction.",
+      "midground": "Main content surfaces such as text blocks, static cards, and images. Blur: 0px. Opacity: 95%. Scale: 1.0.",
+      "background": "Interactive particle system or abstract gradient patterns, especially in the hero section. Blurred (5-10px) and low opacity (20-40%) to provide depth without distracting from content. Scale: 0.95 to 1.05 based on scroll/mouse."
+    },
+    "animation_spec": {
+      "hero_entrance": {
+        "trigger": "onMount",
+        "motion_type": "slideIn, fadeIn, subtleScale",
+        "easing": "smooth (stiffness 80, damping 40)",
+        "duration": "0.8s for text, 1.2s for background",
+        "variation_rules": "delay offsets for sequential elements"
+      },
+      "interactive_background": {
+        "trigger": "mouse",
+        "motion_type": "non-linear position shift, scale variation for particles",
+        "easing": "elastic (stiffness 300, damping 5)",
+        "duration": "0.3s for reaction",
+        "variation_rules": "random initial positions and animation properties"
+      },
+      "card_hover": {
+        "trigger": "hover",
+        "motion_type": "scale, boxShadow, borderColor, backgroundColor",
+        "easing": "minimal (stiffness 200, damping 25)",
+        "duration": "0.2s",
+        "whileHover": {
+          "scale": 1.03,
+          "backgroundColor": "#1A1A1D",
+          "borderColor": "#6366F1",
+          "boxShadow": "0 0 20px rgba(99,102,241,0.2)"
+        }
+      },
+      "button_hover": {
+        "trigger": "hover",
+        "motion_type": "boxShadow (glow), scale",
+        "easing": "bouncy (stiffness 400, damping 10)",
+        "duration": "0.15s",
+        "whileHover": {
+          "scale": 1.05,
+          "boxShadow": "0 0 25px rgba(99,102,241,0.4), 0 0 10px rgba(99,102,241,0.2) inset"
+        }
+      },
+      "section_scroll_transition": {
+        "trigger": "scroll (useInView)",
+        "motion_type": "slideUp, fadeIn, parallax",
+        "easing": "smooth (stiffness 80, damping 40)",
+        "duration": "1.0s",
+        "variation_rules": "delay for staggered element entrance within sections"
+      }
+    },
+    "visual_spec": {
+      "focal_point": "The main headline and call-to-action in the Hero section, highlighted by a subtle radial gradient glow and slightly increased scale on mount.",
+      "color_system": "Premium dark palette: Primary Background: #0A0A0C, Accent Blue: #6366F1, Secondary Accent: #93C5FD (light blue for contrast/glows).",
+      "typography": "Modern sans-serif (e.g., Inter or Plus Jakarta Sans). Bold headlines, clear body text, strong hierarchy with varying weights and sizes. Anti-aliased for crispness.",
+      "elements": "Subtle glassmorphism for card backgrounds (e.g., backdrop-filter: blur(10px); background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);). Soft, diffused shadows for depth."
+    },
+    "component_structure": "The page is structured as a single React component, LandingPage, which orchestrates the layout and animations of its child sections. It utilizes a motion.div as the root container to manage global scroll and mouse events. Each section (Navbar, HeroSection, FeaturesSection, PricingSection, TestimonialsSection, CTASection, Footer) is a distinct child component, responsible for its internal layout and animations. Parallax effects are managed by LandingPage passing scroll progress to relevant section components, or by individual sections using useInView for entrance animations. The interactive background in the Hero is a separate motion.div layer positioned absolutely within the HeroSection.",
+    "sections": [
+      {
+        "id": "navbar",
+        "name": "Navbar",
+        "layout": "Sticky top, full-width, initially transparent with glass effect, becomes solid dark on scroll. Centered logo, right-aligned navigation links, and a CTA button.",
+        "key_elements": [
+          "Logo",
+          "Navigation Links (Home, Features, Pricing, Testimonials, Contact)",
+          "CTA Button (e.g., 'Get Started')",
+          "Dark/Light Mode Toggle"
+        ],
+        "animation": "Fade down on mount (0.5s delay), background color transition on scroll (transparent to rgba(10,10,12,0.8) with backdrop-filter: blur(10px))."
+      },
+      {
+        "id": "hero",
+        "name": "Hero Section",
+        "layout": "Full-width, full-viewport height. Centered content (headline, subtext, CTA) over an interactive particle/abstract background. Relative positioning for content, absolute for background.",
+        "key_elements": [
+          "Bold Headline",
+          "Compelling Subtext",
+          "Primary CTA Button",
+          "Secondary CTA Button",
+          "Interactive Background (particles/gradient)"
+        ],
+        "animation": "Headline and subtext slide up and fade in (staggered, 0.2s delay). CTA buttons fade in and scale up. Interactive background elements subtly shift position and scale based on mouse movement. Overall section elements animate in with a useInView trigger."
+      },
+      {
+        "id": "features",
+        "name": "Features Section",
+        "layout": "Full-width, grid-based layout for feature cards (2-3 columns on desktop). Centered section title and description. Each card has an icon, title, and description.",
+        "key_elements": [
+          "Section Title",
+          "Section Description",
+          "Feature Cards (3-6, with icon, title, description)"
+        ],
+        "animation": "Section title and description slide up and fade in on scroll (useInView). Feature cards stagger fade in and slide up from bottom, with a subtle parallax effect based on scroll depth."
+      },
+      {
+        "id": "pricing",
+        "name": "Pricing Section",
+        "layout": "Full-width, flexible layout for pricing tiers (3-4 columns on desktop). Each tier is a card with plan details, price, and CTA. Toggle for monthly/yearly pricing.",
+        "key_elements": [
+          "Section Title",
+          "Section Description",
+          "Pricing Toggle (Monthly/Yearly)",
+          "Pricing Cards (3-4, with features, price, CTA)"
+        ],
+        "animation": "Section title and description slide up and fade in on scroll. Pricing cards stagger fade in and scale up from bottom, with a subtle hover effect (scale, shadow, border)."
+      },
+      {
+        "id": "testimonials",
+        "name": "Testimonials Section",
+        "layout": "Full-width, carousel or grid layout for testimonial cards. Each card contains a quote, author, and company/rating.",
+        "key_elements": [
+          "Section Title",
+          "Testimonial Cards (3-5, with quote, author, avatar)",
+          "Navigation Arrows/Dots (if carousel)"
+        ],
+        "animation": "Section title and description slide up and fade in on scroll. Testimonial cards fade in and slide from side (if carousel) or scale up (if grid), with a subtle parallax effect."
+      },
+      {
+        "id": "cta",
+        "name": "Call to Action Section",
+        "layout": "Full-width, prominent section with a bold statement and a clear call-to-action button. Often a gradient background or distinct visual style.",
+        "key_elements": [
+          "Bold Call-to-Action Headline",
+          "Supportive Subtext",
+          "Primary CTA Button"
+        ],
+        "animation": "Headline and subtext slide up and fade in on scroll. CTA button scales up and glows on hover."
+      },
+      {
+        "id": "footer",
+        "name": "Footer",
+        "layout": "Full-width, dark background. Contains copyright, legal links, social media icons, and possibly a sitemap.",
+        "key_elements": [
+          "Copyright Info",
+          "Legal Links",
+          "Social Media Icons",
+          "Company Links"
+        ],
+        "animation": "Fade in on scroll."
+      }
+    ],
+    "interactions": [
+      {
+        "description": "Mouse movement over the Hero section shifts the background particle system's position by plus or minus 20px on both X and Y axes, and subtly varies particle scale and opacity, using an elastic spring easing for a responsive, fluid feel."
+      },
+      {
+        "description": "Card hover changes: scale from 1 to 1.03, backgroundColor from rgba(255,255,255,0.05) to #1A1A1D, borderColor from rgba(255,255,255,0.1) to #6366F1, boxShadow from none to 0 0 20px rgba(99,102,241,0.2)."
+      },
+      {
+        "description": "Button hover changes: scale from 1 to 1.05, boxShadow from none to 0 0 25px rgba(99,102,241,0.4), 0 0 10px rgba(99,102,241,0.2) inset (simulating a glow effect)."
+      },
+      {
+        "description": "Navbar background transitions from transparent to rgba(10,10,12,0.8) with backdrop-filter: blur(10px) when window.scrollY is greater than 50px, using a smooth transition."
+      }
+    ],
+    "implementation_notes": "Hooks needed: useMotionValue (for mouse position, scroll progress), useSpring (to smooth mouse values), useInView (for section entrance animations), useScroll (for global scroll progress and parallax effects).\nAll hooks will live inside the respective component or helper components directly within the LandingPage file. useMotionValue and useSpring for mouse tracking will be in the HeroSection. useScroll will be in the root LandingPage component, passed down as context or props to sections requiring scroll-based parallax. useInView will be used within each content section (Features, Pricing, etc.) to trigger entrance animations.\nDepth is calculated by mapping useScroll progress to y or x transform values for parallax elements, with different speed multipliers for foreground vs. background elements. For example, y: scrollYProgress * 100 for foreground, y: scrollYProgress * 50 for background.\nVariation is applied using delay properties in transition objects for staggered entrance animations within sections. Randomness for particle systems can be achieved by generating initial positions and animation properties with Math.random() and then animating them in a loop or with useMotionValue for mouse interaction.",
+    "tags": [
+      "Landing Page",
+      "Animated",
+      "Tech Startup",
+      "Parallax",
+      "Interactive",
+      "Framer Motion",
+      "Tailwind CSS",
+      "Glassmorphism",
+      "Dark Theme",
+      "Responsive"
+    ],
+    "tech": [
+      "Tailwind",
+      "Framer Motion",
+      "React"
+    ]
+  },
+  "config": {
+    "id": "56991920-be77-4219-8f2c-7faf6424ede1",
+    "name": "Code Gen",
+    "provider": "vertex",
+    "model": "gemini-2.5-flash",
+    "base_url": null,
+    "system_prompt": "You are a senior React + Framer Motion engineer and motion designer.\n\nGenerate a COMPLETE React component from the given spec.\n\nOutput RAW CODE ONLY. No markdown. No explanation.\n\n---\n\n🎯 GOAL\nProduce a PREMIUM, visually rich animated UI component.\n\n---\n\n⚙️ TECH RULES (STRICT)\n\n* Use window.React and window.Motion only\n* No imports\n* Hooks inside component only\n* No hooks inside loops\n* Use style={{}} for dynamic values\n* Container must use: style={{ minHeight: '360px', width: '100%' }}\n\n---\n\n🎨 MOTION DESIGN RULES (MANDATORY)\n\n1. DEPTH\n\n* Apply visual_depth from spec\n* Use:\n\n  * opacity\n  * blur (filter)\n  * scale\n\n---\n\n2. MOTION QUALITY\n\n* Avoid straight-line motion\n* Use:\n\n  * curved / orbital / wave patterns\n* Combine at least 2:\n\n  * x/y movement\n  * scale\n  * opacity\n\n---\n\n3. VARIATION\n\n* Every repeated element must differ:\n\n  * delay\n  * duration\n  * scale\n* NO identical animations\n\n---\n\n4. FOCAL POINT\n\n* Implement central anchor (glow / gradient / core)\n* Must be visually dominant\n\n---\n\n5. COLOR SYSTEM\n\n* Use spec-defined palette\n* Avoid flat white-only visuals\n\n---\n\n6. PERFORMANCE\n\n* Keep under 200 lines\n* Avoid unnecessary hooks\n\n---\n\n7. PATTERN RULES\n\nIf motion_style =:\n\n* orbital → use rotation / circular motion\n* neural → branching / spreading movement\n* wave → sinusoidal transforms\n* pulse → scale + opacity breathing\n* parallax → depth-based transform\n\n---\n\n⚠️ CRITICAL\n\n* No broken hooks\n* No unused motion values\n* No invalid Tailwind classes\n\n---\n\nINPUT SPEC:\n{{SPEC_JSON}}\n",
+    "is_default": true
+  }
+}
+Output Payload: const { useState, useRef, useEffect, useCallback } = window.React;
+const { motion, useInView, useScroll, useTransform, useMotionValue, useSpring, useMotionValueEvent } = window.Motion;
+
+interface NavLinkProps {
+  href: string;
+  children: React.ReactNode;
+}
+
+const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
+  return (
+    <motion.a
+      href={href}
+      className="text-white text-lg font-medium hover:text-[#93C5FD] transition-colors duration-200"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      style={{ opacity: 1, filter: 'blur(0px)' }} // Foreground depth
+    >
+      {children}
+    </motion.a>
+  );
+};
+
+interface ButtonProps {
+  children: React.ReactNode;
+  primary?: boolean;
+  onClick?: () => void;
+}
+
+const Button: React.FC<ButtonProps> = ({ children, primary = false, onClick }) => {
+  const whileHoverProps = primary
+    ? {
+        scale: 1.05,
+        boxShadow: "0 0 25px rgba(99,102,241,0.4), 0 0 10px rgba(99,102,241,0.2) inset",
+      }
+    : {
+        scale: 1.05,
+        boxShadow: "0 0 15px rgba(147,197,253,0.2), 0 0 5px rgba(147,197,253,0.1) inset",
+      };
+
+  return (
+    <motion.button
+      onClick={onClick}
+      className={`px-6 py-3 rounded-full font-semibold text-lg transition-all duration-150 ease-out
+        ${primary ? 'bg-[#6366F1] text-white' : 'bg-transparent text-[#93C5FD] border border-[#93C5FD]'}
+      `}
+      whileHover={whileHoverProps}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+      style={{ opacity: 1, filter: 'blur(0px)' }} // Foreground depth
+    >
+      {children}
+    </motion.button>
+  );
+};
+
+interface FeatureCardProps {
+  icon: string;
+  title: string;
+  description: string;
+  delay: number;
+  scrollYProgress: any; // useTransform output
+}
+
+const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, delay, scrollYProgress }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
+
+  const y = useTransform(scrollYProgress, [0, 1], [-50, 50]); // Parallax effect
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 0.95, y: 0 } : {}}
+      transition={{ delay: delay, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{
+        scale: 1.03,
+        backgroundColor: "#1A1A1D",
+        borderColor: "#6366F1",
+        boxShadow: "0 0 20px rgba(99,102,241,0.2)",
+      }}
+      style={{
+        y: y,
+        backdropFilter: 'blur(10px)',
+        backgroundColor: 'rgba(255,255,255,0.05)',
+        border: '1px solid rgba(255,255,255,0.1)',
+        opacity: 0.95, // Midground depth
+      }}
+      className="p-6 rounded-xl flex flex-col items-center text-center space-y-4 relative overflow-hidden"
+    >
+      <motion.div
+        className="text-5xl text-[#93C5FD]"
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: delay + 0.5, duration: 0.5 }}
+      >
+        {icon}
+      </motion.div>
+      <h3 className="text-2xl font-bold text-white">{title}</h3>
+      <p className="text-gray-300">{description}</p>
+    </motion.div>
+  );
+};
+
+interface PricingCardProps {
+  plan: string;
+  price: string;
+  features: string[];
+  delay: number;
+}
+
+const PricingCard: React.FC<PricingCardProps> = ({ plan, price, features, delay }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50, scale: 0.95 }}
+      animate={isInView ? { opacity: 0.95, y: 0, scale: 1 } : {}}
+      transition={{ delay: delay, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{
+        scale: 1.03,
+        backgroundColor: "#1A1A1D",
+        borderColor: "#6366F1",
+        boxShadow: "0 0 20px rgba(99,102,241,0.2)",
+      }}
+      style={{
+        backdropFilter: 'blur(10px)',
+        backgroundColor: 'rgba(255,255,255,0.05)',
+        border: '1px solid rgba(255,255,255,0.1)',
+        opacity: 0.95, // Midground depth
+      }}
+      className="p-8 rounded-xl flex flex-col items-center text-center space-y-6"
+    >
+      <h3 className="text-3xl font-bold text-white">{plan}</h3>
+      <p className="text-5xl font-extrabold text-[#6366F1]">{price}</p>
+      <ul className="text-gray-300 space-y-2">
+        {features.map((feature, index) => (
+          <li key={index} className="flex items-center justify-center">
+            <span className="text-[#93C5FD] mr-2">✓</span> {feature}
+          </li>
+        ))}
+      </ul>
+      <Button primary>Get Started</Button>
+    </motion.div>
+  );
+};
+
+interface TestimonialCardProps {
+  quote: string;
+  author: string;
+  company: string;
+  delay: number;
+  scrollYProgress: any;
+}
+
+const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, company, delay, scrollYProgress }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
+
+  const y = useTransform(scrollYProgress, [0, 1], [-30, 30]); // Subtle parallax
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={isInView ? { opacity: 0.95, scale: 1 } : {}}
+      transition={{ delay: delay, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+      style={{
+        y: y,
+        backdropFilter: 'blur(10px)',
+        backgroundColor: 'rgba(255,255,255,0.05)',
+        border: '1px solid rgba(255,255,255,0.1)',
+        opacity: 0.95, // Midground depth
+      }}
+      className="p-6 rounded-xl flex flex-col space-y-4 text-left"
+    >
+      <p className="text-gray-200 text-lg italic">"{quote}"</p>
+      <div className="flex items-center space-x-3">
+        <div className="w-10 h-10 bg-[#6366F1] rounded-full flex items-center justify-center text-white font-bold">
+          {author.charAt(0)}
+        </div>
+        <div>
+          <p className="font-semibold text-white">{author}</p>
+          <p className="text-gray-400 text-sm">{company}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default function FuturisticAnimatedTechLandingPage() {
+  const { scrollYProgress } = useScroll();
+
+  // Navbar state and animations
+  const navBackground = useMotionValue('transparent');
+  const navBackdropFilter = useMotionValue('blur(0px)');
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (latest * document.body.scrollHeight > 50) {
+      navBackground.set('rgba(10,10,12,0.8)');
+      navBackdropFilter.set('blur(10px)');
+    } else {
+      navBackground.set('transparent');
+      navBackdropFilter.set('blur(0px)');
+    }
+  });
+
+  // Hero Section mouse interaction
+  const heroRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { stiffness: 300, damping: 5 };
+  const smoothMouseX = useSpring(mouseX, springConfig);
+  const smoothMouseY = useSpring(mouseY, springConfig);
+
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (heroRef.current) {
+      const rect = heroRef.current.getBoundingClientRect();
+      mouseX.set(e.clientX - rect.left - rect.width / 2);
+      mouseY.set(e.clientY - rect.top - rect.height / 2);
+    }
+  }, [mouseX, mouseY]);
+
+  const handleMouseLeave = useCallback(() => {
+    mouseX.set(0);
+    mouseY.set(0);
+  }, [mouseX, mouseY]);
+
+  useEffect(() => {
+    const heroElement = heroRef.current;
+    if (heroElement) {
+      heroElement.addEventListener('mousemove', handleMouseMove as EventListener);
+      heroElement.addEventListener('mouseleave', handleMouseLeave as EventListener);
+      return () => {
+        heroElement.removeEventListener('mousemove', handleMouseMove as EventListener);
+        heroElement.removeEventListener('mouseleave', handleMouseLeave as EventListener);
+      };
+    }
+  }, [handleMouseMove, handleMouseLeave]);
+
+  // Particle generation for Hero background
+  const particles = Array.from({ length: 30 }).map((_, i) => ({
+    id: i,
+    x: Math.random() * 200 - 100, // -100 to 100
+    y: Math.random() * 200 - 100,
+    size: Math.random() * 5 + 5, // 5 to 10
+    color: i % 2 === 0 ? '#6366F1' : '#93C5FD',
+    delay: Math.random() * 1.2,
+  }));
+
+  // Section inView hooks
+  const navbarRef = useRef<HTMLElement>(null);
+  const navbarInView = useInView(navbarRef, { once: true, margin: "-100px 0px" });
+
+  const heroSectionRef = useRef<HTMLElement>(null);
+  const heroInView = useInView(heroSectionRef, { once: true, margin: "-100px 0px" });
+
+  const featuresSectionRef = useRef<HTMLElement>(null);
+  const featuresInView = useInView(featuresSectionRef, { once: true, margin: "-100px 0px" });
+
+  const pricingSectionRef = useRef<HTMLElement>(null);
+  const pricingInView = useInView(pricingSectionRef, { once: true, margin: "-100px 0px" });
+
+  const testimonialsSectionRef = useRef<HTMLElement>(null);
+  const testimonialsInView = useInView(testimonialsSectionRef, { once: true, margin: "-100px 0px" });
+
+  const ctaSectionRef = useRef<HTMLElement>(null);
+  const ctaInView = useInView(ctaSectionRef, { once: true, margin: "-100px 0px" });
+
+  const footerSectionRef = useRef<HTMLElement>(null);
+  const footerInView = useInView(footerSectionRef, { once: true, margin: "-100px 0px" });
+
+  return (
+    <motion.div
+      className="font-sans antialiased text-gray-100"
+      style={{ minHeight: '100%', width: '100%', backgroundColor: '#0A0A0C' }}
+    >
+      {/* Navbar */}
+      <motion.nav
+        id="navbar"
+        ref={navbarRef}
+        initial={{ y: -100, opacity: 0 }}
+        animate={navbarInView ? { y: 0, opacity: 1 } : {}}
+        transition={{ delay: 0.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1000,
+          backgroundColor: navBackground,
+          backdropFilter: navBackdropFilter,
+          borderBottom: '1px solid rgba(255,255,255,0.1)',
+        }}
+        className="py-4 px-6"
+      >
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <motion.span
+              className="text-2xl font-bold text-white"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+            >
+              TechCo
+            </motion.span>
+          </div>
+          <div className="flex items-center space-x-8">
+            <NavLink href="#hero">Home</NavLink>
+            <NavLink href="#features">Features</NavLink>
+            <NavLink href="#pricing">Pricing</NavLink>
+            <NavLink href="#testimonials">Testimonials</NavLink>
+            <NavLink href="#cta">Contact</NavLink>
+            <Button>Get Started</Button>
+            {/* Dark/Light Mode Toggle Placeholder */}
+            <motion.div
+              className="w-8 h-8 bg-gray-700 rounded-full cursor-pointer flex items-center justify-center text-gray-300"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              style={{ opacity: 1, filter: 'blur(0px)' }} // Foreground depth
+            >
+              ☀️
+            </motion.div>
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Hero Section */}
+      <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden" ref={heroSectionRef}>
+        <motion.div
+          ref={heroRef}
+          className="absolute inset-0 z-0"
+          initial={{ opacity: 0 }}
+          animate={heroInView ? { opacity: 1 } : {}}
+          transition={{ duration: 1.2 }}
+        >
+          {particles.map((p) => (
+            <motion.div
+              key={p.id}
+              className="absolute rounded-full"
+              initial={{
+                x: p.x,
+                y: p.y,
+                scale: 0.95,
+                opacity: 0.2,
+                filter: 'blur(5px)',
+              }}
+              animate={{
+                x: smoothMouseX.get() * 0.05 + p.x,
+                y: smoothMouseY.get() * 0.05 + p.y,
+                scale: smoothMouseX.get() * 0.001 + smoothMouseY.get() * 0.001 + 0.95,
+                opacity: smoothMouseX.get() * 0.0005 + smoothMouseY.get() * 0.0005 + 0.2,
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 5 }}
+              style={{
+                width: p.size,
+                height: p.size,
+                backgroundColor: p.color,
+                left: `calc(50% + ${p.x}px)`,
+                top: `calc(50% + ${p.y}px)`,
+                opacity: useTransform(smoothMouseX, [-100, 100], [0.2, 0.4]), // Background depth
+                filter: useTransform(smoothMouseX, [-100, 100], ['blur(5px)', 'blur(10px)']),
+              }}
+            />
+          ))}
+        </motion.div>
+
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+          <motion.h1
+            initial={{ y: 50, opacity: 0, scale: 0.98 }}
+            animate={heroInView ? { y: 0, opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.8, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              fontSize: '4.5rem', // text-7xl
+              lineHeight: '1',
+              fontWeight: 'extrabold',
+              color: 'white',
+              background: 'radial-gradient(circle at center, rgba(99,102,241,0.3) 0%, rgba(147,197,253,0.1) 20%, transparent 70%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              opacity: 1, // Focal point, foreground depth
+              filter: 'blur(0px)',
+            }}
+            className="mb-4"
+          >
+            Unleash the Future of Innovation
+          </motion.h1>
+          <motion.p
+            initial={{ y: 50, opacity: 0 }}
+            animate={heroInView ? { y: 0, opacity: 0.95 } : {}}
+            transition={{ delay: 1.0, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
+            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth
+          >
+            Experience cutting-edge technology designed to transform your business and elevate your digital presence.
+          </motion.p>
+          <div className="flex justify-center space-x-4">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={heroInView ? { scale: 1, opacity: 1 } : {}}
+              transition={{ delay: 1.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              style={{
+                background: 'radial-gradient(circle at center, rgba(99,102,241,0.3) 0%, transparent 70%)',
+                borderRadius: '9999px',
+                padding: '2px',
+                opacity: 1, // Focal point, foreground depth
+                filter: 'blur(0px)',
+              }}
+            >
+              <Button primary>Get Started Now</Button>
+            </motion.div>
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={heroInView ? { scale: 1, opacity: 1 } : {}}
+              transition={{ delay: 1.4, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Button>Learn More</Button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-20 bg-[#0A0A0C] relative overflow-hidden" ref={featuresSectionRef}>
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.h2
+            initial={{ y: 50, opacity: 0 }}
+            animate={featuresInView ? { y: 0, opacity: 0.95 } : {}}
+            transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl font-extrabold text-center text-white mb-6"
+            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth
+          >
+            Powerful Features
+          </motion.h2>
+          <motion.p
+            initial={{ y: 50, opacity: 0 }}
+            animate={featuresInView ? { y: 0, opacity: 0.95 } : {}}
+            transition={{ delay: 0.2, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+            className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto"
+            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth
+          >
+            Discover how our innovative solutions can drive your success with unparalleled efficiency and intelligence.
+          </motion.p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { icon: '⚡', title: 'Blazing Fast Performance', description: 'Optimized for speed and efficiency, ensuring a seamless user experience.' },
+              { icon: '🔒', title: 'Ironclad Security', description: 'Your data is protected with state-of-the-art encryption and security protocols.' },
+              { icon: '💡', title: 'Intelligent Automation', description: 'Automate complex tasks and streamline workflows with AI-powered insights.' },
+              { icon: '🎨', title: 'Sleek Design', description: 'Modern, intuitive interfaces that are a joy to use across all devices.' },
+              { icon: '🤝', title: 'Seamless Integration', description: 'Connect effortlessly with your existing tools and platforms.' },
+              { icon: '📈', title: 'Scalable Architecture', description: 'Grow without limits with a robust and flexible infrastructure.' },
+            ].map((feature, index) => (
+              <FeatureCard
+                key={index}
+                {...feature}
+                delay={0.3 + index * 0.15}
+                scrollYProgress={scrollYProgress}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="py-20 bg-[#0A0A0C] relative overflow-hidden" ref={pricingSectionRef}>
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.h2
+            initial={{ y: 50, opacity: 0 }}
+            animate={pricingInView ? { y: 0, opacity: 0.95 } : {}}
+            transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl font-extrabold text-center text-white mb-6"
+            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth
+          >
+            Flexible Pricing
+          </motion.h2>
+          <motion.p
+            initial={{ y: 50, opacity: 0 }}
+            animate={pricingInView ? { y: 0, opacity: 0.95 } : {}}
+            transition={{ delay: 0.2, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+            className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto"
+            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth
+          >
+            Choose the perfect plan that fits your needs, from startups to enterprise solutions.
+          </motion.p>
+
+          <div className="flex justify-center mb-12">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={pricingInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="inline-flex p-1 rounded-full bg-gray-800 border border-gray-700"
+            >
+              <button className="px-6 py-2 rounded-full text-white bg-[#6366F1] font-medium">Monthly</button>
+              <button className="px-6 py-2 rounded-full text-gray-400 font-medium">Yearly</button>
+            </motion.div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { plan: 'Starter', price: '$29/mo', features: ['5 Projects', '10GB Storage', 'Basic Analytics', 'Community Support'] },
+              { plan: 'Pro', price: '$59/mo', features: ['Unlimited Projects', '100GB Storage', 'Advanced Analytics', 'Priority Support'] },
+              { plan: 'Enterprise', price: '$199/mo', features: ['Custom Projects', 'Unlimited Storage', 'Dedicated Analytics', '24/7 Support'] },
+            ].map((plan, index) => (
+              <PricingCard key={index} {...plan} delay={0.5 + index * 0.15} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-20 bg-[#0A0A0C] relative overflow-hidden" ref={testimonialsSectionRef}>
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.h2
+            initial={{ y: 50, opacity: 0 }}
+            animate={testimonialsInView ? { y: 0, opacity: 0.95 } : {}}
+            transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl font-extrabold text-center text-white mb-6"
+            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth
+          >
+            What Our Clients Say
+          </motion.h2>
+          <motion.p
+            initial={{ y: 50, opacity: 0 }}
+            animate={testimonialsInView ? { y: 0, opacity: 0.95 } : {}}
+            transition={{ delay: 0.2, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+            className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto"
+            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth
+          >
+            Hear directly from businesses that have transformed their operations with our solutions.
+          </motion.p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { quote: "This platform has revolutionized our workflow. The performance is unmatched!", author: "Jane Doe", company: "Tech Solutions Inc." },
+              { quote: "Incredible support and a truly intuitive product. Highly recommend to any growing business.", author: "John Smith", company: "Global Innovations" },
+              { quote: "The security features gave us peace of mind. A fantastic investment for our future.", author: "Emily White", company: "Secure Systems Co." },
+              { quote: "Our team's productivity has soared since implementing this technology. Simply brilliant!", author: "Michael Brown", company: "Future Dynamics" },
+            ].map((testimonial, index) => (
+              <TestimonialCard
+                key={index}
+                {...testimonial}
+                delay={0.3 + index * 0.15}
+                scrollYProgress={scrollYProgress}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section id="cta" className="py-20 bg-[#0A0A0C] relative overflow-hidden" ref={ctaSectionRef}>
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <motion.h2
+            initial={{ y: 50, opacity: 0 }}
+            animate={ctaInView ? { y: 0, opacity: 0.95 } : {}}
+            transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl font-extrabold text-white mb-6"
+            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth
+          >
+            Ready to Transform Your Business?
+          </motion.h2>
+          <motion.p
+            initial={{ y: 50, opacity: 0 }}
+            animate={ctaInView ? { y: 0, opacity: 0.95 } : {}}
+            transition={{ delay: 0.2, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+            className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto"
+            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth
+          >
+            Join the ranks of successful companies leveraging our advanced technology.
+          </motion.p>
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={ctaInView ? { scale: 1, opacity: 1 } : {}}
+            transition={{ delay: 0.4, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              background: 'radial-gradient(circle at center, rgba(99,102,241,0.3) 0%, transparent 70%)',
+              borderRadius: '9999px',
+              padding: '2px',
+              display: 'inline-block',
+              opacity: 1, // Focal point, foreground depth
+              filter: 'blur(0px)',
+            }}
+          >
+            <Button primary>Contact Our Sales Team</Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <section id="footer" className="bg-[#0A0A0C] py-12 relative overflow-hidden" ref={footerSectionRef}>
+        <motion.footer
+          initial={{ opacity: 0 }}
+          animate={footerInView ? { opacity: 0.95 } : {}}
+          transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-6xl mx-auto px-4 text-gray-400 text-sm text-center space-y-6"
+          style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth
+        >
+          <div className="flex justify-center space-x-8">
+            <a href="#" className="hover:text-[#93C5FD] transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-[#93C5FD] transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-[#93C5FD] transition-colors">Sitemap</a>
+          </div>
+          <div className="flex justify-center space-x-6 text-xl">
+            <a href="#" className="hover:text-[#93C5FD] transition-colors">🌐</a>
+            <a href="#" className="hover:text-[#93C5FD] transition-colors">🐦</a>
+            <a href="#" className="hover:text-[#93C5FD] transition-colors">💼</a>
+          </div>
+          <p>&copy; {new Date().getFullYear()} TechCo. All rights reserved.</p>
+        </motion.footer>
+      </section>
+    </motion.div>
+  );
+}
+--------------------------------------------------------------------------------
+
+STEP 6: [GEN]
+Time: 02:24:29
+Level: INFO
+Message: React code generated (production format)
+--------------------------------------------------------------------------------
+
+STEP 7: [VALID]
+Time: 02:24:29
+Level: INFO
+Message: Executing Stage: Validation...
+--------------------------------------------------------------------------------
+
+STEP 8: [VALID]
+Time: 02:25:37
+Level: INFO
+Message: Repair attempt 2/2: Production code repaired
+--------------------------------------------------------------------------------
+
+STEP 9: [GEN]
+Time: 02:26:31
+Level: INFO
+Message: Score too low to patch — regenerating with error context...
+--------------------------------------------------------------------------------
+
+STEP 10: [VALID]
+Time: 02:28:57
+Level: SUCCESS
+Message: Validation passed
+Input Payload:
+{
+  "code": "const { useState, useRef, useEffect, useCallback } = window.React;\nconst { motion, useInView, useScroll, useTransform, useMotionValue, useSpring, useMotionValueEvent } = window.Motion;\n\ninterface NavLinkProps {\n  href: string;\n  children: React.ReactNode;\n}\n\nconst NavLink: React.FC<NavLinkProps> = ({ href, children }) => {\n  return (\n    <motion.a\n      href={href}\n      className=\"text-white text-lg font-medium hover:text-[#93C5FD] transition-colors duration-200\"\n      whileHover={{ scale: 1.05 }}\n      whileTap={{ scale: 0.95 }}\n      style={{ opacity: 1, filter: 'blur(0px)' }} // Foreground depth\n    >\n      {children}\n    </motion.a>\n  );\n};\n\ninterface ButtonProps {\n  children: React.ReactNode;\n  primary?: boolean;\n  onClick?: () => void;\n}\n\nconst Button: React.FC<ButtonProps> = ({ children, primary = false, onClick }) => {\n  const whileHoverProps = primary\n    ? {\n        scale: 1.05,\n        boxShadow: \"0 0 25px rgba(99,102,241,0.4), 0 0 10px rgba(99,102,241,0.2) inset\",\n      }\n    : {\n        scale: 1.05,\n        boxShadow: \"0 0 15px rgba(147,197,253,0.2), 0 0 5px rgba(147,197,253,0.1) inset\",\n      };\n\n  return (\n    <motion.button\n      onClick={onClick}\n      className={`px-6 py-3 rounded-full font-semibold text-lg transition-all duration-150 ease-out\n        ${primary ? 'bg-[#6366F1] text-white' : 'bg-transparent text-[#93C5FD] border border-[#93C5FD]'}\n      `}\n      whileHover={whileHoverProps}\n      whileTap={{ scale: 0.95 }}\n      transition={{ type: \"spring\", stiffness: 400, damping: 10 }}\n      style={{ opacity: 1, filter: 'blur(0px)' }} // Foreground depth\n    >\n      {children}\n    </motion.button>\n  );\n};\n\ninterface FeatureCardProps {\n  icon: string;\n  title: string;\n  description: string;\n  delay: number;\n  scrollYProgress: any; // useTransform output\n}\n\nconst FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, delay, scrollYProgress }) => {\n  const ref = useRef<HTMLDivElement>(null);\n  const isInView = useInView(ref, { once: true, margin: \"-100px 0px\" });\n\n  const y = useTransform(scrollYProgress, [0, 1], [-50, 50]); // Parallax effect\n\n  return (\n    <motion.div\n      ref={ref}\n      initial={{ opacity: 0, y: 50 }}\n      animate={isInView ? { opacity: 0.95, y: 0 } : {}}\n      transition={{ delay: delay, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}\n      whileHover={{\n        scale: 1.03,\n        backgroundColor: \"#1A1A1D\",\n        borderColor: \"#6366F1\",\n        boxShadow: \"0 0 20px rgba(99,102,241,0.2)\",\n      }}\n      style={{\n        y: y,\n        backdropFilter: 'blur(10px)',\n        backgroundColor: 'rgba(255,255,255,0.05)',\n        border: '1px solid rgba(255,255,255,0.1)',\n        opacity: 0.95, // Midground depth\n      }}\n      className=\"p-6 rounded-xl flex flex-col items-center text-center space-y-4 relative overflow-hidden\"\n    >\n      <motion.div\n        className=\"text-5xl text-[#93C5FD]\"\n        initial={{ scale: 0.8 }}\n        animate={{ scale: 1 }}\n        transition={{ delay: delay + 0.5, duration: 0.5 }}\n      >\n        {icon}\n      </motion.div>\n      <h3 className=\"text-2xl font-bold text-white\">{title}</h3>\n      <p className=\"text-gray-300\">{description}</p>\n    </motion.div>\n  );\n};\n\ninterface PricingCardProps {\n  plan: string;\n  price: string;\n  features: string[];\n  delay: number;\n}\n\nconst PricingCard: React.FC<PricingCardProps> = ({ plan, price, features, delay }) => {\n  const ref = useRef<HTMLDivElement>(null);\n  const isInView = useInView(ref, { once: true, margin: \"-100px 0px\" });\n\n  return (\n    <motion.div\n      ref={ref}\n      initial={{ opacity: 0, y: 50, scale: 0.95 }}\n      animate={isInView ? { opacity: 0.95, y: 0, scale: 1 } : {}}\n      transition={{ delay: delay, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}\n      whileHover={{\n        scale: 1.03,\n        backgroundColor: \"#1A1A1D\",\n        borderColor: \"#6366F1\",\n        boxShadow: \"0 0 20px rgba(99,102,241,0.2)\",\n      }}\n      style={{\n        backdropFilter: 'blur(10px)',\n        backgroundColor: 'rgba(255,255,255,0.05)',\n        border: '1px solid rgba(255,255,255,0.1)',\n        opacity: 0.95, // Midground depth\n      }}\n      className=\"p-8 rounded-xl flex flex-col items-center text-center space-y-6\"\n    >\n      <h3 className=\"text-3xl font-bold text-white\">{plan}</h3>\n      <p className=\"text-5xl font-extrabold text-[#6366F1]\">{price}</p>\n      <ul className=\"text-gray-300 space-y-2\">\n        {features.map((feature, index) => (\n          <li key={index} className=\"flex items-center justify-center\">\n            <span className=\"text-[#93C5FD] mr-2\">✓</span> {feature}\n          </li>\n        ))}\n      </ul>\n      <Button primary>Get Started</Button>\n    </motion.div>\n  );\n};\n\ninterface TestimonialCardProps {\n  quote: string;\n  author: string;\n  company: string;\n  delay: number;\n  scrollYProgress: any;\n}\n\nconst TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, company, delay, scrollYProgress }) => {\n  const ref = useRef<HTMLDivElement>(null);\n  const isInView = useInView(ref, { once: true, margin: \"-100px 0px\" });\n\n  const y = useTransform(scrollYProgress, [0, 1], [-30, 30]); // Subtle parallax\n\n  return (\n    <motion.div\n      ref={ref}\n      initial={{ opacity: 0, scale: 0.9 }}\n      animate={isInView ? { opacity: 0.95, scale: 1 } : {}}\n      transition={{ delay: delay, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}\n      style={{\n        y: y,\n        backdropFilter: 'blur(10px)',\n        backgroundColor: 'rgba(255,255,255,0.05)',\n        border: '1px solid rgba(255,255,255,0.1)',\n        opacity: 0.95, // Midground depth\n      }}\n      className=\"p-6 rounded-xl flex flex-col space-y-4 text-left\"\n    >\n      <p className=\"text-gray-200 text-lg italic\">\"{quote}\"</p>\n      <div className=\"flex items-center space-x-3\">\n        <div className=\"w-10 h-10 bg-[#6366F1] rounded-full flex items-center justify-center text-white font-bold\">\n          {author.charAt(0)}\n        </div>\n        <div>\n          <p className=\"font-semibold text-white\">{author}</p>\n          <p className=\"text-gray-400 text-sm\">{company}</p>\n        </div>\n      </div>\n    </motion.div>\n  );\n};\n\nexport default function FuturisticAnimatedTechLandingPage() {\n  const { scrollYProgress } = useScroll();\n\n  // Navbar state and animations\n  const navBackground = useMotionValue('transparent');\n  const navBackdropFilter = useMotionValue('blur(0px)');\n\n  useMotionValueEvent(scrollYProgress, \"change\", (latest) => {\n    if (latest * document.body.scrollHeight > 50) {\n      navBackground.set('rgba(10,10,12,0.8)');\n      navBackdropFilter.set('blur(10px)');\n    } else {\n      navBackground.set('transparent');\n      navBackdropFilter.set('blur(0px)');\n    }\n  });\n\n  // Hero Section mouse interaction\n  const heroRef = useRef<HTMLDivElement>(null);\n  const mouseX = useMotionValue(0);\n  const mouseY = useMotionValue(0);\n\n  const springConfig = { stiffness: 300, damping: 5 };\n  const smoothMouseX = useSpring(mouseX, springConfig);\n  const smoothMouseY = useSpring(mouseY, springConfig);\n\n  const handleMouseMove = useCallback((e: MouseEvent) => {\n    if (heroRef.current) {\n      const rect = heroRef.current.getBoundingClientRect();\n      mouseX.set(e.clientX - rect.left - rect.width / 2);\n      mouseY.set(e.clientY - rect.top - rect.height / 2);\n    }\n  }, [mouseX, mouseY]);\n\n  const handleMouseLeave = useCallback(() => {\n    mouseX.set(0);\n    mouseY.set(0);\n  }, [mouseX, mouseY]);\n\n  useEffect(() => {\n    const heroElement = heroRef.current;\n    if (heroElement) {\n      heroElement.addEventListener('mousemove', handleMouseMove as EventListener);\n      heroElement.addEventListener('mouseleave', handleMouseLeave as EventListener);\n      return () => {\n        heroElement.removeEventListener('mousemove', handleMouseMove as EventListener);\n        heroElement.removeEventListener('mouseleave', handleMouseLeave as EventListener);\n      };\n    }\n  }, [handleMouseMove, handleMouseLeave]);\n\n  // Particle generation for Hero background\n  const particles = Array.from({ length: 30 }).map((_, i) => ({\n    id: i,\n    x: Math.random() * 200 - 100, // -100 to 100\n    y: Math.random() * 200 - 100,\n    size: Math.random() * 5 + 5, // 5 to 10\n    color: i % 2 === 0 ? '#6366F1' : '#93C5FD',\n    delay: Math.random() * 1.2,\n  }));\n\n  // Section inView hooks\n  const navbarRef = useRef<HTMLElement>(null);\n  const navbarInView = useInView(navbarRef, { once: true, margin: \"-100px 0px\" });\n\n  const heroSectionRef = useRef<HTMLElement>(null);\n  const heroInView = useInView(heroSectionRef, { once: true, margin: \"-100px 0px\" });\n\n  const featuresSectionRef = useRef<HTMLElement>(null);\n  const featuresInView = useInView(featuresSectionRef, { once: true, margin: \"-100px 0px\" });\n\n  const pricingSectionRef = useRef<HTMLElement>(null);\n  const pricingInView = useInView(pricingSectionRef, { once: true, margin: \"-100px 0px\" });\n\n  const testimonialsSectionRef = useRef<HTMLElement>(null);\n  const testimonialsInView = useInView(testimonialsSectionRef, { once: true, margin: \"-100px 0px\" });\n\n  const ctaSectionRef = useRef<HTMLElement>(null);\n  const ctaInView = useInView(ctaSectionRef, { once: true, margin: \"-100px 0px\" });\n\n  const footerSectionRef = useRef<HTMLElement>(null);\n  const footerInView = useInView(footerSectionRef, { once: true, margin: \"-100px 0px\" });\n\n  return (\n    <motion.div\n      className=\"font-sans antialiased text-gray-100\"\n      style={{ minHeight: '100%', width: '100%', backgroundColor: '#0A0A0C' }}\n    >\n      {/* Navbar */}\n      <motion.nav\n        id=\"navbar\"\n        ref={navbarRef}\n        initial={{ y: -100, opacity: 0 }}\n        animate={navbarInView ? { y: 0, opacity: 1 } : {}}\n        transition={{ delay: 0.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}\n        style={{\n          position: 'fixed',\n          top: 0,\n          left: 0,\n          right: 0,\n          zIndex: 1000,\n          backgroundColor: navBackground,\n          backdropFilter: navBackdropFilter,\n          borderBottom: '1px solid rgba(255,255,255,0.1)',\n        }}\n        className=\"py-4 px-6\"\n      >\n        <div className=\"max-w-6xl mx-auto flex justify-between items-center\">\n          <div className=\"flex items-center space-x-2\">\n            <motion.span\n              className=\"text-2xl font-bold text-white\"\n              initial={{ scale: 0.8 }}\n              animate={{ scale: 1 }}\n              transition={{ delay: 0.8, duration: 0.5 }}\n            >\n              TechCo\n            </motion.span>\n          </div>\n          <div className=\"flex items-center space-x-8\">\n            <NavLink href=\"#hero\">Home</NavLink>\n            <NavLink href=\"#features\">Features</NavLink>\n            <NavLink href=\"#pricing\">Pricing</NavLink>\n            <NavLink href=\"#testimonials\">Testimonials</NavLink>\n            <NavLink href=\"#cta\">Contact</NavLink>\n            <Button>Get Started</Button>\n            {/* Dark/Light Mode Toggle Placeholder */}\n            <motion.div\n              className=\"w-8 h-8 bg-gray-700 rounded-full cursor-pointer flex items-center justify-center text-gray-300\"\n              whileHover={{ scale: 1.1 }}\n              whileTap={{ scale: 0.9 }}\n              style={{ opacity: 1, filter: 'blur(0px)' }} // Foreground depth\n            >\n              ☀️\n            </motion.div>\n          </div>\n        </div>\n      </motion.nav>\n\n      {/* Hero Section */}\n      <section id=\"hero\" className=\"relative h-screen flex items-center justify-center overflow-hidden\" ref={heroSectionRef}>\n        <motion.div\n          ref={heroRef}\n          className=\"absolute inset-0 z-0\"\n          initial={{ opacity: 0 }}\n          animate={heroInView ? { opacity: 1 } : {}}\n          transition={{ duration: 1.2 }}\n        >\n          {particles.map((p) => (\n            <motion.div\n              key={p.id}\n              className=\"absolute rounded-full\"\n              initial={{\n                x: p.x,\n                y: p.y,\n                scale: 0.95,\n                opacity: 0.2,\n                filter: 'blur(5px)',\n              }}\n              animate={{\n                x: smoothMouseX.get() * 0.05 + p.x,\n                y: smoothMouseY.get() * 0.05 + p.y,\n                scale: smoothMouseX.get() * 0.001 + smoothMouseY.get() * 0.001 + 0.95,\n                opacity: smoothMouseX.get() * 0.0005 + smoothMouseY.get() * 0.0005 + 0.2,\n              }}\n              transition={{ type: \"spring\", stiffness: 300, damping: 5 }}\n              style={{\n                width: p.size,\n                height: p.size,\n                backgroundColor: p.color,\n                left: `calc(50% + ${p.x}px)`,\n                top: `calc(50% + ${p.y}px)`,\n                opacity: useTransform(smoothMouseX, [-100, 100], [0.2, 0.4]), // Background depth\n                filter: useTransform(smoothMouseX, [-100, 100], ['blur(5px)', 'blur(10px)']),\n              }}\n            />\n          ))}\n        </motion.div>\n\n        <div className=\"relative z-10 text-center max-w-4xl mx-auto px-4\">\n          <motion.h1\n            initial={{ y: 50, opacity: 0, scale: 0.98 }}\n            animate={heroInView ? { y: 0, opacity: 1, scale: 1 } : {}}\n            transition={{ delay: 0.8, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}\n            style={{\n              fontSize: '4.5rem', // text-7xl\n              lineHeight: '1',\n              fontWeight: 'extrabold',\n              color: 'white',\n              background: 'radial-gradient(circle at center, rgba(99,102,241,0.3) 0%, rgba(147,197,253,0.1) 20%, transparent 70%)',\n              WebkitBackgroundClip: 'text',\n              WebkitTextFillColor: 'transparent',\n              opacity: 1, // Focal point, foreground depth\n              filter: 'blur(0px)',\n            }}\n            className=\"mb-4\"\n          >\n            Unleash the Future of Innovation\n          </motion.h1>\n          <motion.p\n            initial={{ y: 50, opacity: 0 }}\n            animate={heroInView ? { y: 0, opacity: 0.95 } : {}}\n            transition={{ delay: 1.0, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}\n            className=\"text-xl text-gray-300 mb-8 max-w-2xl mx-auto\"\n            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth\n          >\n            Experience cutting-edge technology designed to transform your business and elevate your digital presence.\n          </motion.p>\n          <div className=\"flex justify-center space-x-4\">\n            <motion.div\n              initial={{ scale: 0.8, opacity: 0 }}\n              animate={heroInView ? { scale: 1, opacity: 1 } : {}}\n              transition={{ delay: 1.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}\n              style={{\n                background: 'radial-gradient(circle at center, rgba(99,102,241,0.3) 0%, transparent 70%)',\n                borderRadius: '9999px',\n                padding: '2px',\n                opacity: 1, // Focal point, foreground depth\n                filter: 'blur(0px)',\n              }}\n            >\n              <Button primary>Get Started Now</Button>\n            </motion.div>\n            <motion.div\n              initial={{ scale: 0.8, opacity: 0 }}\n              animate={heroInView ? { scale: 1, opacity: 1 } : {}}\n              transition={{ delay: 1.4, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}\n            >\n              <Button>Learn More</Button>\n            </motion.div>\n          </div>\n        </div>\n      </section>\n\n      {/* Features Section */}\n      <section id=\"features\" className=\"py-20 bg-[#0A0A0C] relative overflow-hidden\" ref={featuresSectionRef}>\n        <div className=\"max-w-6xl mx-auto px-4\">\n          <motion.h2\n            initial={{ y: 50, opacity: 0 }}\n            animate={featuresInView ? { y: 0, opacity: 0.95 } : {}}\n            transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}\n            className=\"text-5xl font-extrabold text-center text-white mb-6\"\n            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth\n          >\n            Powerful Features\n          </motion.h2>\n          <motion.p\n            initial={{ y: 50, opacity: 0 }}\n            animate={featuresInView ? { y: 0, opacity: 0.95 } : {}}\n            transition={{ delay: 0.2, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}\n            className=\"text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto\"\n            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth\n          >\n            Discover how our innovative solutions can drive your success with unparalleled efficiency and intelligence.\n          </motion.p>\n\n          <div className=\"grid md:grid-cols-2 lg:grid-cols-3 gap-8\">\n            {[\n              { icon: '⚡', title: 'Blazing Fast Performance', description: 'Optimized for speed and efficiency, ensuring a seamless user experience.' },\n              { icon: '🔒', title: 'Ironclad Security', description: 'Your data is protected with state-of-the-art encryption and security protocols.' },\n              { icon: '💡', title: 'Intelligent Automation', description: 'Automate complex tasks and streamline workflows with AI-powered insights.' },\n              { icon: '🎨', title: 'Sleek Design', description: 'Modern, intuitive interfaces that are a joy to use across all devices.' },\n              { icon: '🤝', title: 'Seamless Integration', description: 'Connect effortlessly with your existing tools and platforms.' },\n              { icon: '📈', title: 'Scalable Architecture', description: 'Grow without limits with a robust and flexible infrastructure.' },\n            ].map((feature, index) => (\n              <FeatureCard\n                key={index}\n                {...feature}\n                delay={0.3 + index * 0.15}\n                scrollYProgress={scrollYProgress}\n              />\n            ))}\n          </div>\n        </div>\n      </section>\n\n      {/* Pricing Section */}\n      <section id=\"pricing\" className=\"py-20 bg-[#0A0A0C] relative overflow-hidden\" ref={pricingSectionRef}>\n        <div className=\"max-w-6xl mx-auto px-4\">\n          <motion.h2\n            initial={{ y: 50, opacity: 0 }}\n            animate={pricingInView ? { y: 0, opacity: 0.95 } : {}}\n            transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}\n            className=\"text-5xl font-extrabold text-center text-white mb-6\"\n            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth\n          >\n            Flexible Pricing\n          </motion.h2>\n          <motion.p\n            initial={{ y: 50, opacity: 0 }}\n            animate={pricingInView ? { y: 0, opacity: 0.95 } : {}}\n            transition={{ delay: 0.2, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}\n            className=\"text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto\"\n            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth\n          >\n            Choose the perfect plan that fits your needs, from startups to enterprise solutions.\n          </motion.p>\n\n          <div className=\"flex justify-center mb-12\">\n            <motion.div\n              initial={{ opacity: 0, scale: 0.9 }}\n              animate={pricingInView ? { opacity: 1, scale: 1 } : {}}\n              transition={{ delay: 0.4, duration: 0.8 }}\n              className=\"inline-flex p-1 rounded-full bg-gray-800 border border-gray-700\"\n            >\n              <button className=\"px-6 py-2 rounded-full text-white bg-[#6366F1] font-medium\">Monthly</button>\n              <button className=\"px-6 py-2 rounded-full text-gray-400 font-medium\">Yearly</button>\n            </motion.div>\n          </div>\n\n          <div className=\"grid md:grid-cols-2 lg:grid-cols-3 gap-8\">\n            {[\n              { plan: 'Starter', price: '$29/mo', features: ['5 Projects', '10GB Storage', 'Basic Analytics', 'Community Support'] },\n              { plan: 'Pro', price: '$59/mo', features: ['Unlimited Projects', '100GB Storage', 'Advanced Analytics', 'Priority Support'] },\n              { plan: 'Enterprise', price: '$199/mo', features: ['Custom Projects', 'Unlimited Storage', 'Dedicated Analytics', '24/7 Support'] },\n            ].map((plan, index) => (\n              <PricingCard key={index} {...plan} delay={0.5 + index * 0.15} />\n            ))}\n          </div>\n        </div>\n      </section>\n\n      {/* Testimonials Section */}\n      <section id=\"testimonials\" className=\"py-20 bg-[#0A0A0C] relative overflow-hidden\" ref={testimonialsSectionRef}>\n        <div className=\"max-w-6xl mx-auto px-4\">\n          <motion.h2\n            initial={{ y: 50, opacity: 0 }}\n            animate={testimonialsInView ? { y: 0, opacity: 0.95 } : {}}\n            transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}\n            className=\"text-5xl font-extrabold text-center text-white mb-6\"\n            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth\n          >\n            What Our Clients Say\n          </motion.h2>\n          <motion.p\n            initial={{ y: 50, opacity: 0 }}\n            animate={testimonialsInView ? { y: 0, opacity: 0.95 } : {}}\n            transition={{ delay: 0.2, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}\n            className=\"text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto\"\n            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth\n          >\n            Hear directly from businesses that have transformed their operations with our solutions.\n          </motion.p>\n\n          <div className=\"grid md:grid-cols-2 lg:grid-cols-3 gap-8\">\n            {[\n              { quote: \"This platform has revolutionized our workflow. The performance is unmatched!\", author: \"Jane Doe\", company: \"Tech Solutions Inc.\" },\n              { quote: \"Incredible support and a truly intuitive product. Highly recommend to any growing business.\", author: \"John Smith\", company: \"Global Innovations\" },\n              { quote: \"The security features gave us peace of mind. A fantastic investment for our future.\", author: \"Emily White\", company: \"Secure Systems Co.\" },\n              { quote: \"Our team's productivity has soared since implementing this technology. Simply brilliant!\", author: \"Michael Brown\", company: \"Future Dynamics\" },\n            ].map((testimonial, index) => (\n              <TestimonialCard\n                key={index}\n                {...testimonial}\n                delay={0.3 + index * 0.15}\n                scrollYProgress={scrollYProgress}\n              />\n            ))}\n          </div>\n        </div>\n      </section>\n\n      {/* Call to Action Section */}\n      <section id=\"cta\" className=\"py-20 bg-[#0A0A0C] relative overflow-hidden\" ref={ctaSectionRef}>\n        <div className=\"max-w-6xl mx-auto px-4 text-center\">\n          <motion.h2\n            initial={{ y: 50, opacity: 0 }}\n            animate={ctaInView ? { y: 0, opacity: 0.95 } : {}}\n            transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}\n            className=\"text-5xl font-extrabold text-white mb-6\"\n            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth\n          >\n            Ready to Transform Your Business?\n          </motion.h2>\n          <motion.p\n            initial={{ y: 50, opacity: 0 }}\n            animate={ctaInView ? { y: 0, opacity: 0.95 } : {}}\n            transition={{ delay: 0.2, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}\n            className=\"text-xl text-gray-300 mb-12 max-w-3xl mx-auto\"\n            style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth\n          >\n            Join the ranks of successful companies leveraging our advanced technology.\n          </motion.p>\n          <motion.div\n            initial={{ scale: 0.8, opacity: 0 }}\n            animate={ctaInView ? { scale: 1, opacity: 1 } : {}}\n            transition={{ delay: 0.4, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}\n            style={{\n              background: 'radial-gradient(circle at center, rgba(99,102,241,0.3) 0%, transparent 70%)',\n              borderRadius: '9999px',\n              padding: '2px',\n              display: 'inline-block',\n              opacity: 1, // Focal point, foreground depth\n              filter: 'blur(0px)',\n            }}\n          >\n            <Button primary>Contact Our Sales Team</Button>\n          </motion.div>\n        </div>\n      </section>\n\n      {/* Footer */}\n      <section id=\"footer\" className=\"bg-[#0A0A0C] py-12 relative overflow-hidden\" ref={footerSectionRef}>\n        <motion.footer\n          initial={{ opacity: 0 }}\n          animate={footerInView ? { opacity: 0.95 } : {}}\n          transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}\n          className=\"max-w-6xl mx-auto px-4 text-gray-400 text-sm text-center space-y-6\"\n          style={{ opacity: 0.95, filter: 'blur(0px)' }} // Midground depth\n        >\n          <div className=\"flex justify-center space-x-8\">\n            <a href=\"#\" className=\"hover:text-[#93C5FD] transition-colors\">Privacy Policy</a>\n            <a href=\"#\" className=\"hover:text-[#93C5FD] transition-colors\">Terms of Service</a>\n            <a href=\"#\" className=\"hover:text-[#93C5FD] transition-colors\">Sitemap</a>\n          </div>\n          <div className=\"flex justify-center space-x-6 text-xl\">\n            <a href=\"#\" className=\"hover:text-[#93C5FD] transition-colors\">🌐</a>\n            <a href=\"#\" className=\"hover:text-[#93C5FD] transition-colors\">🐦</a>\n            <a href=\"#\" className=\"hover:text-[#93C5FD] transition-colors\">💼</a>\n          </div>\n          <p>&copy; {new Date().getFullYear()} TechCo. All rights reserved.</p>\n        </motion.footer>\n      </section>\n    </motion.div>\n  );\n}",
+  "spec": {
+    "name": "Futuristic Animated Tech Landing Page",
+    "description": "A high-performance, visually rich landing page template for tech startups, featuring a full-width hero with interactive background, sticky transparent navbar, and fluid section transitions. Incorporates subtle micro-interactions, glassmorphism, and a premium dark aesthetic for a modern, futuristic user experience.",
+    "seo_description": "Animated landing page for tech startups, featuring interactive parallax scrolling, responsive design, modern UI, and smooth Framer Motion animations. Includes hero, features, pricing, testimonials, and CTA sections with premium dark theme and glassmorphism elements.",
+    "scale": "page",
+    "format": "template",
+    "motion_style": "Parallax: Depth-based movement where background elements move slower than foreground elements on scroll, creating a 3D effect between sections. Additionally, a neural-like particle system in the hero background reacts to mouse movement with subtle spreading and fading.",
+    "visual_depth": {
+      "foreground": "Sharp, bright interactive elements like buttons, active navigation links, and card outlines on hover. Blur: 0px. Opacity: 100%. Scale: 1.0 to 1.05 on interaction.",
+      "midground": "Main content surfaces such as text blocks, static cards, and images. Blur: 0px. Opacity: 95%. Scale: 1.0.",
+      "background": "Interactive particle system or abstract gradient patterns, especially in the hero section. Blurred (5-10px) and low opacity (20-40%) to provide depth without distracting from content. Scale: 0.95 to 1.05 based on scroll/mouse."
+    },
+    "animation_spec": {
+      "hero_entrance": {
+        "trigger": "onMount",
+        "motion_type": "slideIn, fadeIn, subtleScale",
+        "easing": "smooth (stiffness 80, damping 40)",
+        "duration": "0.8s for text, 1.2s for background",
+        "variation_rules": "delay offsets for sequential elements"
+      },
+      "interactive_background": {
+        "trigger": "mouse",
+        "motion_type": "non-linear position shift, scale variation for particles",
+        "easing": "elastic (stiffness 300, damping 5)",
+        "duration": "0.3s for reaction",
+        "variation_rules": "random initial positions and animation properties"
+      },
+      "card_hover": {
+        "trigger": "hover",
+        "motion_type": "scale, boxShadow, borderColor, backgroundColor",
+        "easing": "minimal (stiffness 200, damping 25)",
+        "duration": "0.2s",
+        "whileHover": {
+          "scale": 1.03,
+          "backgroundColor": "#1A1A1D",
+          "borderColor": "#6366F1",
+          "boxShadow": "0 0 20px rgba(99,102,241,0.2)"
+        }
+      },
+      "button_hover": {
+        "trigger": "hover",
+        "motion_type": "boxShadow (glow), scale",
+        "easing": "bouncy (stiffness 400, damping 10)",
+        "duration": "0.15s",
+        "whileHover": {
+          "scale": 1.05,
+          "boxShadow": "0 0 25px rgba(99,102,241,0.4), 0 0 10px rgba(99,102,241,0.2) inset"
+        }
+      },
+      "section_scroll_transition": {
+        "trigger": "scroll (useInView)",
+        "motion_type": "slideUp, fadeIn, parallax",
+        "easing": "smooth (stiffness 80, damping 40)",
+        "duration": "1.0s",
+        "variation_rules": "delay for staggered element entrance within sections"
+      }
+    },
+    "visual_spec": {
+      "focal_point": "The main headline and call-to-action in the Hero section, highlighted by a subtle radial gradient glow and slightly increased scale on mount.",
+      "color_system": "Premium dark palette: Primary Background: #0A0A0C, Accent Blue: #6366F1, Secondary Accent: #93C5FD (light blue for contrast/glows).",
+      "typography": "Modern sans-serif (e.g., Inter or Plus Jakarta Sans). Bold headlines, clear body text, strong hierarchy with varying weights and sizes. Anti-aliased for crispness.",
+      "elements": "Subtle glassmorphism for card backgrounds (e.g., backdrop-filter: blur(10px); background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);). Soft, diffused shadows for depth."
+    },
+    "component_structure": "The page is structured as a single React component, LandingPage, which orchestrates the layout and animations of its child sections. It utilizes a motion.div as the root container to manage global scroll and mouse events. Each section (Navbar, HeroSection, FeaturesSection, PricingSection, TestimonialsSection, CTASection, Footer) is a distinct child component, responsible for its internal layout and animations. Parallax effects are managed by LandingPage passing scroll progress to relevant section components, or by individual sections using useInView for entrance animations. The interactive background in the Hero is a separate motion.div layer positioned absolutely within the HeroSection.",
+    "sections": [
+      {
+        "id": "navbar",
+        "name": "Navbar",
+        "layout": "Sticky top, full-width, initially transparent with glass effect, becomes solid dark on scroll. Centered logo, right-aligned navigation links, and a CTA button.",
+        "key_elements": [
+          "Logo",
+          "Navigation Links (Home, Features, Pricing, Testimonials, Contact)",
+          "CTA Button (e.g., 'Get Started')",
+          "Dark/Light Mode Toggle"
+        ],
+        "animation": "Fade down on mount (0.5s delay), background color transition on scroll (transparent to rgba(10,10,12,0.8) with backdrop-filter: blur(10px))."
+      },
+      {
+        "id": "hero",
+        "name": "Hero Section",
+        "layout": "Full-width, full-viewport height. Centered content (headline, subtext, CTA) over an interactive particle/abstract background. Relative positioning for content, absolute for background.",
+        "key_elements": [
+          "Bold Headline",
+          "Compelling Subtext",
+          "Primary CTA Button",
+          "Secondary CTA Button",
+          "Interactive Background (particles/gradient)"
+        ],
+        "animation": "Headline and subtext slide up and fade in (staggered, 0.2s delay). CTA buttons fade in and scale up. Interactive background elements subtly shift position and scale based on mouse movement. Overall section elements animate in with a useInView trigger."
+      },
+      {
+        "id": "features",
+        "name": "Features Section",
+        "layout": "Full-width, grid-based layout for feature cards (2-3 columns on desktop). Centered section title and description. Each card has an icon, title, and description.",
+        "key_elements": [
+          "Section Title",
+          "Section Description",
+          "Feature Cards (3-6, with icon, title, description)"
+        ],
+        "animation": "Section title and description slide up and fade in on scroll (useInView). Feature cards stagger fade in and slide up from bottom, with a subtle parallax effect based on scroll depth."
+      },
+      {
+        "id": "pricing",
+        "name": "Pricing Section",
+        "layout": "Full-width, flexible layout for pricing tiers (3-4 columns on desktop). Each tier is a card with plan details, price, and CTA. Toggle for monthly/yearly pricing.",
+        "key_elements": [
+          "Section Title",
+          "Section Description",
+          "Pricing Toggle (Monthly/Yearly)",
+          "Pricing Cards (3-4, with features, price, CTA)"
+        ],
+        "animation": "Section title and description slide up and fade in on scroll. Pricing cards stagger fade in and scale up from bottom, with a subtle hover effect (scale, shadow, border)."
+      },
+      {
+        "id": "testimonials",
+        "name": "Testimonials Section",
+        "layout": "Full-width, carousel or grid layout for testimonial cards. Each card contains a quote, author, and company/rating.",
+        "key_elements": [
+          "Section Title",
+          "Testimonial Cards (3-5, with quote, author, avatar)",
+          "Navigation Arrows/Dots (if carousel)"
+        ],
+        "animation": "Section title and description slide up and fade in on scroll. Testimonial cards fade in and slide from side (if carousel) or scale up (if grid), with a subtle parallax effect."
+      },
+      {
+        "id": "cta",
+        "name": "Call to Action Section",
+        "layout": "Full-width, prominent section with a bold statement and a clear call-to-action button. Often a gradient background or distinct visual style.",
+        "key_elements": [
+          "Bold Call-to-Action Headline",
+          "Supportive Subtext",
+          "Primary CTA Button"
+        ],
+        "animation": "Headline and subtext slide up and fade in on scroll. CTA button scales up and glows on hover."
+      },
+      {
+        "id": "footer",
+        "name": "Footer",
+        "layout": "Full-width, dark background. Contains copyright, legal links, social media icons, and possibly a sitemap.",
+        "key_elements": [
+          "Copyright Info",
+          "Legal Links",
+          "Social Media Icons",
+          "Company Links"
+        ],
+        "animation": "Fade in on scroll."
+      }
+    ],
+    "interactions": [
+      {
+        "description": "Mouse movement over the Hero section shifts the background particle system's position by plus or minus 20px on both X and Y axes, and subtly varies particle scale and opacity, using an elastic spring easing for a responsive, fluid feel."
+      },
+      {
+        "description": "Card hover changes: scale from 1 to 1.03, backgroundColor from rgba(255,255,255,0.05) to #1A1A1D, borderColor from rgba(255,255,255,0.1) to #6366F1, boxShadow from none to 0 0 20px rgba(99,102,241,0.2)."
+      },
+      {
+        "description": "Button hover changes: scale from 1 to 1.05, boxShadow from none to 0 0 25px rgba(99,102,241,0.4), 0 0 10px rgba(99,102,241,0.2) inset (simulating a glow effect)."
+      },
+      {
+        "description": "Navbar background transitions from transparent to rgba(10,10,12,0.8) with backdrop-filter: blur(10px) when window.scrollY is greater than 50px, using a smooth transition."
+      }
+    ],
+    "implementation_notes": "Hooks needed: useMotionValue (for mouse position, scroll progress), useSpring (to smooth mouse values), useInView (for section entrance animations), useScroll (for global scroll progress and parallax effects).\nAll hooks will live inside the respective component or helper components directly within the LandingPage file. useMotionValue and useSpring for mouse tracking will be in the HeroSection. useScroll will be in the root LandingPage component, passed down as context or props to sections requiring scroll-based parallax. useInView will be used within each content section (Features, Pricing, etc.) to trigger entrance animations.\nDepth is calculated by mapping useScroll progress to y or x transform values for parallax elements, with different speed multipliers for foreground vs. background elements. For example, y: scrollYProgress * 100 for foreground, y: scrollYProgress * 50 for background.\nVariation is applied using delay properties in transition objects for staggered entrance animations within sections. Randomness for particle systems can be achieved by generating initial positions and animation properties with Math.random() and then animating them in a loop or with useMotionValue for mouse interaction.",
+    "tags": [
+      "Landing Page",
+      "Animated",
+      "Tech Startup",
+      "Parallax",
+      "Interactive",
+      "Framer Motion",
+      "Tailwind CSS",
+      "Glassmorphism",
+      "Dark Theme",
+      "Responsive"
+    ],
+    "tech": [
+      "Tailwind",
+      "Framer Motion",
+      "React"
+    ]
+  },
+  "config": {
+    "id": "ede9b368-450f-4613-829f-e9aa4215f49b",
+    "name": "Validation",
+    "provider": "vertex",
+    "model": "gemini-2.5-flash",
+    "base_url": null,
+    "system_prompt": "You are a senior React auditor and UI quality reviewer.\n\nYour job is to VALIDATE the code against the spec.\n\n---\n\n🚫 STRICT RULE\n\n* DO NOT rewrite full code\n* DO NOT regenerate component\n* ONLY:\n\n  * detect issues\n  * suggest minimal fixes\n\n---\n\nOUTPUT FORMAT (JSON ONLY)\n\n{\n\"status\": \"PASS | FAIL | PASS_WITH_WARNINGS\",\n\"score\": number (0–100),\n\"issues\": [\n{\n\"type\": \"syntax | logic | motion | design\",\n\"severity\": \"low | medium | high | critical\",\n\"message\": \"clear explanation\",\n\"fix\": \"minimal patch or suggestion\"\n}\n]\n}\n\n---\n\n🧠 VALIDATION RULES\n\n1. TECHNICAL\n\n* hooks usage correct\n* no hooks in loops\n* valid Motion usage\n* no invalid Tailwind\n\n---\n\n2. MOTION QUALITY (IMPORTANT)\n\nFAIL or WARN if:\n\n* motion is purely linear\n* no variation between elements\n* no depth (opacity/blur/scale missing)\n* animation feels repetitive\n\n---\n\n3. VISUAL QUALITY\n\nWARN if:\n\n* no focal point\n* flat color usage\n* no layering\n* generic design\n\n---\n\n4. PERFORMANCE\n\nWARN if:\n\n* too many hooks per element\n* unnecessary re-renders\n\n---\n\n5. SPEC MATCH\n\nFAIL if:\n\n* core behavior missing\n* interactions not implemented\n\n---\n\nINPUT:\nSPEC:\n{{SPEC_JSON}}\n\nCODE:\n{{CODE}}\n",
+    "is_default": true
+  }
+}
+Output Payload:
+{
+  "code": "import { useState, useRef, useEffect, ReactNode } from 'react';\nimport { motion, useInView, useAnimation, useScroll, useMotionValue, useSpring, useTransform, MotionValue } from 'framer-motion';\n\n// --- Color System Constants ---\nconst PRIMARY_BACKGROUND = '#0A0A0C';\nconst ACCENT_BLUE = '#6366F1';\nconst SECONDARY_ACCENT = '#93C5FD';\nconst CARD_BG = 'rgba(255,255,255,0.05)';\nconst CARD_BORDER = 'rgba(255,255,255,0.1)';\nconst HOVER_CARD_BG = '#1A1A1D';\n\n// --- Easing Definitions ---\nconst smoothSpring = { stiffness: 80, damping: 40 };\nconst minimalSpring = { stiffness: 200, damping: 25 };\nconst bouncySpring = { stiffness: 400, damping: 10 };\nconst elasticSpring = { stiffness: 300, damping: 5 };\n\n// --- Reusable Motion Components ---\n\ninterface AnimatedButtonProps {\n  children: ReactNode;\n  primary?: boolean;\n  className?: string;\n  onClick?: () => void;\n}\n\nconst AnimatedButton: React.FC<AnimatedButtonProps> = ({ children, primary = true, className = '', onClick }) => {\n  return (\n    <motion.button\n      whileHover={{\n        scale: 1.05,\n        boxShadow: `0 0 25px ${ACCENT_BLUE}66, 0 0 10px ${ACCENT_BLUE}33 inset`, // 66 is 40% opacity, 33 is 20% opacity\n      }}\n      whileTap={{ scale: 0.98 }}\n      transition={{ type: 'spring', ...bouncySpring, duration: 0.15 }}\n      className={`px-6 py-3 rounded-lg font-semibold text-lg whitespace-nowrap ${\n        primary\n          ? `bg-[${ACCENT_BLUE}] text-white`\n          : `bg-transparent text-white border border-[${ACCENT_BLUE}]`\n      } ${className}`}\n      onClick={onClick}\n    >\n      {children}\n    </motion.button>\n  );\n};\n\ninterface AnimatedCardProps {\n  children: ReactNode;\n  className?: string;\n  delay?: number;\n}\n\nconst AnimatedCard: React.FC<AnimatedCardProps> = ({ children, className = '', delay = 0 }) => {\n  const ref = useRef<HTMLDivElement>(null);\n  const isInView = useInView(ref, { once: true, margin: '-100px 0px' });\n  const controls = useAnimation();\n\n  useEffect(() => {\n    if (isInView) {\n      controls.start({\n        opacity: 1,\n        y: 0,\n        scale: 1,\n        transition: { type: 'spring', ...smoothSpring, duration: 1.0, delay: delay },\n      });\n    }\n  }, [isInView, controls, delay]);\n\n  return (\n    <motion.div\n      ref={ref}\n      initial={{ opacity: 0, y: 50, scale: 0.95 }}\n      animate={controls}\n      whileHover={{\n        scale: 1.03,\n        backgroundColor: HOVER_CARD_BG,\n        borderColor: ACCENT_BLUE,\n        boxShadow: `0 0 20px ${ACCENT_BLUE}33`, // 33 is 20% opacity\n      }}\n      transition={{ type: 'spring', ...minimalSpring, duration: 0.2 }}\n      className={`p-6 rounded-xl border border-[${CARD_BORDER}] bg-[${CARD_BG}] shadow-lg ${className}`}\n      style={{ backdropFilter: 'blur(10px)' }}\n    >\n      {children}\n    </motion.div>\n  );\n};\n\ninterface SectionTitleProps {\n  title: string;\n  description: string;\n  delay?: number;\n}\n\nconst SectionTitle: React.FC<SectionTitleProps> = ({ title, description, delay = 0 }) => {\n  const ref = useRef<HTMLDivElement>(null);\n  const isInView = useInView(ref, { once: true, margin: '-100px 0px' });\n  const controls = useAnimation();\n\n  useEffect(() => {\n    if (isInView) {\n      controls.start({\n        opacity: 1,\n        y: 0,\n        transition: { type: 'spring', ...smoothSpring, duration: 1.0, delay: delay },\n      });\n    }\n  }, [isInView, controls, delay]);\n\n  return (\n    <motion.div\n      ref={ref}\n      initial={{ opacity: 0, y: 50 }}\n      animate={controls}\n      className=\"text-center mb-12\"\n    >\n      <h2 className=\"text-5xl font-bold text-white mb-4\">{title}</h2>\n      <p className=\"text-xl text-gray-400 max-w-2xl mx-auto\">{description}</p>\n    </motion.div>\n  );\n};\n\n// --- Navbar Component ---\nconst Navbar: React.FC = () => {\n  const { scrollY } = useScroll();\n  const background = useTransform(\n    scrollY,\n    [0, 50],\n    ['transparent', `rgba(10,10,12,0.8)`]\n  );\n  const backdropFilter = useTransform(\n    scrollY,\n    [0, 50],\n    ['blur(0px)', 'blur(10px)']\n  );\n\n  const controls = useAnimation();\n\n  useEffect(() => {\n    controls.start({\n      y: 0,\n      opacity: 1,\n      transition: { type: 'spring', ...smoothSpring, delay: 0.5, duration: 0.8 },\n    });\n  }, [controls]);\n\n  return (\n    <motion.nav\n      initial={{ y: -100, opacity: 0 }}\n      animate={controls}\n      style={{ background, backdropFilter }}\n      className=\"fixed top-0 left-0 right-0 z-50 py-4\"\n    >\n      <div className=\"max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center\">\n        <div className=\"flex items-center\">\n          <motion.a\n            href=\"#\"\n            className=\"text-2xl font-bold text-white\"\n            whileHover={{ scale: 1.05 }}\n            transition={{ type: 'spring', ...minimalSpring }}\n          >\n            <span className={`text-[${ACCENT_BLUE}]`}>Tech</span>Flow\n          </motion.a>\n        </div>\n        <div className=\"hidden md:flex items-center space-x-8\">\n          {['Home', 'Features', 'Pricing', 'Testimonials', 'Contact'].map((item) => (\n            <motion.a\n              key={item}\n              href={`#${item.toLowerCase()}`}\n              className=\"text-gray-300 hover:text-white text-lg font-medium\"\n              whileHover={{ color: '#FFFFFF', scale: 1.05 }}\n              transition={{ type: 'spring', ...minimalSpring }}\n            >\n              {item}\n            </motion.a>\n          ))}\n          <AnimatedButton primary={true} onClick={() => {}}>\n            Get Started\n          </AnimatedButton>\n          {/* Dark/Light Mode Toggle - Placeholder */}\n          <motion.button\n            className=\"text-gray-300 hover:text-white\"\n            whileHover={{ scale: 1.1 }}\n            transition={{ type: 'spring', ...minimalSpring }}\n          >\n            <svg\n              xmlns=\"http://www.w3.org/2000/svg\"\n              className=\"h-6 w-6\"\n              fill=\"none\"\n              viewBox=\"0 0 24 24\"\n              stroke=\"currentColor\"\n            >\n              <path\n                strokeLinecap=\"round\"\n                strokeLinejoin=\"round\"\n                strokeWidth={2}\n                d=\"M12 3v1m0 16v1m9-9h1M3 12H2m15.325-4.275l.707-.707M6.707 17.293l-.707.707M18.707 6.707l.707-.707M6.707 6.707L6 6m12 12l-.707-.707M4 12a8 8 0 1116 0A8 8 0 014 12z\"\n              />\n            </svg>\n          </motion.button>\n        </div>\n        <div className=\"md:hidden\">\n          {/* Mobile menu button - Placeholder */}\n          <button className=\"text-gray-300 hover:text-white focus:outline-none\">\n            <svg\n              className=\"h-6 w-6\"\n              fill=\"none\"\n              viewBox=\"0 0 24 24\"\n              stroke=\"currentColor\"\n            >\n              <path\n                strokeLinecap=\"round\"\n                strokeLinejoin=\"round\"\n                strokeWidth={2}\n                d=\"M4 6h16M4 12h16m-7 6h7\"\n              />\n            </svg>\n          </button>\n        </div>\n      </div>\n    </motion.nav>\n  );\n};\n\n// --- Hero Section Component ---\ninterface ParticleProps {\n  mouseX: MotionValue<number>;\n  mouseY: MotionValue<number>;\n  index: number;\n}\n\nconst Particle: React.FC<ParticleProps> = ({ mouseX, mouseY, index }) => {\n  const randomX = useRef(Math.random() * 200 - 100); // -100 to 100\n  const randomY = useRef(Math.random() * 200 - 100); // -100 to 100\n  const randomScale = useRef(0.5 + Math.random() * 0.5); // 0.5 to 1.0\n  const randomOpacity = useRef(0.2 + Math.random() * 0.2); // 0.2 to 0.4\n  const randomDelay = useRef(Math.random() * 0.5); // 0 to 0.5\n\n  const x = useTransform(mouseX, [0, 1], [randomX.current, randomX.current + 40]);\n  const y = useTransform(mouseY, [0, 1], [randomY.current, randomY.current + 40]);\n  const scale = useTransform(mouseX, [0, 1], [randomScale.current, randomScale.current * 1.2]);\n  const opacity = useTransform(mouseY, [0, 1], [randomOpacity.current, randomOpacity.current * 1.5]);\n\n  return (\n    <motion.div\n      className={`absolute rounded-full bg-[${SECONDARY_ACCENT}]`}\n      style={{\n        width: 10 + index * 2, // Vary size\n        height: 10 + index * 2,\n        x,\n        y,\n        scale,\n        opacity,\n        filter: 'blur(5px)', // Background depth blur\n      }}\n      initial={{ opacity: 0 }}\n      animate={{ opacity: randomOpacity.current }}\n      transition={{ delay: randomDelay.current, duration: 2, repeat: Infinity, repeatType: \"reverse\" }}\n    />\n  );\n};\n\nconst HeroSection: React.FC = () => {\n  const ref = useRef<HTMLDivElement>(null);\n  const isInView = useInView(ref, { once: true, margin: '-100px 0px' });\n  const controls = useAnimation();\n\n  const mouseX = useMotionValue(0);\n  const mouseY = useMotionValue(0);\n\n  const springX = useSpring(mouseX, elasticSpring);\n  const springY = useSpring(mouseY, elasticSpring);\n\n  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {\n    if (ref.current) {\n      const { clientX, clientY } = e;\n      const { left, top, width, height } = ref.current.getBoundingClientRect();\n      const x = (clientX - left) / width; // Normalized 0-1\n      const y = (clientY - top) / height; // Normalized 0-1\n      mouseX.set(x);\n      mouseY.set(y);\n    }\n  };\n\n  const handleMouseLeave = () => {\n    mouseX.set(0.5); // Reset to center\n    mouseY.set(0.5);\n  };\n\n  useEffect(() => {\n    if (isInView) {\n      controls.start((i) => ({\n        y: 0,\n        opacity: 1,\n        scale: 1,\n        transition: {\n          type: 'spring',\n          ...smoothSpring,\n          duration: i === 0 ? 0.8 : 1.2, // Text vs background duration\n          delay: i * 0.2 + (i === 0 ? 0 : 0.5), // Staggered delay for elements\n        },\n      }));\n    }\n  }, [isInView, controls]);\n\n  useEffect(() => {\n    // Initialize mouse position to center for particles\n    mouseX.set(0.5);\n    mouseY.set(0.5);\n  }, [mouseX, mouseY]);\n\n  return (\n    <section id=\"home\" ref={ref} className={`relative min-h-screen flex items-center justify-center overflow-hidden bg-[${PRIMARY_BACKGROUND}]`}\n      onMouseMove={handleMouseMove}\n      onMouseLeave={handleMouseLeave}\n    >\n      {/* Interactive Background */}\n      <motion.div\n        className=\"absolute inset-0 z-0\"\n        initial={{ opacity: 0, scale: 0.95 }}\n        animate={controls}\n        custom={1} // Custom value for background animation\n      >\n        {Array.from({ length: 30 }).map((_, i) => (\n          <Particle key={i} mouseX={springX} mouseY={springY} index={i} />\n        ))}\n        {/* Radial gradient glow for focal point */}\n        <div\n          className=\"absolute inset-0\"\n          style={{\n            background: `radial-gradient(circle at center, ${SECONDARY_ACCENT}1A 0%, transparent 50%)`, // 1A is 10% opacity\n            filter: 'blur(50px)',\n            opacity: 0.3,\n          }}\n        />\n      </motion.div>\n\n      {/* Content */}\n      <div className=\"relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8\">\n        <motion.h1\n          className=\"text-7xl font-extrabold text-white mb-6 leading-tight\"\n          initial={{ y: 50, opacity: 0, scale: 0.98 }}\n          animate={controls}\n          custom={0} // Custom value for headline animation\n          style={{\n            background: `linear-gradient(90deg, ${ACCENT_BLUE} 0%, ${SECONDARY_ACCENT} 100%)`,\n            WebkitBackgroundClip: 'text',\n            WebkitTextFillColor: 'transparent',\n          }}\n        >\n          Unleash the Future of <br />\n          <span className=\"relative inline-block\">\n            Technology\n            <motion.span\n              initial={{ width: 0 }}\n              animate={{ width: '100%' }}\n              transition={{ delay: 1.2, duration: 0.8, ease: 'easeOut' }}\n              className={`absolute bottom-0 left-0 h-1 bg-[${ACCENT_BLUE}]`}\n            />\n          </span>\n        </motion.h1>\n        <motion.p\n          className=\"text-xl text-gray-300 mb-10 max-w-2xl mx-auto\"\n          initial={{ y: 50, opacity: 0 }}\n          animate={controls}\n          custom={0.5} // Custom value for subtext animation\n        >\n          Revolutionizing digital experiences with cutting-edge solutions and seamless integration.\n          Discover innovation at its core.\n        </motion.p>\n        <div className=\"flex justify-center space-x-4\">\n          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={controls} custom={1}>\n            <AnimatedButton primary={true}>\n              Explore Features\n            </AnimatedButton>\n          </motion.div>\n          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={controls} custom={1.2}>\n            <AnimatedButton primary={false}>\n              Contact Sales\n            </AnimatedButton>\n          </motion.div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\n// --- Features Section Component ---\ninterface FeatureCardProps {\n  icon: string; // Placeholder for icon, could be a React component or path\n  title: string;\n  description: string;\n  delay: number;\n}\n\nconst FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description, delay }) => {\n  return (\n    <AnimatedCard delay={delay} className=\"flex flex-col items-center text-center\">\n      <div className={`text-5xl text-[${ACCENT_BLUE}] mb-4`}>{icon}</div>\n      <h3 className=\"text-2xl font-semibold text-white mb-2\">{title}</h3>\n      <p className=\"text-gray-400\">{description}</p>\n    </AnimatedCard>\n  );\n};\n\nconst FeaturesSection: React.FC = () => {\n  const ref = useRef<HTMLDivElement>(null);\n  const isInView = useInView(ref, { once: true, margin: '-100px 0px' });\n  const controls = useAnimation();\n\n  useEffect(() => {\n    if (isInView) {\n      controls.start((i) => ({\n        opacity: 1,\n        y: 0,\n        transition: { type: 'spring', ...smoothSpring, duration: 1.0, delay: i * 0.15 },\n      }));\n    }\n  }, [isInView, controls]);\n\n  const features = [\n    { icon: '⚡', title: 'Blazing Fast', description: 'Experience unparalleled speed and responsiveness.' },\n    { icon: '🔒', title: 'Secure & Private', description: 'Your data is protected with industry-leading encryption.' },\n    { icon: '💡', title: 'Intuitive Design', description: 'Effortless navigation and a user-friendly interface.' },\n    { icon: '⚙️', title: 'Highly Customizable', description: 'Tailor every aspect to fit your unique needs.' },\n    { icon: '🌐', title: 'Global Reach', description: 'Connect with users and services worldwide.' },\n    { icon: '📈', title: 'Scalable Solutions', description: 'Grow your operations without limits.' },\n  ];\n\n  return (\n    <section id=\"features\" className={`py-20 bg-[${PRIMARY_BACKGROUND}]`}>\n      <div className=\"max-w-6xl mx-auto px-4 sm:px-6 lg:px-8\" ref={ref}>\n        <SectionTitle\n          title=\"Powerful Features for Your Business\"\n          description=\"Discover how our platform can transform your operations and drive success.\"\n          delay={0}\n        />\n        <motion.div\n          className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8\"\n          initial=\"hidden\"\n          animate={controls}\n          variants={{\n            hidden: { opacity: 0 },\n            visible: {\n              opacity: 1,\n              transition: {\n                staggerChildren: 0.1,\n              },\n            },\n          }}\n        >\n          {features.map((feature, i) => (\n            <motion.div key={i} custom={i}>\n              <FeatureCard {...feature} delay={i * 0.1} />\n            </motion.div>\n          ))}\n        </motion.div>\n      </div>\n    </section>\n  );\n};\n\n// --- Pricing Section Component ---\ninterface PricingCardProps {\n  plan: string;\n  price: string;\n  features: string[];\n  highlight?: boolean;\n  delay: number;\n}\n\nconst PricingCard: React.FC<PricingCardProps> = ({ plan, price, features, highlight = false, delay }) => {\n  return (\n    <AnimatedCard\n      delay={delay}\n      className={`flex flex-col items-center text-center ${highlight ? `border-[${ACCENT_BLUE}] shadow-xl` : ''}`}\n    >\n      <h3 className=\"text-3xl font-bold text-white mb-4\">{plan}</h3>\n      <p className={`text-5xl font-extrabold text-[${ACCENT_BLUE}] mb-6`}>{price}</p>\n      <ul className=\"text-gray-300 text-lg mb-8 space-y-3\">\n        {features.map((feature, i) => (\n          <li key={i} className=\"flex items-center justify-center\">\n            <svg className={`w-6 h-6 text-[${SECONDARY_ACCENT}] mr-2`} fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">\n              <path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth={2} d=\"M5 13l4 4L19 7\"></path>\n            </svg>\n            {feature}\n          </li>\n        ))}\n      </ul>\n      <AnimatedButton primary={highlight} className=\"mt-auto\">\n        Choose Plan\n      </AnimatedButton>\n    </AnimatedCard>\n  );\n};\n\nconst PricingSection: React.FC = () => {\n  const ref = useRef<HTMLDivElement>(null);\n  const isInView = useInView(ref, { once: true, margin: '-100px 0px' });\n  const controls = useAnimation();\n  const [isMonthly, setIsMonthly] = useState(true);\n\n  useEffect(() => {\n    if (isInView) {\n      controls.start((i) => ({\n        opacity: 1,\n        y: 0,\n        scale: 1,\n        transition: { type: 'spring', ...smoothSpring, duration: 1.0, delay: i * 0.15 },\n      }));\n    }\n  }, [isInView, controls]);\n\n  const pricingPlans = [\n    {\n      plan: 'Basic',\n      monthlyPrice: '$29/mo',\n      yearlyPrice: '$299/yr',\n      features: ['5 Users', '10GB Storage', 'Basic Analytics', 'Email Support'],\n      highlight: false,\n    },\n    {\n      plan: 'Pro',\n      monthlyPrice: '$59/mo',\n      yearlyPrice: '$599/yr',\n      features: ['20 Users', '100GB Storage', 'Advanced Analytics', 'Priority Support', 'Custom Integrations'],\n      highlight: true,\n    },\n    {\n      plan: 'Enterprise',\n      monthlyPrice: '$129/mo',\n      yearlyPrice: '$1299/yr',\n      features: ['Unlimited Users', 'Unlimited Storage', 'AI Analytics', '24/7 Dedicated Support', 'API Access'],\n      highlight: false,\n    },\n  ];\n\n  return (\n    <section id=\"pricing\" className={`py-20 bg-[${PRIMARY_BACKGROUND}]`}>\n      <div className=\"max-w-6xl mx-auto px-4 sm:px-6 lg:px-8\" ref={ref}>\n        <SectionTitle\n          title=\"Flexible Pricing for Every Need\"\n          description=\"Choose the perfect plan that scales with your business.\"\n          delay={0}\n        />\n\n        <motion.div\n          className=\"flex justify-center mb-12\"\n          initial={{ opacity: 0, y: 20 }}\n          animate={isInView ? { opacity: 1, y: 0 } : {}}\n          transition={{ type: 'spring', ...smoothSpring, delay: 0.2 }}\n        >\n          <div className={`relative flex p-1 bg-[${CARD_BG}] rounded-full border border-[${CARD_BORDER}]`}>\n            <button\n              className={`px-6 py-2 rounded-full text-lg font-medium transition-colors duration-300 ${\n                isMonthly ? `bg-[${ACCENT_BLUE}] text-white` : 'text-gray-400'\n              }`}\n              onClick={() => setIsMonthly(true)}\n            >\n              Monthly\n            </button>\n            <button\n              className={`px-6 py-2 rounded-full text-lg font-medium transition-colors duration-300 ${\n                !isMonthly ? `bg-[${ACCENT_BLUE}] text-white` : 'text-gray-400'\n              }`}\n              onClick={() => setIsMonthly(false)}\n            >\n              Yearly\n            </button>\n          </div>\n        </motion.div>\n\n        <motion.div\n          className=\"grid grid-cols-1 md:grid-cols-3 gap-8\"\n          initial=\"hidden\"\n          animate={controls}\n          variants={{\n            hidden: { opacity: 0 },\n            visible: {\n              opacity: 1,\n              transition: {\n                staggerChildren: 0.1,\n              },\n            },\n          }}\n        >\n          {pricingPlans.map((plan, i) => (\n            <motion.div key={i} custom={i}>\n              <PricingCard\n                {...plan}\n                price={isMonthly ? plan.monthlyPrice : plan.yearlyPrice}\n                delay={i * 0.1}\n              />\n            </motion.div>\n          ))}\n        </motion.div>\n      </div>\n    </section>\n  );\n};\n\n// --- Testimonials Section Component ---\ninterface TestimonialCardProps {\n  quote: string;\n  author: string;\n  company: string;\n  avatar: string; // URL or path to image\n  delay: number;\n}\n\nconst TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, author, company, avatar, delay }) => {\n  return (\n    <AnimatedCard delay={delay} className=\"flex flex-col items-center text-center p-8\">\n      <img src={avatar} alt={author} className={`w-20 h-20 rounded-full mb-4 object-cover border-2 border-[${ACCENT_BLUE}]`} />\n      <p className=\"text-gray-300 text-lg italic mb-4\">\"{quote}\"</p>\n      <p className=\"text-white font-semibold text-xl\">{author}</p>\n      <p className=\"text-gray-400 text-md\">{company}</p>\n    </AnimatedCard>\n  );\n};\n\nconst TestimonialsSection: React.FC = () => {\n  const ref = useRef<HTMLDivElement>(null);\n  const isInView = useInView(ref, { once: true, margin: '-100px 0px' });\n  const controls = useAnimation();\n\n  useEffect(() => {\n    if (isInView) {\n      controls.start((i) => ({\n        opacity: 1,\n        scale: 1,\n        transition: { type: 'spring', ...smoothSpring, duration: 1.0, delay: i * 0.15 },\n      }));\n    }\n  }, [isInView, controls]);\n\n  const testimonials = [\n    {\n      quote: 'This platform has transformed our workflow. The intuitive design and powerful features are unmatched.',\n      author: 'Jane Doe',\n      company: 'Tech Solutions Inc.',\n      avatar: 'https://randomuser.me/api/portraits/women/1.jpg',\n    },\n    {\n      quote: 'A truly revolutionary product! Our team\\'s productivity has skyrocketed since we started using it.',\n      author: 'John Smith',\n      company: 'Innovate Corp.',\n      avatar: 'https://randomuser.me/api/portraits/men/2.jpg',\n    },\n    {\n      quote: 'The best investment we\\'ve made this year. The support team is also incredibly responsive and helpful.',\n      author: 'Emily White',\n      company: 'Global Ventures',\n      avatar: 'https://randomuser.me/api/portraits/women/3.jpg',\n    },\n  ];\n\n  return (\n    <section id=\"testimonials\" className={`py-20 bg-[${PRIMARY_BACKGROUND}]`}>\n      <div className=\"max-w-6xl mx-auto px-4 sm:px-6 lg:px-8\" ref={ref}>\n        <SectionTitle\n          title=\"What Our Clients Say\"\n          description=\"Hear from businesses that have achieved remarkable success with our platform.\"\n          delay={0}\n        />\n        <motion.div\n          className=\"grid grid-cols-1 md:grid-cols-3 gap-8\"\n          initial=\"hidden\"\n          animate={controls}\n          variants={{\n            hidden: { opacity: 0 },\n            visible: {\n              opacity: 1,\n              transition: {\n                staggerChildren: 0.1,\n              },\n            },\n          }}\n        >\n          {testimonials.map((testimonial, i) => (\n            <motion.div key={i} custom={i}>\n              <TestimonialCard {...testimonial} delay={i * 0.1} />\n            </motion.div>\n          ))}\n        </motion.div>\n      </div>\n    </section>\n  );\n};\n\n// --- CTA Section Component ---\nconst CTASection: React.FC = () => {\n  const ref = useRef<HTMLDivElement>(null);\n  const isInView = useInView(ref, { once: true, margin: '-100px 0px' });\n  const controls = useAnimation();\n\n  useEffect(() => {\n    if (isInView) {\n      controls.start((i) => ({\n        opacity: 1,\n        y: 0,\n        scale: 1,\n        transition: { type: 'spring', ...smoothSpring, duration: 1.0, delay: i * 0.2 },\n      }));\n    }\n  }, [isInView, controls]);\n\n  return (\n    <section id=\"contact\" className={`py-20 bg-[${PRIMARY_BACKGROUND}]`}>\n      <div className=\"max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center\" ref={ref}>\n        <motion.h2\n          className=\"text-6xl font-extrabold text-white mb-6 leading-tight\"\n          initial={{ y: 50, opacity: 0 }}\n          animate={controls}\n          custom={0}\n          style={{\n            background: `linear-gradient(90deg, ${ACCENT_BLUE} 0%, ${SECONDARY_ACCENT} 100%)`,\n            WebkitBackgroundClip: 'text',\n            WebkitTextFillColor: 'transparent',\n          }}\n        >\n          Ready to Elevate Your Business?\n        </motion.h2>\n        <motion.p\n          className=\"text-xl text-gray-300 mb-10 max-w-2xl mx-auto\"\n          initial={{ y: 50, opacity: 0 }}\n          animate={controls}\n          custom={0.5}\n        >\n          Join thousands of innovators who trust us to power their success.\n          Get started today and experience the difference.\n        </motion.p>\n        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={controls} custom={1}>\n          <AnimatedButton primary={true} className=\"px-10 py-4 text-xl\">\n            Start Your Free Trial\n          </AnimatedButton>\n        </motion.div>\n      </div>\n    </section>\n  );\n};\n\n// --- Footer Component ---\nconst Footer: React.FC = () => {\n  const ref = useRef<HTMLDivElement>(null);\n  const isInView = useInView(ref, { once: true, margin: '-100px 0px' });\n  const controls = useAnimation();\n\n  useEffect(() => {\n    if (isInView) {\n      controls.start({\n        opacity: 1,\n        transition: { duration: 1.0, delay: 0.2 },\n      });\n    }\n  }, [isInView, controls]);\n\n  return (\n    <motion.footer\n      id=\"footer\"\n      className={`bg-[${PRIMARY_BACKGROUND}] py-12 text-gray-400 text-center`}\n      ref={ref}\n      initial={{ opacity: 0 }}\n      animate={controls}\n    >\n      <div className=\"max-w-6xl mx-auto px-4 sm:px-6 lg:px-8\">\n        <div className=\"flex flex-col md:flex-row justify-between items-center mb-8\">\n          <div className=\"mb-4 md:mb-0\">\n            <a href=\"#\" className=\"text-2xl font-bold text-white\">\n              <span className={`text-[${ACCENT_BLUE}]`}>Tech</span>Flow\n            </a>\n          </div>\n          <div className=\"flex space-x-6 mb-4 md:mb-0\">\n            {['Privacy Policy', 'Terms of Service', 'Sitemap'].map((link) => (\n              <a key={link} href=\"#\" className=\"hover:text-white transition-colors duration-200\">\n                {link}\n              </a>\n            ))}\n          </div>\n          <div className=\"flex space-x-4\">\n            {['facebook', 'twitter', 'linkedin', 'instagram'].map((social) => (\n              <motion.a\n                key={social}\n                href=\"#\"\n                className=\"text-gray-400 hover:text-white\"\n                whileHover={{ scale: 1.2 }}\n                transition={{ type: 'spring', ...minimalSpring }}\n              >\n                {/* Placeholder for social icons */}\n                <svg\n                  xmlns=\"http://www.w3.org/2000/svg\"\n                  className=\"h-6 w-6\"\n                  fill=\"currentColor\"\n                  viewBox=\"0 0 24 24\"\n                >\n                  <path d=\"M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.5 8h-2v2h2v2h-2v4h-3v-4H8v-2h2V8.5c0-1.229.614-2.5 2.5-2.5h2v3z\" />\n                </svg>\n              </motion.a>\n            ))}\n          </div>\n        </div>\n        <p className=\"text-sm\">\n          &copy; {new Date().getFullYear()} TechFlow. All rights reserved.\n        </p>\n      </div>\n    </motion.footer>\n  );\n};\n\n// --- Main Landing Page Component ---\nexport default function FuturisticAnimatedTechLandingPage() {\n  return (\n    <motion.div\n      className=\"font-sans antialiased\"\n      style={{ minHeight: '100%', width: '100%', backgroundColor: PRIMARY_BACKGROUND }}\n    >\n      <Navbar />\n      <HeroSection />\n      <FeaturesSection />\n      <PricingSection />\n      <TestimonialsSection />\n      <CTASection />\n      <Footer />\n    </motion.div>\n  );\n}",
+  "imports": [],
+  "has_errors": false,
+  "validation_report": {
+    "status": "PASS_WITH_WARNINGS",
+    "score": 61,
+    "issues": [
+      {
+        "severity": "medium",
+        "type": "motion",
+        "message": "All repeated elements must differ in delay, duration, or scale. The 'duration' property in the Particle component's animation transition is identical for all particles.",
+        "line_start": 218,
+        "line_end": 218,
+        "search_str": "transition={{ delay: randomDelay.current, duration: 2, repeat: Infinity, repeatType: \"reverse\" }}",
+        "replace_str": "transition={{ delay: randomDelay.current, duration: 1.5 + Math.random() * 1, repeat: Infinity, repeatType: \"reverse\" }}"
+      },
+      {
+        "severity": "medium",
+        "type": "logic",
+        "message": "The `controls` object is declared but not used after other related animation properties are removed. This results in dead code.",
+        "line_start": 339,
+        "line_end": 343,
+        "search_str": "  const controls = useAnimation();\n\n  useEffect(() => {\n    if (isInView) {",
+        "replace_str": "  useEffect(() => {\n    if (isInView) {"
+      },
+      {
+        "severity": "medium",
+        "type": "logic",
+        "message": "Conflicting animation logic: AnimatedCard is designed to animate itself on scroll. The parent section's useEffect attempts to animate children wrappers, which is redundant and creates conflicting delays. This useEffect block is now dead code.",
+        "line_start": 344,
+        "line_end": 350,
+        "search_str": "      controls.start((i) => ({\n        opacity: 1,\n        y: 0,\n        transition: { type: 'spring', ...smoothSpring, duration: 1.0, delay: i * 0.15 },\n      }));\n    }\n  }, [isInView, controls]);",
+        "replace_str": "    }\n  }, [isInView]);"
+      },
+      {
+        "severity": "medium",
+        "type": "logic",
+        "message": "Conflicting animation logic: AnimatedCard is designed to animate itself on scroll. The parent FeaturesSection should not apply staggerChildren/custom animations to the grid container if children are self-animating.",
+        "line_start": 353,
+        "line_end": 364,
+        "search_str": "          initial=\"hidden\"\n          animate={controls}\n          variants={{\n            hidden: { opacity: 0 },\n            visible: {\n              opacity: 1,\n              transition: {\n                staggerChildren: 0.1,\n              },\n            },\n          }}",
+        "replace_str": ""
+      },
+      {
+        "severity": "medium",
+        "type": "logic",
+        "message": "Conflicting animation logic: AnimatedCard is designed to animate itself on scroll. The parent FeaturesSection should not apply custom animations to the wrapper motion.divs. Change to a plain div.",
+        "line_start": 365,
+        "line_end": 365,
+        "search_str": "            <motion.div key={i} custom={i}>",
+        "replace_str": "            <div key={i}>"
+      },
+      {
+        "severity": "medium",
+        "type": "logic",
+        "message": "The `controls` object is declared but not used after other related animation properties are removed. This results in dead code.",
+        "line_start": 445,
+        "line_end": 449,
+        "search_str": "  const controls = useAnimation();\n  const [isMonthly, setIsMonthly] = useState(true);\n\n  useEffect(() => {\n    if (isInView) {",
+        "replace_str": "  const [isMonthly, setIsMonthly] = useState(true);\n\n  useEffect(() => {\n    if (isInView) {"
+      },
+      {
+        "severity": "medium",
+        "type": "logic",
+        "message": "Conflicting animation logic: AnimatedCard is designed to animate itself on scroll. The parent section's useEffect attempts to animate children wrappers, which is redundant and creates conflicting delays. This useEffect block is now dead code.",
+        "line_start": 450,
+        "line_end": 456,
+        "search_str": "      controls.start((i) => ({\n        opacity: 1,\n        y: 0,\n        scale: 1,\n        transition: { type: 'spring', ...smoothSpring, duration: 1.0, delay: i * 0.15 },\n      }));\n    }\n  }, [isInView, controls]);",
+        "replace_str": "    }\n  }, [isInView]);"
+      },
+      {
+        "severity": "medium",
+        "type": "logic",
+        "message": "Conflicting animation logic: AnimatedCard is designed to animate itself on scroll. The parent PricingSection should not apply staggerChildren/custom animations to the grid container if children are self-animating.",
+        "line_start": 483,
+        "line_end": 494,
+        "search_str": "          initial=\"hidden\"\n          animate={controls}\n          variants={{\n            hidden: { opacity: 0 },\n            visible: {\n              opacity: 1,\n              transition: {\n                staggerChildren: 0.1,\n              },\n            },\n          }}",
+        "replace_str": ""
+      },
+      {
+        "severity": "medium",
+        "type": "logic",
+        "message": "Conflicting animation logic: AnimatedCard is designed to animate itself on scroll. The parent PricingSection should not apply custom animations to the wrapper motion.divs. Change to a plain div.",
+        "line_start": 495,
+        "line_end": 495,
+        "search_str": "            <motion.div key={i} custom={i}>",
+        "replace_str": "            <div key={i}>"
+      },
+      {
+        "severity": "medium",
+        "type": "logic",
+        "message": "The `controls` object is declared but not used after other related animation properties are removed. This results in dead code.",
+        "line_start": 579,
+        "line_end": 583,
+        "search_str": "  const controls = useAnimation();\n\n  useEffect(() => {\n    if (isInView) {",
+        "replace_str": "  useEffect(() => {\n    if (isInView) {"
+      },
+      {
+        "severity": "medium",
+        "type": "logic",
+        "message": "Conflicting animation logic: AnimatedCard is designed to animate itself on scroll. The parent section's useEffect attempts to animate children wrappers, which is redundant and creates conflicting delays. This useEffect block is now dead code.",
+        "line_start": 584,
+        "line_end": 590,
+        "search_str": "      controls.start((i) => ({\n        opacity: 1,\n        scale: 1,\n        transition: { type: 'spring', ...smoothSpring, duration: 1.0, delay: i * 0.15 },\n      }));\n    }\n  }, [isInView, controls]);",
+        "replace_str": "    }\n  }, [isInView]);"
+      },
+      {
+        "severity": "medium",
+        "type": "logic",
+        "message": "Conflicting animation logic: AnimatedCard is designed to animate itself on scroll. The parent TestimonialsSection should not apply staggerChildren/custom animations to the grid container if children are self-animating.",
+        "line_start": 605,
+        "line_end": 616,
+        "search_str": "          initial=\"hidden\"\n          animate={controls}\n          variants={{\n            hidden: { opacity: 0 },\n            visible: {\n              opacity: 1,\n              transition: {\n                staggerChildren: 0.1,\n              },\n            },\n          }}",
+        "replace_str": ""
+      },
+      {
+        "severity": "medium",
+        "type": "logic",
+        "message": "Conflicting animation logic: AnimatedCard is designed to animate itself on scroll. The parent TestimonialsSection should not apply custom animations to the wrapper motion.divs. Change to a plain div.",
+        "line_start": 617,
+        "line_end": 617,
+        "search_str": "            <motion.div key={i} custom={i}>",
+        "replace_str": "            <div key={i}>"
+      }
+    ]
+  }
+}
+--------------------------------------------------------------------------------
+
+STEP 11: [DONE]
+Time: 02:28:57
+Level: SUCCESS
+Message: Moved to review queue
+--------------------------------------------------------------------------------
+

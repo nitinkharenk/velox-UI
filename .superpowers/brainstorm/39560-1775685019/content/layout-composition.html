@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout Composition</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0f0f0f;
+    color: #e5e5e5;
+    padding: 40px 32px 80px;
+  }
+  h1 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+  .subtitle { font-size: 14px; color: #555; margin-bottom: 40px; }
+
+  .layouts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; }
+
+  .layout-card {
+    background: #111;
+    border: 1.5px solid #222;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s;
+    position: relative;
+  }
+  .layout-card:hover { border-color: #333; transform: translateY(-2px); }
+  .layout-card.selected { border-color: #E8473F; }
+  .selected-pill {
+    display: none; position: absolute; top: 10px; right: 10px;
+    background: #E8473F; color: #fff; font-size: 9px; font-weight: 700;
+    padding: 2px 8px; border-radius: 20px; z-index: 10;
+  }
+  .layout-card.selected .selected-pill { display: block; }
+
+  /* ─── Shared mini-widget styles ─── */
+  .preview {
+    padding: 14px;
+    background: #f9f6f0;
+    border-bottom: 1px solid #222;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* light-mode mockup elements */
+  .w { background: #fff; border: 1px solid #e8e3dc; border-radius: 10px; overflow: hidden; }
+  .w-dark { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; }
+  .label { font-size: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+  .val { font-size: 18px; font-weight: 800; }
+  .small-val { font-size: 11px; font-weight: 700; }
+  .tiny { font-size: 6px; color: #a8a29e; }
+
+  /* Rose / sage accent bars */
+  .bar-rose { background: #E8473F; border-radius: 2px; }
+  .bar-sage { background: #3D6B52; border-radius: 2px; }
+  .bar-muted { background: #e8e3dc; border-radius: 2px; }
+
+  /* ─── LAYOUT A: Hero-top + 2-col below ─── */
+  .layout-a .preview {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .a-hero {
+    padding: 10px 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-shrink: 0;
+  }
+  .a-hero .val { color: #1C1917; }
+  .a-hero .tiny { color: #a8a29e; margin-top: 2px; }
+  .a-hero-right { display: flex; gap: 6px; }
+  .a-pill {
+    padding: 4px 8px; border-radius: 20px; font-size: 6px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .a-row { display: flex; gap: 6px; flex: 1; }
+  .a-funnel { flex: 1.4; padding: 8px 10px; display: flex; flex-direction: column; justify-content: space-between; }
+  .funnel-stages { display: flex; flex-direction: column; gap: 4px; }
+  .funnel-row { display: flex; align-items: center; gap: 5px; }
+  .funnel-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; }
+  .funnel-label { font-size: 6px; color: #6B6560; flex: 1; }
+  .funnel-bar-wrap { width: 40px; height: 3px; background: #f0ebe3; border-radius: 2px; }
+  .funnel-bar { height: 100%; border-radius: 2px; }
+  .funnel-count { font-size: 7px; font-weight: 700; color: #1C1917; width: 12px; text-align: right; }
+
+  .a-analytics { flex: 1; padding: 8px 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .a-stat { display: flex; flex-direction: column; }
+  .a-stat .small-val { color: #1C1917; }
+  .a-stat .tiny { color: #a8a29e; }
+
+  .a-activity { flex: 1; padding: 8px 10px; display: flex; flex-direction: column; gap: 4px; }
+  .act-row { display: flex; align-items: center; gap: 5px; font-size: 6px; color: #6B6560; }
+
+  /* ─── LAYOUT B: KPI row + pipeline wide + activity/actions ─── */
+  .layout-b .preview {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .b-kpi-row { display: flex; gap: 6px; flex-shrink: 0; }
+  .b-kpi { flex: 1; padding: 9px 10px; }
+  .b-kpi .small-val { color: #1C1917; }
+  .b-kpi .tiny { color: #a8a29e; }
+
+  .b-pipeline { padding: 10px 12px; flex-shrink: 0; }
+  .b-pipe-inner { display: flex; gap: 4px; margin-top: 6px; }
+  .b-stage {
+    flex: 1; padding: 6px 5px;
+    border-radius: 7px; text-align: center;
+    font-size: 7px; font-weight: 700;
+  }
+  .b-stage .s-num { font-size: 12px; font-weight: 800; }
+
+  .b-bottom-row { display: flex; gap: 6px; flex: 1; }
+  .b-activity { flex: 1.5; padding: 8px 10px; display: flex; flex-direction: column; gap: 4px; overflow: hidden; }
+  .b-quick { flex: 1; padding: 8px 10px; display: flex; flex-direction: column; gap: 4px; }
+  .b-action {
+    flex: 1; border-radius: 7px; padding: 6px 8px;
+    display: flex; align-items: center; gap: 5px;
+    font-size: 7px; font-weight: 600; cursor: pointer;
+  }
+  .b-action-icon { width: 14px; height: 14px; border-radius: 5px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 7px; }
+
+  /* ─── LAYOUT C: Bento asymmetric ─── */
+  .layout-c .preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 6px;
+  }
+  .c-hero { grid-column: 1 / 3; padding: 12px 14px; }
+  .c-hero .val { color: #1C1917; font-size: 26px; }
+  .c-hero .tiny { color: #a8a29e; }
+  .c-hero-inner { display: flex; justify-content: space-between; align-items: flex-end; }
+  .c-sparkline { display: flex; align-items: flex-end; gap: 2px; height: 24px; }
+  .c-spark-bar { width: 5px; border-radius: 1.5px; background: #E8473F; opacity: 0.3; }
+  .c-spark-bar.hi { opacity: 1; }
+
+  .c-review { grid-column: 3 / 4; padding: 10px 10px; display: flex; flex-direction: column; justify-content: space-between; }
+  .c-review .tiny { color: #a8a29e; }
+  .c-review .val { color: #E8473F; font-size: 22px; }
+
+  .c-funnel { grid-column: 1 / 4; padding: 10px 12px; }
+  .c-funnel-row { display: flex; gap: 4px; margin-top: 6px; }
+  .c-fstage { flex: 1; border-radius: 7px; padding: 7px 6px; text-align: center; }
+  .c-fstage .s-num { font-size: 13px; font-weight: 800; }
+  .c-fstage .s-lbl { font-size: 6px; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+  .c-analytics { grid-column: 1 / 2; padding: 8px 10px; }
+  .c-activity { grid-column: 2 / 4; padding: 8px 10px; display: flex; flex-direction: column; gap: 3px; }
+
+  .section-lbl { font-size: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #a8a29e; margin-bottom: 5px; }
+
+  /* Card labels */
+  .card-body { padding: 14px 18px 18px; background: #111; }
+  .card-body .opt-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #444; font-weight: 600; margin-bottom: 4px; }
+  .card-body h3 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 5px; }
+  .card-body p { font-size: 12px; color: #555; line-height: 1.5; }
+
+  .footer { margin-top: 32px; font-size: 12px; color: #444; }
+</style>
+</head>
+<body>
+<h1>How should the widgets be arranged?</h1>
+<p class="subtitle">Three grid compositions for the Hybrid Overview. The widgets are the same — the layout changes how you read the page.</p>
+
+<div class="layouts">
+
+  <!-- LAYOUT A: Hero top + 2-col -->
+  <div class="layout-card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="selected-pill">Selected</div>
+    <div class="preview" style="background:#f9f6f0;">
+      <!-- Hero -->
+      <div class="w a-hero">
+        <div>
+          <div class="val" style="color:#1C1917;font-size:20px;">94</div>
+          <div class="tiny">Published components · ↑ 12 this week</div>
+        </div>
+        <div class="a-hero-right">
+          <div class="a-pill" style="background:#EEF4F1;color:#3D6B52;">48K views</div>
+          <div class="a-pill" style="background:#FDF0EF;color:#E8473F;">8 in review</div>
+        </div>
+      </div>
+      <!-- Row 2 -->
+      <div class="a-row">
+        <div class="w a-funnel">
+          <div class="section-lbl">Pipeline</div>
+          <div class="funnel-stages">
+            <div class="funnel-row"><div class="funnel-dot" style="background:#3b82f6"></div><span class="funnel-label">Ideas</span><div class="funnel-bar-wrap"><div class="funnel-bar bar-sage" style="width:70%"></div></div><span class="funnel-count">12</span></div>
+            <div class="funnel-row"><div class="funnel-dot" style="background:#a78bfa"></div><span class="funnel-label">Enrich</span><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:40%;background:#a78bfa"></div></div><span class="funnel-count">5</span></div>
+            <div class="funnel-row"><div class="funnel-dot" style="background:#fbbf24"></div><span class="funnel-label">Generate</span><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:25%;background:#fbbf24"></div></div><span class="funnel-count">3</span></div>
+            <div class="funnel-row"><div class="funnel-dot" style="background:#E8473F"></div><span class="funnel-label">Review</span><div class="funnel-bar-wrap"><div class="funnel-bar bar-rose" style="width:60%"></div></div><span class="funnel-count">8</span></div>
+            <div class="funnel-row"><div class="funnel-dot" style="background:#3D6B52"></div><span class="funnel-label">Published</span><div class="funnel-bar-wrap"><div class="funnel-bar bar-sage" style="width:100%"></div></div><span class="funnel-count">94</span></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;flex:1">
+          <div class="w a-analytics">
+            <div class="section-lbl">Analytics</div>
+            <div class="a-stat"><span class="small-val">3.2K</span><span class="tiny">Copies</span></div>
+            <div class="a-stat" style="margin-top:4px"><span class="small-val">1.8K</span><span class="tiny">Upvotes</span></div>
+          </div>
+          <div class="w a-activity" style="flex:1">
+            <div class="section-lbl">Activity</div>
+            <div class="act-row"><div style="width:4px;height:4px;border-radius:50%;background:#3D6B52;flex-shrink:0"></div>neon-glow published</div>
+            <div class="act-row"><div style="width:4px;height:4px;border-radius:50%;background:#3b82f6;flex-shrink:0"></div>magnetic-cursor review</div>
+            <div class="act-row"><div style="width:4px;height:4px;border-radius:50%;background:#fbbf24;flex-shrink:0"></div>glass-card generating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="opt-lbl">Layout A</div>
+      <h3>Hero + Sidebar Columns</h3>
+      <p>Big hero stat at top spanning full width. Pipeline and analytics/activity side by side below. Classic, readable top-to-bottom flow.</p>
+    </div>
+  </div>
+
+  <!-- LAYOUT B: KPI row + pipeline wide + bottom -->
+  <div class="layout-card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="selected-pill">Selected</div>
+    <div class="preview" style="background:#f9f6f0;">
+      <!-- KPI row -->
+      <div class="b-kpi-row">
+        <div class="w b-kpi"><div class="tiny">Published</div><div class="small-val" style="color:#1C1917;font-size:13px;">94</div></div>
+        <div class="w b-kpi"><div class="tiny">In Review</div><div class="small-val" style="color:#E8473F;font-size:13px;">8</div></div>
+        <div class="w b-kpi"><div class="tiny">Views</div><div class="small-val" style="color:#1C1917;font-size:13px;">48K</div></div>
+        <div class="w b-kpi"><div class="tiny">Copies</div><div class="small-val" style="color:#1C1917;font-size:13px;">3.2K</div></div>
+      </div>
+      <!-- Pipeline full-width -->
+      <div class="w b-pipeline">
+        <div class="section-lbl">Production Pipeline</div>
+        <div class="b-pipe-inner">
+          <div class="b-stage" style="background:#eff6ff;color:#3b82f6"><div class="s-num">12</div><div style="font-size:6px;margin-top:2px">Ideas</div></div>
+          <div class="b-stage" style="background:#f5f3ff;color:#a78bfa"><div class="s-num">5</div><div style="font-size:6px;margin-top:2px">Enrich</div></div>
+          <div class="b-stage" style="background:#fffbeb;color:#d97706"><div class="s-num">3</div><div style="font-size:6px;margin-top:2px">Generate</div></div>
+          <div class="b-stage" style="background:#FDF0EF;color:#E8473F"><div class="s-num">8</div><div style="font-size:6px;margin-top:2px">Review</div></div>
+          <div class="b-stage" style="background:#EEF4F1;color:#3D6B52"><div class="s-num">94</div><div style="font-size:6px;margin-top:2px">Live</div></div>
+        </div>
+      </div>
+      <!-- Bottom row -->
+      <div class="b-bottom-row" style="flex:1">
+        <div class="w b-activity">
+          <div class="section-lbl">Recent Activity</div>
+          <div class="act-row"><div style="width:4px;height:4px;border-radius:50%;background:#3D6B52;flex-shrink:0"></div>neon-glow published 2m ago</div>
+          <div class="act-row"><div style="width:4px;height:4px;border-radius:50%;background:#3b82f6;flex-shrink:0"></div>magnetic-cursor in review</div>
+          <div class="act-row"><div style="width:4px;height:4px;border-radius:50%;background:#fbbf24;flex-shrink:0"></div>glass-card generating…</div>
+          <div class="act-row"><div style="width:4px;height:4px;border-radius:50%;background:#a78bfa;flex-shrink:0"></div>scroll-reveal enriched</div>
+        </div>
+        <div class="w b-quick">
+          <div class="section-lbl">Quick Actions</div>
+          <div class="b-action" style="background:#FDF0EF;">
+            <div class="b-action-icon" style="background:#E8473F22;">+</div>
+            <span style="font-size:7px;color:#E8473F">Add idea</span>
+          </div>
+          <div class="b-action" style="background:#fffbeb;">
+            <div class="b-action-icon" style="background:#fbbf2422;">⚡</div>
+            <span style="font-size:7px;color:#d97706">Run pipeline</span>
+          </div>
+          <div class="b-action" style="background:#EEF4F1;">
+            <div class="b-action-icon" style="background:#3D6B5222;">✓</div>
+            <span style="font-size:7px;color:#3D6B52">Review queue</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="opt-lbl">Layout B — Recommended</div>
+      <h3>KPI Strip + Full Pipeline</h3>
+      <p>4 KPI chips across the top. Pipeline funnel spanning the full width as a visual centrepiece. Activity feed + quick actions in the bottom row.</p>
+    </div>
+  </div>
+
+  <!-- LAYOUT C: Bento asymmetric -->
+  <div class="layout-card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="selected-pill">Selected</div>
+    <div class="preview" style="background:#f9f6f0;">
+      <div class="w c-hero">
+        <div class="c-hero-inner">
+          <div>
+            <div class="tiny">Published components</div>
+            <div class="val" style="color:#1C1917;font-size:24px;">94</div>
+          </div>
+          <div class="c-sparkline">
+            <div class="c-spark-bar" style="height:30%"></div>
+            <div class="c-spark-bar" style="height:50%"></div>
+            <div class="c-spark-bar" style="height:40%"></div>
+            <div class="c-spark-bar" style="height:65%"></div>
+            <div class="c-spark-bar" style="height:45%"></div>
+            <div class="c-spark-bar hi" style="height:80%"></div>
+            <div class="c-spark-bar hi" style="height:100%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="w c-review">
+        <div class="tiny">In review</div>
+        <div class="val" style="color:#E8473F;font-size:20px;">8</div>
+        <div style="font-size:5px;color:#E8473F;margin-top:2px">↑ needs attention</div>
+      </div>
+      <div class="w c-funnel">
+        <div class="section-lbl">Pipeline</div>
+        <div class="c-funnel-row">
+          <div class="c-fstage" style="background:#eff6ff;color:#3b82f6"><div class="s-num">12</div><div class="s-lbl">Ideas</div></div>
+          <div class="c-fstage" style="background:#f5f3ff;color:#a78bfa"><div class="s-num">5</div><div class="s-lbl">Enrich</div></div>
+          <div class="c-fstage" style="background:#fffbeb;color:#d97706"><div class="s-num">3</div><div class="s-lbl">Gen</div></div>
+          <div class="c-fstage" style="background:#FDF0EF;color:#E8473F"><div class="s-num">8</div><div class="s-lbl">Review</div></div>
+          <div class="c-fstage" style="background:#EEF4F1;color:#3D6B52"><div class="s-num">94</div><div class="s-lbl">Live</div></div>
+        </div>
+      </div>
+      <div class="w c-analytics">
+        <div class="section-lbl">Analytics</div>
+        <div style="margin-top:4px"><div class="small-val" style="color:#1C1917">48K</div><div class="tiny">Views</div></div>
+        <div style="margin-top:5px"><div class="small-val" style="color:#1C1917">3.2K</div><div class="tiny">Copies</div></div>
+      </div>
+      <div class="w c-activity">
+        <div class="section-lbl">Recent</div>
+        <div class="act-row" style="margin-top:2px"><div style="width:4px;height:4px;border-radius:50%;background:#3D6B52;flex-shrink:0"></div>neon-glow published</div>
+        <div class="act-row"><div style="width:4px;height:4px;border-radius:50%;background:#3b82f6;flex-shrink:0"></div>magnetic-cursor review</div>
+        <div class="act-row"><div style="width:4px;height:4px;border-radius:50%;background:#fbbf24;flex-shrink:0"></div>glass-card generating</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="opt-lbl">Layout C</div>
+      <h3>Asymmetric Bento Grid</h3>
+      <p>Hero stat and review count share the top row at different widths. Pipeline spans full width. Analytics and activity split the bottom — offset sizes for visual interest.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="footer">Each layout uses the same 5 widgets — the difference is how they're weighted and ordered. Click to pick, or describe a mix.</p>
+
+<script>
+function toggleSelect(el) {
+  document.querySelectorAll('.layout-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  if (window.__recordChoice) window.__recordChoice(el.dataset.choice, el.querySelector('h3').textContent);
+}
+</script>
+</body>
+</html>

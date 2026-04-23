@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Direction</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0f0f0f;
+    color: #e5e5e5;
+    min-height: 100vh;
+    padding: 40px 32px 80px;
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 40px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+  }
+
+  .card {
+    background: #161616;
+    border: 1.5px solid #262626;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .card:hover { border-color: #444; transform: translateY(-2px); }
+  .card.selected { border-color: #E8473F; box-shadow: 0 0 0 1px #E8473F33; }
+
+  .card-preview {
+    padding: 20px 20px 16px;
+    border-bottom: 1px solid #1e1e1e;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ——— Option A: Pipeline Command Center ——— */
+  .preview-a {
+    background: linear-gradient(135deg, #111 0%, #161616 100%);
+    height: 220px;
+  }
+  .preview-a .mock-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .preview-a .mock-title { font-size: 11px; font-weight: 600; color: #fff; }
+  .preview-a .mock-badge {
+    font-size: 9px; background: #E8473F22; color: #E8473F;
+    padding: 2px 7px; border-radius: 20px; border: 1px solid #E8473F44;
+  }
+  .pipeline-stages {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .stage-pill {
+    flex: 1;
+    padding: 8px 6px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .stage-pill.ideas { background: #1a2535; color: #60a5fa; }
+  .stage-pill.enrich { background: #1e1a2e; color: #a78bfa; }
+  .stage-pill.generate { background: #1f1a14; color: #fbbf24; }
+  .stage-pill.review { background: #1a1f1a; color: #34d399; }
+  .stage-pill.published { background: #1e1313; color: #E8473F; }
+  .stage-count { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+
+  .mock-log {
+    background: #0a0a0a;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 8px;
+    font-family: monospace;
+    color: #444;
+    line-height: 1.7;
+  }
+  .mock-log .ok { color: #34d399; }
+  .mock-log .run { color: #fbbf24; }
+  .mock-log .err { color: #f87171; }
+
+  /* ——— Option B: Analytics / Content ——— */
+  .preview-b {
+    background: linear-gradient(135deg, #111 0%, #161616 100%);
+    height: 220px;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .stat-tile {
+    background: #1a1a1a;
+    border-radius: 8px;
+    padding: 9px 10px;
+    border: 1px solid #222;
+  }
+  .stat-label { font-size: 8px; color: #555; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .stat-value { font-size: 16px; font-weight: 700; color: #fff; line-height: 1; }
+  .stat-delta { font-size: 8px; color: #34d399; margin-top: 3px; }
+  .sparkline {
+    height: 28px;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    margin-top: 8px;
+  }
+  .bar {
+    flex: 1;
+    background: #E8473F44;
+    border-radius: 2px;
+    transition: height 0.2s;
+  }
+  .bar.active { background: #E8473F; }
+  .top-assets {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .asset-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid #1e1e1e;
+  }
+  .asset-dot { width: 6px; height: 6px; border-radius: 50%; background: #E8473F; }
+  .asset-name { font-size: 8px; color: #999; flex: 1; }
+  .asset-views { font-size: 8px; color: #555; }
+
+  /* ——— Option C: Hybrid Command Center ——— */
+  .preview-c {
+    background: linear-gradient(135deg, #111 0%, #161616 100%);
+    height: 220px;
+  }
+  .hero-stat {
+    background: linear-gradient(135deg, #1a0f0f, #1e1313);
+    border: 1px solid #E8473F33;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hero-num { font-size: 28px; font-weight: 800; color: #E8473F; line-height: 1; }
+  .hero-label { font-size: 8px; color: #999; margin-top: 3px; }
+  .hero-progress {
+    width: 70px;
+    height: 70px;
+    position: relative;
+  }
+  .hero-progress svg { transform: rotate(-90deg); }
+  .mini-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .mini-tile {
+    flex: 1;
+    background: #1a1a1a;
+    border-radius: 7px;
+    padding: 7px 8px;
+    border: 1px solid #222;
+  }
+  .mini-val { font-size: 13px; font-weight: 700; color: #fff; }
+  .mini-lbl { font-size: 7.5px; color: #555; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+  .recent-activity {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .activity-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 8px;
+    color: #666;
+  }
+  .dot { width: 5px; height: 5px; border-radius: 50%; }
+  .dot.green { background: #34d399; }
+  .dot.blue { background: #60a5fa; }
+  .dot.yellow { background: #fbbf24; }
+
+  /* Card labels */
+  .card-body {
+    padding: 16px 20px 18px;
+  }
+  .option-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .card-body h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .card-body p {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.6;
+  }
+  .selected-badge {
+    display: none;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #E8473F;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .card.selected .selected-badge { display: block; }
+
+  .footer {
+    margin-top: 32px;
+    font-size: 12px;
+    color: #444;
+  }
+</style>
+</head>
+<body>
+<h1>What's the soul of this dashboard?</h1>
+<p class="subtitle">Three different philosophies for the VeloxUI overview page. Click to select the direction that feels right.</p>
+
+<div class="cards">
+
+  <!-- Option A: Pipeline Command Center -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-preview preview-a">
+      <span class="selected-badge">Selected</span>
+      <div class="mock-topbar">
+        <span class="mock-title">Pipeline Status</span>
+        <span class="mock-badge">3 running</span>
+      </div>
+      <div class="pipeline-stages">
+        <div class="stage-pill ideas"><div class="stage-count">12</div>Ideas</div>
+        <div class="stage-pill enrich"><div class="stage-count">5</div>Enrich</div>
+        <div class="stage-pill generate"><div class="stage-count">3</div>Gen</div>
+        <div class="stage-pill review"><div class="stage-count">8</div>Review</div>
+        <div class="stage-pill published"><div class="stage-count">94</div>Live</div>
+      </div>
+      <div class="mock-log">
+        <div><span class="ok">✓</span> button-ripple enriched — 1.2s</div>
+        <div><span class="run">⟳</span> glass-card-hover generating…</div>
+        <div><span class="run">⟳</span> magnetic-cursor validating…</div>
+        <div><span class="err">✗</span> scroll-reveal repair queued</div>
+        <div><span class="ok">✓</span> neon-glow published</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="option-label">Option A</div>
+      <h3>Pipeline Command Center</h3>
+      <p>Led by the production funnel. Live status of every stage — ideas queued, enrichment running, generation in progress, review waiting. Real-time logs front and center.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Analytics / Library -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-preview preview-b">
+      <span class="selected-badge">Selected</span>
+      <div class="mock-topbar">
+        <span class="mock-title">Library Performance</span>
+        <span class="mock-badge">Last 30d</span>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-tile">
+          <div class="stat-label">Published</div>
+          <div class="stat-value">94</div>
+          <div class="stat-delta">+12 this week</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-label">Total Views</div>
+          <div class="stat-value">48K</div>
+          <div class="stat-delta">↑ 23%</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-label">Copies</div>
+          <div class="stat-value">3.2K</div>
+          <div class="stat-delta">↑ 41%</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-label">Upvotes</div>
+          <div class="stat-value">1.8K</div>
+          <div class="stat-delta">↑ 18%</div>
+        </div>
+      </div>
+      <div class="sparkline">
+        <div class="bar" style="height:35%"></div>
+        <div class="bar" style="height:50%"></div>
+        <div class="bar" style="height:40%"></div>
+        <div class="bar" style="height:65%"></div>
+        <div class="bar" style="height:45%"></div>
+        <div class="bar" style="height:70%"></div>
+        <div class="bar active" style="height:90%"></div>
+        <div class="bar" style="height:55%"></div>
+        <div class="bar" style="height:75%"></div>
+        <div class="bar active" style="height:100%"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="option-label">Option B</div>
+      <h3>Library Analytics</h3>
+      <p>Led by content performance. How many components are published, how are they performing — views, copies, upvotes. Chart-heavy with trending components surfaced.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Hybrid -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-preview preview-c">
+      <span class="selected-badge">Selected</span>
+      <div class="hero-stat">
+        <div>
+          <div class="hero-num">94</div>
+          <div class="hero-label">Published components</div>
+        </div>
+        <svg width="50" height="50" viewBox="0 0 50 50" class="hero-progress">
+          <circle cx="25" cy="25" r="20" fill="none" stroke="#1e1e1e" stroke-width="5"/>
+          <circle cx="25" cy="25" r="20" fill="none" stroke="#E8473F" stroke-width="5"
+            stroke-dasharray="125.66" stroke-dashoffset="31.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="mini-row">
+        <div class="mini-tile"><div class="mini-val">12</div><div class="mini-lbl">Ideas</div></div>
+        <div class="mini-tile"><div class="mini-val">3</div><div class="mini-lbl">Generating</div></div>
+        <div class="mini-tile"><div class="mini-val">8</div><div class="mini-lbl">Review</div></div>
+        <div class="mini-tile"><div class="mini-val">48K</div><div class="mini-lbl">Views</div></div>
+      </div>
+      <div class="recent-activity">
+        <div class="activity-row"><div class="dot green"></div>neon-glow published 2m ago</div>
+        <div class="activity-row"><div class="dot blue"></div>magnetic-cursor in review</div>
+        <div class="activity-row"><div class="dot yellow"></div>glass-card generating…</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="option-label">Option C — Recommended</div>
+      <h3>Hybrid Overview</h3>
+      <p>A true command center: published count hero, pipeline funnel at a glance, key analytics, and a live activity feed. Tells the full story without deep-diving into any one thing.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="footer">Click a card to select it, then tell me in the terminal which direction you want to go (or pick multiple if you want to mix elements).</p>
+
+<script>
+function toggleSelect(el) {
+  const parent = el.closest('.cards');
+  parent.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  if (window.__recordChoice) window.__recordChoice(el.dataset.choice, el.querySelector('h3').textContent);
+}
+</script>
+</body>
+</html>

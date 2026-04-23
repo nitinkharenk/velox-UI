@@ -1,0 +1,59 @@
+{
+  "name": "veloxui-dashboard",
+  "description": "AI-powered animated React component library",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test:unit": "npx tsx --test tests/unit/**/*.test.ts",
+    "pipeline:enrich": "npx tsx scripts/run-pipeline.ts enrich",
+    "pipeline:generate": "npx tsx scripts/run-pipeline.ts generate",
+    "pipeline:full": "npx tsx scripts/run-pipeline.ts full",
+    "db:seed": "npx tsx scripts/seed-ideas.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.80.0",
+    "@babel/standalone": "^7.29.2",
+    "@google/genai": "^1.50.1",
+    "@monaco-editor/react": "^4.7.0",
+    "@supabase/ssr": "^0.9.0",
+    "@supabase/supabase-js": "^2.99.3",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "groq-sdk": "^1.1.1",
+    "gsap": "^3.14.2",
+    "lucide-react": "^0.577.0",
+    "next": "16.2.0",
+    "openai": "^6.32.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "shiki": "^4.0.2",
+    "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.42.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^17.3.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.0",
+    "postgres": "^3.4.8",
+    "tailwindcss": "^4",
+    "tsx": "^4.21.0",
+    "typescript": "^5"
+  },
+  "main": "check_db.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

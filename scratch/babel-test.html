@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="output"></div>
+  <script>
+    const code = `
+interface AnimatedButtonProps {
+  children: ReactNode;
+  primary?: boolean;
+}
+const AnimatedButton: React.FC<AnimatedButtonProps> = ({ children, primary = true }) => {
+  return <button>{children}</button>;
+};
+function App() {
+  return <AnimatedButton>Click me</AnimatedButton>;
+}
+    `;
+    try {
+      const result = Babel.transform(code, { presets: ['react', 'typescript'] });
+      document.getElementById('output').textContent = "SUCCESS:\n" + result.code;
+    } catch (e) {
+      document.getElementById('output').textContent = "ERROR:\n" + e.message;
+    }
+  </script>
+</body>
+</html>

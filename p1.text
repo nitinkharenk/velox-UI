@@ -1,0 +1,12 @@
+All changes from this prompt have been implemented:
+
+CHANGE 1 — lib/transform.ts: ✅ Created (toSandboxCode + validateSandboxCode)
+CHANGE 2 — Preview API route: ✅ Already handled by normalizeSandboxComponentCode() in lib/preview/sandbox.ts
+CHANGE 3 — sandbox_code column: ✅ Not applicable (column never existed in this codebase)
+CHANGE 4 — Pipeline save step: ✅ Only saves production code (generated_code column)
+CHANGE 5 — SSE log messages: ✅ Updated
+  - GEN step now emits: "React code generated (production format)" (lib/pipeline/runPipeline.ts)
+  - FIX step now says: "Production code repaired" (lib/pipeline/generate.ts)
+
+VERIFICATION:
+- npx tsc --noEmit: All pipeline source files pass (pre-existing test-only errors unchanged)

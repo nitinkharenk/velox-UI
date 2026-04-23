@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Velox UI — Developer Reference</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #222222;
+    --accent: #7c3aed;
+    --accent-dim: #4c1d95;
+    --text: #e5e5e5;
+    --text-dim: #888888;
+    --green: #22c55e;
+    --red: #ef4444;
+    --yellow: #eab308;
+    --blue: #3b82f6;
+    --code-bg: #161616;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Layout */
+  .layout { display: flex; min-height: 100vh; }
+  nav { width: 260px; background: var(--surface); border-right: 1px solid var(--border); padding: 24px 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; flex-shrink: 0; }
+  main { flex: 1; padding: 48px 64px; max-width: 960px; }
+
+  /* Nav */
+  .nav-brand { padding: 0 20px 24px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+  .nav-brand h1 { font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: 0.05em; text-transform: uppercase; }
+  .nav-brand p { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  nav ul { list-style: none; padding: 0 8px; }
+  nav li a { display: block; padding: 7px 12px; border-radius: 6px; font-size: 13px; color: var(--text-dim); transition: all 0.15s; }
+  nav li a:hover { background: #1a1a1a; color: var(--text); text-decoration: none; }
+  nav li a.active { background: var(--accent-dim); color: #c4b5fd; }
+  .nav-section { padding: 16px 20px 6px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+
+  /* Content */
+  section { margin-bottom: 72px; scroll-margin-top: 32px; }
+  h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+  h3 { font-size: 17px; font-weight: 600; margin: 32px 0 12px; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  h4 { font-size: 14px; font-weight: 600; margin: 20px 0 8px; color: #a78bfa; }
+  p { color: var(--text-dim); margin-bottom: 12px; font-size: 14px; }
+  .subtitle { font-size: 15px; color: var(--text-dim); margin-bottom: 32px; }
+
+  /* Tags */
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .tag-green { background: #052e16; color: var(--green); }
+  .tag-red { background: #450a0a; color: var(--red); }
+  .tag-yellow { background: #422006; color: var(--yellow); }
+  .tag-blue { background: #0c1a40; color: var(--blue); }
+  .tag-purple { background: var(--accent-dim); color: #c4b5fd; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 24px; }
+  th { text-align: left; padding: 8px 12px; background: #161616; color: var(--text-dim); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
+  td { padding: 9px 12px; border-bottom: 1px solid #191919; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  code { font-family: 'Fira Code', 'Cascadia Code', monospace; font-size: 12px; background: var(--code-bg); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; color: #c4b5fd; }
+  pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; overflow-x: auto; font-family: 'Fira Code', monospace; font-size: 13px; line-height: 1.7; margin-bottom: 20px; }
+  pre code { background: none; border: none; padding: 0; font-size: 13px; color: #e5e5e5; }
+
+  /* Alerts */
+  .alert { border-left: 3px solid; border-radius: 0 6px 6px 0; padding: 12px 16px; margin-bottom: 16px; font-size: 13px; }
+  .alert-red { background: #450a0a22; border-color: var(--red); color: #fca5a5; }
+  .alert-green { background: #052e1622; border-color: var(--green); color: #86efac; }
+  .alert-yellow { background: #42200622; border-color: var(--yellow); color: #fde047; }
+  .alert strong { font-weight: 700; }
+
+  /* Fact cards */
+  .facts-grid { display: grid; gap: 12px; }
+  .fact { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+  .fact-num { font-size: 11px; font-weight: 700; color: var(--accent); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .fact-text { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+  .fact-text strong { color: var(--text); }
+
+  /* State machine */
+  .state { display: inline-block; background: #1a1a1a; border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; font-family: monospace; font-size: 12px; margin: 2px; }
+  .state-ok { border-color: var(--green); color: var(--green); background: #052e1615; }
+  .state-warn { border-color: var(--yellow); color: var(--yellow); background: #42200615; }
+  .state-err { border-color: var(--red); color: var(--red); background: #450a0a15; }
+  .state-default { color: var(--text-dim); }
+  .arrow { color: var(--text-dim); margin: 0 4px; font-size: 14px; }
+
+  /* Rule list */
+  .rule-list { list-style: none; }
+  .rule-list li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #181818; font-size: 13px; align-items: flex-start; }
+  .rule-list li:last-child { border-bottom: none; }
+  .rule-icon { width: 20px; flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+  .rule-text { color: var(--text-dim); }
+  .rule-text strong { color: var(--text); }
+  .rule-text code { color: #c4b5fd; }
+
+  /* Header */
+  .page-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+  .stack-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .stack-badge { background: #1a1a1a; border: 1px solid var(--border); border-radius: 6px; padding: 4px 12px; font-size: 12px; color: var(--text-dim); }
+
+  @media (max-width: 768px) {
+    .layout { flex-direction: column; }
+    nav { width: 100%; height: auto; position: relative; }
+    main { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- Sidebar Navigation -->
+<nav>
+  <div class="nav-brand">
+    <h1>Velox UI</h1>
+    <p>Developer Reference</p>
+  </div>
+  <div class="nav-section">Overview</div>
+  <ul>
+    <li><a href="#overview">Project Overview</a></li>
+    <li><a href="#routes">Route Architecture</a></li>
+    <li><a href="#env">Environment Variables</a></li>
+  </ul>
+  <div class="nav-section">Core</div>
+  <ul>
+    <li><a href="#filemap">File Map</a></li>
+    <li><a href="#components">Components</a></li>
+    <li><a href="#types">Types</a></li>
+  </ul>
+  <div class="nav-section">Pipeline</div>
+  <ul>
+    <li><a href="#pipeline">Pipeline Architecture</a></li>
+    <li><a href="#state-machine">Idea State Machine</a></li>
+    <li><a href="#api">API Endpoints</a></li>
+    <li><a href="#sse">SSE Events</a></li>
+  </ul>
+  <div class="nav-section">Database</div>
+  <ul>
+    <li><a href="#db">DB Schema</a></li>
+  </ul>
+  <div class="nav-section">Sandbox</div>
+  <ul>
+    <li><a href="#sandbox">Sandbox Rules</a></li>
+    <li><a href="#facts">Architecture Facts</a></li>
+  </ul>
+</nav>
+
+<!-- Main Content -->
+<main>
+
+  <!-- Header -->
+  <div class="page-header" id="overview">
+    <h2>Velox UI — Developer Reference</h2>
+    <p class="subtitle">AI-powered animated React component generation platform. Operators capture ideas → enrich with AI → generate sandbox-safe code → review in live preview → publish to component library.</p>
+    <div class="stack-badges">
+      <span class="stack-badge">Next.js 16.2</span>
+      <span class="stack-badge">React 19</span>
+      <span class="stack-badge">Tailwind CSS 4</span>
+      <span class="stack-badge">Framer Motion 12</span>
+      <span class="stack-badge">GSAP 3</span>
+      <span class="stack-badge">Supabase</span>
+      <span class="stack-badge">Claude / Gemini / Groq</span>
+      <span class="stack-badge">Vertex AI</span>
+      <span class="stack-badge">Ollama</span>
+    </div>
+  </div>
+
+  <!-- Route Architecture -->
+  <section id="routes">
+    <h2>Route Architecture</h2>
+    <p>Next.js App Router with three route groups. Route group names do not appear in URLs.</p>
+    <table>
+      <tr><th>Group</th><th>URLs</th><th>Rendering</th></tr>
+      <tr><td><code>(dashboard)</code></td><td>/dashboard, /pipeline/*, /settings, /forge, /pipeline-visualization, /test, /vertex-ai, /vertex-chat</td><td>CSR (except /dashboard = SSR)</td></tr>
+      <tr><td><code>(velox-ai)</code></td><td>/velox-ai</td><td>SSR</td></tr>
+      <tr><td><code>(velox-ai-studio)</code></td><td>/velox-ai-studio, /velox-ai-studio/chat, /velox-ai-studio/settings</td><td>CSR</td></tr>
+      <tr><td><code>(public)</code></td><td>/ (landing)</td><td>SSR</td></tr>
+      <tr><td>root</td><td>/preview/[slug], /preview/live, /login</td><td>CSR</td></tr>
+    </table>
+    <h3>Dashboard Pipeline Sub-Routes</h3>
+    <table>
+      <tr><th>Route</th><th>Purpose</th></tr>
+      <tr><td><code>/pipeline/ideas</code></td><td>Idea capture &amp; enrichment queue</td></tr>
+      <tr><td><code>/pipeline/generate</code></td><td>Live SSE code generation with log terminal</td></tr>
+      <tr><td><code>/pipeline/review</code></td><td>QA sandbox preview — approve or reject</td></tr>
+      <tr><td><code>/pipeline/inventory</code></td><td>Published asset management</td></tr>
+    </table>
+  </section>
+
+  <!-- Environment Variables -->
+  <section id="env">
+    <h2>Environment Variables</h2>
+    <table>
+      <tr><th>Variable</th><th>Required</th><th>Purpose</th></tr>
+      <tr><td><code>NEXT_PUBLIC_SUPABASE_URL</code></td><td><span class="tag tag-red">Required</span></td><td>Supabase project URL</td></tr>
+      <tr><td><code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code></td><td><span class="tag tag-red">Required</span></td><td>Supabase anon key</td></tr>
+      <tr><td><code>SUPABASE_SERVICE_ROLE_KEY</code></td><td><span class="tag tag-yellow">Optional</span></td><td>Falls back to anon key</td></tr>
+      <tr><td><code>ANTHROPIC_API_KEY</code></td><td><span class="tag tag-red">Required</span></td><td>Claude — required for generation</td></tr>
+      <tr><td><code>OPENAI_API_KEY</code></td><td><span class="tag tag-yellow">Optional</span></td><td>Embeddings for semantic search</td></tr>
+      <tr><td><code>GEMINI_API_KEY</code></td><td><span class="tag tag-yellow">Optional</span></td><td>Google Gemini provider</td></tr>
+      <tr><td><code>GROQ_API_KEY</code></td><td><span class="tag tag-yellow">Optional</span></td><td>Groq provider</td></tr>
+      <tr><td><code>OLLAMA_URL</code></td><td><span class="tag tag-yellow">Optional</span></td><td>Local LLM (default: http://localhost:11434)</td></tr>
+    </table>
+  </section>
+
+  <!-- File Map -->
+  <section id="filemap">
+    <h2>File Map</h2>
+    <h3>Database Layer <code>lib/db/</code></h3>
+    <table>
+      <tr><th>File</th><th>Key Exports</th></tr>
+      <tr><td><code>lib/db/supabase.ts</code></td><td>Singleton Supabase client (SSR-safe)</td></tr>
+      <tr><td><code>lib/db/assets.ts</code></td><td><code>getDashboardData()</code>, <code>getPublishedAssets()</code>, <code>getLandingAssets()</code>, <code>getAssetBySlug()</code>, <code>searchAssets()</code></td></tr>
+      <tr><td><code>lib/db/search.ts</code></td><td>Semantic + keyword search</td></tr>
+    </table>
+    <h3>AI Integration <code>lib/ai/</code></h3>
+    <table>
+      <tr><th>File</th><th>Provider</th></tr>
+      <tr><td><code>lib/ai/anthropic.ts</code></td><td>Claude — enrich / generate / validate / fix / reflect</td></tr>
+      <tr><td><code>lib/ai/gemini.ts</code></td><td>Google Gemini</td></tr>
+      <tr><td><code>lib/ai/groq.ts</code></td><td>Groq LLM</td></tr>
+      <tr><td><code>lib/ai/ollama.ts</code></td><td>Ollama local LLM</td></tr>
+      <tr><td><code>lib/ai/vertex.ts</code></td><td>Google Vertex AI</td></tr>
+      <tr><td><code>lib/ai/vertexPipeline.ts</code></td><td>Vertex AI for pipeline (40k token budget)</td></tr>
+    </table>
+    <h3>Pipeline Orchestration <code>lib/pipeline/</code></h3>
+    <table>
+      <tr><th>File</th><th>Purpose</th></tr>
+      <tr><td><code>lib/pipeline/generate.ts</code></td><td><code>enrichIdea()</code>, <code>generateCode()</code>, <code>validateAndFix()</code>, <code>validateCodeString()</code> (100+ rules), <code>autoFixCode()</code></td></tr>
+      <tr><td><code>lib/pipeline/runPipeline.ts</code></td><td>Full flow: enrich → generate → validate → repair (3 retries)</td></tr>
+      <tr><td><code>lib/pipeline/ingest.ts</code></td><td><code>ingestAsset()</code> — publishes idea to assets table</td></tr>
+      <tr><td><code>lib/pipeline/prompts.ts</code></td><td>All AI prompt templates</td></tr>
+      <tr><td><code>lib/pipeline/providerDispatch.ts</code></td><td>Routes calls to correct AI provider</td></tr>
+      <tr><td><code>lib/pipeline/providerModels.ts</code></td><td>Model name constants per provider</td></tr>
+      <tr><td><code>lib/pipeline/validationStatic.ts</code></td><td>Static auto-fix transforms, sandbox safety rules</td></tr>
+      <tr><td><code>lib/pipeline/validationRuntime.ts</code></td><td>Token budget (40k), timeout handling</td></tr>
+    </table>
+    <h3>Preview / Sandbox <code>lib/preview/</code></h3>
+    <table>
+      <tr><th>File</th><th>Purpose</th></tr>
+      <tr><td><code>lib/preview/sandbox.ts</code></td><td><code>buildSandboxHTML(code, name)</code> — injects Babel Standalone + FM UMD + GSAP UMD</td></tr>
+      <tr><td><code>lib/preview/live.ts</code></td><td>Live preview compilation</td></tr>
+    </table>
+  </section>
+
+  <!-- Components -->
+  <section id="components">
+    <h2>Components</h2>
+    <h3>Layout</h3>
+    <table>
+      <tr><th>Component</th><th>File</th><th>Purpose</th></tr>
+      <tr><td>DashboardShell</td><td><code>components/layout/DashboardShell.tsx</code></td><td>Sidebar + scroll area wrapper</td></tr>
+      <tr><td>Sidebar</td><td><code>components/layout/Sidebar.tsx</code></td><td>Nav sidebar</td></tr>
+      <tr><td>dashboardConfig</td><td><code>components/layout/dashboardConfig.ts</code></td><td>Nav link definitions</td></tr>
+    </table>
+    <h3>Dashboard Widgets</h3>
+    <table>
+      <tr><th>Component</th><th>File</th></tr>
+      <tr><td>DashboardPageFrame</td><td><code>components/dashboard/DashboardPageFrame.tsx</code></td></tr>
+      <tr><td>HeroWidget</td><td><code>components/dashboard/widgets/HeroWidget.tsx</code></td></tr>
+      <tr><td>PipelineFunnelWidget</td><td><code>components/dashboard/widgets/PipelineFunnelWidget.tsx</code></td></tr>
+      <tr><td>AnalyticsWidget</td><td><code>components/dashboard/widgets/AnalyticsWidget.tsx</code></td></tr>
+    </table>
+    <h3>Pipeline</h3>
+    <table>
+      <tr><th>Component</th><th>File</th><th>Purpose</th></tr>
+      <tr><td>PipelineRunner</td><td><code>components/pipeline/PipelineRunner.tsx</code></td><td>Orchestrates pipeline UI</td></tr>
+      <tr><td>LogTerminal</td><td><code>components/pipeline/LogTerminal.tsx</code></td><td>Live SSE log display</td></tr>
+      <tr><td>IdeaQueue</td><td><code>components/pipeline/IdeaQueue.tsx</code></td><td>Queue of ideas to process</td></tr>
+      <tr><td>ReviewQueue</td><td><code>components/pipeline/ReviewQueue.tsx</code></td><td>Ideas awaiting QA review</td></tr>
+      <tr><td>StageStrip</td><td><code>components/pipeline/StageStrip.tsx</code></td><td>Animated pipeline progress bar</td></tr>
+      <tr><td>PipelineConfigsEditor</td><td><code>components/pipeline/PipelineConfigsEditor.tsx</code></td><td>DB-backed pipeline config form</td></tr>
+    </table>
+    <h3>Motion / Animation</h3>
+    <table>
+      <tr><th>Component</th><th>File</th></tr>
+      <tr><td>AmbientGrid</td><td><code>components/motion/AmbientGrid.tsx</code></td></tr>
+      <tr><td>ClipReveal</td><td><code>components/motion/ClipReveal.tsx</code></td></tr>
+      <tr><td>ScrambleText</td><td><code>components/motion/ScrambleText.tsx</code></td></tr>
+      <tr><td>MarqueeTrack</td><td><code>components/motion/MarqueeTrack.tsx</code></td></tr>
+      <tr><td>SectionSpotlight</td><td><code>components/motion/SectionSpotlight.tsx</code></td></tr>
+    </table>
+    <h3>UI Primitives</h3>
+    <table>
+      <tr><th>Component</th><th>File</th></tr>
+      <tr><td>Button, Card, Badge, Input, Textarea, Select</td><td><code>components/ui/*.tsx</code></td></tr>
+      <tr><td>Reveal (staggered fade-in)</td><td><code>components/ui/Reveal.tsx</code></td></tr>
+      <tr><td>Toast, Skeleton, EmptyState</td><td><code>components/ui/*.tsx</code></td></tr>
+      <tr><td>CountUp (number animation)</td><td><code>components/ui/CountUp.tsx</code></td></tr>
+      <tr><td>cx (clsx helper)</td><td><code>components/ui/cx.ts</code></td></tr>
+    </table>
+  </section>
+
+  <!-- Types -->
+  <section id="types">
+    <h2>Types</h2>
+    <h3><code>types/pipeline.ts</code></h3>
+    <table>
+      <tr><th>Type</th><th>Description</th></tr>
+      <tr><td><code>PipelineConfig</code></td><td>id, name, model, provider, system_prompt, is_default</td></tr>
+      <tr><td><code>Idea</code></td><td>Full idea object: id, name, type, category, tech, complexity, feel, prompt, enriched_spec, generated_code, status, error_log</td></tr>
+      <tr><td><code>IdeaStatus</code></td><td>Full state machine enum — see State Machine section</td></tr>
+      <tr><td><code>EnrichedSpec</code></td><td>name, scale, format, description, motion_style, visual_depth, animation_spec, visual_spec, implementation_notes, tags, component_structure</td></tr>
+      <tr><td><code>ValidationIssue</code></td><td>severity, type, message, line_start, line_end, fix, search_str, replace_str</td></tr>
+      <tr><td><code>ValidationReport</code></td><td>status, score, issues[], resolution_report, patched_code</td></tr>
+      <tr><td><code>PipelineEvent</code></td><td>Discriminated union of all SSE event types</td></tr>
+      <tr><td><code>LogEntry</code></td><td>id, ts, stage, level, message, detail, attempt, isFatal, usage</td></tr>
+      <tr><td><code>RunSession</code></td><td>id, startedAt, ideas, logs, isRunning, totalDone, totalFailed</td></tr>
+    </table>
+    <h3><code>types/asset.ts</code></h3>
+    <table>
+      <tr><th>Type</th><th>Description</th></tr>
+      <tr><td><code>Asset</code></td><td>id, slug, name, category, type, code, preview_html, description, tags, is_pro, is_published, views_count, copy_count</td></tr>
+      <tr><td><code>AnimationSpec</code></td><td>trigger (hover/click/scroll/mount/continuous), entry, active, exit, easing, duration_ms, spring</td></tr>
+      <tr><td><code>VisualSpec</code></td><td>Dark mode, surfaces, border, shadow, accent palette, typography scale, spacing rhythm, layout hints</td></tr>
+    </table>
+  </section>
+
+  <!-- Pipeline Architecture -->
+  <section id="pipeline">
+    <h2>Pipeline Architecture</h2>
+    <p>4-phase assembly line per component: Enrich → Generate → Validate → Repair (up to 3 retries).</p>
+    <h3>Phases</h3>
+    <table>
+      <tr><th>Phase</th><th>File</th><th>What happens</th></tr>
+      <tr><td>1. Enrich</td><td><code>lib/pipeline/generate.ts:enrichIdea()</code></td><td>Convert vague prompt → structured <code>EnrichedSpec</code> JSON</td></tr>
+      <tr><td>2. Generate</td><td><code>lib/pipeline/generate.ts:generateCode()</code></td><td>Build component in 3 buffering phases: Structure → Logic &amp; Hooks → Polish</td></tr>
+      <tr><td>3. Validate</td><td><code>validateCodeString()</code></td><td>100+ static rules. AI auditor scores code — fails if &lt; 75</td></tr>
+      <tr><td>4. Repair</td><td><code>validateAndFix()</code></td><td>Auto-fix + AI repair loop, up to 3 attempts. Falls back to repair_required.</td></tr>
+    </table>
+    <h3>Token Budget</h3>
+    <p>40,000 tokens project-wide. Enforced by <code>lib/pipeline/validationRuntime.ts</code>. Vertex AI pipeline gets the full budget.</p>
+    <h3>Pipeline Config Fallback</h3>
+    <p>If <code>pipelines</code> table has no <code>is_default=true</code> row, generate route falls back to hardcoded <strong>Claude 3.5 Sonnet</strong>.</p>
+  </section>
+
+  <!-- State Machine -->
+  <section id="state-machine">
+    <h2>Idea State Machine</h2>
+    <pre><code>pending → enriching → enriched → generating → generated → validating → validated
+                                                                           ↓
+                                                         repair_required    (FAIL)
+                                                         ready_with_warnings (PASS_WITH_WARNINGS)
+                                                         ready              (PASS)
+                                                            ↓
+                                                         reviewing
+                                                            ↓         ↓
+                                                         approved   rejected
+                                                         failed  (unhandled exception)</code></pre>
+    <h3>Queue Filters</h3>
+    <table>
+      <tr><th>Page</th><th>Status Filter</th></tr>
+      <tr><td>Review queue</td><td><code>status IN (reviewing, validated, generated, failed)</code></td></tr>
+      <tr><td>Generate page</td><td><code>status IN (pending, enriched)</code></td></tr>
+      <tr><td>Ideas page</td><td>Hides <code>status = approved</code></td></tr>
+    </table>
+  </section>
+
+  <!-- API Endpoints -->
+  <section id="api">
+    <h2>API Endpoints</h2>
+    <h3>Pipeline</h3>
+    <table>
+      <tr><th>Method</th><th>Path</th><th>Purpose</th></tr>
+      <tr><td><span class="tag tag-blue">GET</span></td><td><code>/api/pipeline/ideas?status=X,Y</code></td><td>Fetch ideas by status</td></tr>
+      <tr><td><span class="tag tag-green">POST</span></td><td><code>/api/pipeline/ideas</code></td><td>Create idea(s)</td></tr>
+      <tr><td><span class="tag tag-yellow">PATCH</span></td><td><code>/api/pipeline/ideas</code></td><td>Update idea fields</td></tr>
+      <tr><td><span class="tag tag-red">DELETE</span></td><td><code>/api/pipeline/ideas</code></td><td>Delete idea <code>{ id }</code></td></tr>
+      <tr><td><span class="tag tag-green">POST</span></td><td><code>/api/pipeline/generate</code></td><td>Start SSE generation stream <code>{ ideaId }</code></td></tr>
+      <tr><td><span class="tag tag-green">POST</span></td><td><code>/api/pipeline/ingest</code></td><td>Publish component <code>{ code, spec, ideaId? }</code></td></tr>
+      <tr><td><span class="tag tag-blue">GET</span></td><td><code>/api/pipeline/inventory</code></td><td>List published assets</td></tr>
+      <tr><td><span class="tag tag-red">DELETE</span></td><td><code>/api/pipeline/inventory</code></td><td>Delete published asset <code>{ id }</code></td></tr>
+      <tr><td><span class="tag tag-green">POST</span></td><td><code>/api/pipeline/chat</code></td><td>AI-to-idea conversion</td></tr>
+      <tr><td><span class="tag tag-green">POST</span></td><td><code>/api/pipeline/enrich</code></td><td>Standalone enrich <code>{ ideaId }</code></td></tr>
+      <tr><td><span class="tag tag-green">POST</span></td><td><code>/api/pipeline/validate</code></td><td>Standalone validate <code>{ code, spec }</code></td></tr>
+      <tr><td><span class="tag tag-green">POST</span></td><td><code>/api/pipeline/repair</code></td><td>Standalone repair <code>{ code, issues }</code></td></tr>
+      <tr><td><span class="tag tag-blue">GET</span> <span class="tag tag-green">POST</span></td><td><code>/api/pipeline/configs</code></td><td>Pipeline config CRUD</td></tr>
+      <tr><td><span class="tag tag-green">POST</span></td><td><code>/api/pipeline/visualization/run-stage</code></td><td>Stage visualization</td></tr>
+    </table>
+    <h3>Preview &amp; Settings</h3>
+    <table>
+      <tr><th>Method</th><th>Path</th><th>Purpose</th></tr>
+      <tr><td><span class="tag tag-blue">GET</span></td><td><code>/api/preview/compile?slug=X</code></td><td>Sandbox HTML for iframe</td></tr>
+      <tr><td><span class="tag tag-blue">GET</span> <span class="tag tag-green">POST</span></td><td><code>/api/settings/keys</code></td><td>Read/write .env.local API keys</td></tr>
+      <tr><td><span class="tag tag-green">POST</span></td><td><code>/api/vertex-ai</code></td><td>Vertex AI generation</td></tr>
+      <tr><td><span class="tag tag-green">POST</span></td><td><code>/api/vertex-chat</code></td><td>Vertex AI chat</td></tr>
+    </table>
+  </section>
+
+  <!-- SSE Events -->
+  <section id="sse">
+    <h2>SSE Event Contract</h2>
+    <p>Client reads <code>ReadableStream</code> from <code>POST /api/pipeline/generate</code>. Each line: <code>data: { event, ...payload }\n\n</code></p>
+    <table>
+      <tr><th>event</th><th>Payload keys</th><th>Client action</th></tr>
+      <tr><td><code>status</code></td><td>stage, message</td><td>Update progress bar via STAGE_PROGRESS map</td></tr>
+      <tr><td><code>enriched</code></td><td>spec</td><td>—</td></tr>
+      <tr><td><code>generated</code></td><td>code</td><td>—</td></tr>
+      <tr><td><code>validated</code></td><td>code, has_errors, validation_report</td><td>—</td></tr>
+      <tr><td><code>ready</code></td><td>status, ideaId, code</td><td>Mark idea done, append success log</td></tr>
+      <tr><td><code>repair_required</code></td><td>status, ideaId, issues[]</td><td>Mark idea failed</td></tr>
+      <tr><td><code>error</code></td><td>message</td><td>Mark idea failed, append error log</td></tr>
+      <tr><td><code>run_started</code></td><td>—</td><td>Session started</td></tr>
+      <tr><td><code>idea_started</code></td><td>ideaId</td><td>Individual idea processing started</td></tr>
+      <tr><td><code>idea_completed</code></td><td>ideaId</td><td>Individual idea done</td></tr>
+      <tr><td><code>run_completed</code></td><td>totalDone, totalFailed</td><td>All ideas done</td></tr>
+    </table>
+  </section>
+
+  <!-- DB Schema -->
+  <section id="db">
+    <h2>Database Schema</h2>
+    <h3>ideas — Pipeline Work Queue</h3>
+    <table>
+      <tr><th>Column</th><th>Type</th><th>Notes</th></tr>
+      <tr><td>id</td><td>uuid</td><td>Primary key</td></tr>
+      <tr><td>name</td><td>text</td><td>Component name</td></tr>
+      <tr><td>type</td><td>text</td><td>card, hero, button, etc.</td></tr>
+      <tr><td>category</td><td>text</td><td>Category grouping</td></tr>
+      <tr><td>tech</td><td>text</td><td>framer / gsap / css</td></tr>
+      <tr><td>complexity</td><td>text</td><td>simple / moderate / complex</td></tr>
+      <tr><td>feel</td><td>text</td><td>Aesthetic feel descriptor</td></tr>
+      <tr><td>status</td><td>text</td><td>IdeaStatus enum value</td></tr>
+      <tr><td>enriched_spec</td><td>jsonb</td><td>EnrichedSpec object after enrich phase</td></tr>
+      <tr><td>generated_code</td><td>text</td><td>Raw component code after generate phase</td></tr>
+      <tr><td>error_log</td><td>jsonb</td><td>Error details if pipeline failed</td></tr>
+    </table>
+    <h3>assets — Published Inventory</h3>
+    <table>
+      <tr><th>Column</th><th>Type</th><th>Notes</th></tr>
+      <tr><td>id</td><td>uuid</td><td>Primary key</td></tr>
+      <tr><td>slug</td><td>text</td><td><strong>Upsert key</strong> — derived from spec.name</td></tr>
+      <tr><td>name</td><td>text</td><td>Display name</td></tr>
+      <tr><td>code</td><td>text</td><td>Final component code</td></tr>
+      <tr><td>preview_html</td><td>text</td><td>Full sandbox HTML string</td></tr>
+      <tr><td>tags</td><td>text[]</td><td>Searchable tags</td></tr>
+      <tr><td>is_published</td><td>boolean</td><td>Public visibility — only set by ingestAsset()</td></tr>
+      <tr><td>views_count</td><td>integer</td><td>View counter</td></tr>
+      <tr><td>copy_count</td><td>integer</td><td>Copy counter</td></tr>
+      <tr><td>embedding</td><td>vector</td><td>OpenAI embedding for semantic search</td></tr>
+    </table>
+    <h3>Other Tables</h3>
+    <table>
+      <tr><th>Table</th><th>Purpose</th><th>Key columns</th></tr>
+      <tr><td>asset_versions</td><td>Version history</td><td>id, asset_slug, code, created_at</td></tr>
+      <tr><td>pipelines</td><td>Pipeline configs</td><td>id, name, model, provider, system_prompt, is_default</td></tr>
+      <tr><td>pipeline_stages</td><td>Per-pipeline stages</td><td>id, pipeline_id, name, action_type, provider, model, step_order</td></tr>
+    </table>
+    <p><code>action_type</code> values: <code>enrich_spec</code> / <code>generate_code</code> / <code>validate_code</code></p>
+    <div class="alert alert-yellow">
+      <strong>Query gotcha:</strong> <code>getPublishedAssets()</code> has NO <code>is_published</code> filter — use <code>getLandingAssets()</code> for public-facing pages.
+    </div>
+    <div class="alert alert-yellow">
+      <strong>Upsert gotcha:</strong> <code>ingestAsset()</code> upserts on <code>slug</code>. Publishing the same component name twice silently overwrites the existing asset.
+    </div>
+  </section>
+
+  <!-- Sandbox Rules -->
+  <section id="sandbox">
+    <h2>Sandbox Rules</h2>
+    <p>Generated components run inside an iframe with Babel Standalone + UMD builds. No module system — any <code>import</code> crashes Babel.</p>
+    <h3>Never Do This</h3>
+    <ul class="rule-list">
+      <li><span class="rule-icon">❌</span><div class="rule-text"><strong>No <code>import</code> statements</strong> — Babel Standalone has no module resolver</div></li>
+      <li><span class="rule-icon">❌</span><div class="rule-text"><strong>No <code>h-screen</code>, <code>min-h-screen</code>, <code>100vh</code>, <code>100dvh</code></strong> — use <code>style={{ minHeight: '100vh' }}</code> instead</div></li>
+      <li><span class="rule-icon">❌</span><div class="rule-text"><strong>No <code>window.addEventListener</code> / <code>document.querySelector</code></strong> — use <code>useRef</code> + React synthetic events</div></li>
+      <li><span class="rule-icon">❌</span><div class="rule-text"><strong>No <code>.onChange(cb)</code> on MotionValues</strong> — FM v11+ removed this; use <code>.on('change', cb)</code></div></li>
+      <li><span class="rule-icon">❌</span><div class="rule-text"><strong>No template-literal classNames</strong>: <code>className={`foo ${var}`}</code> — breaks Tailwind purge</div></li>
+      <li><span class="rule-icon">❌</span><div class="rule-text"><strong>No arbitrary Tailwind brackets</strong>: <code>h-[400px]</code> — stripped by purge</div></li>
+      <li><span class="rule-icon">❌</span><div class="rule-text"><strong>No placeholder icon classes</strong> (<code>icon1</code>, <code>icon2</code>) — use inline SVG elements</div></li>
+    </ul>
+    <h3>Always Do This</h3>
+    <ul class="rule-list">
+      <li><span class="rule-icon">✅</span><div class="rule-text">Access Framer Motion: <code>const {"{ motion, useMotionValue }"} = window.Motion</code></div></li>
+      <li><span class="rule-icon">✅</span><div class="rule-text">Access GSAP: <code>const gsap = window.GSAP</code></div></li>
+      <li><span class="rule-icon">✅</span><div class="rule-text"><code>React</code> is global — no import needed</div></li>
+      <li><span class="rule-icon">✅</span><div class="rule-text">Full-height: <code>style={{ minHeight: '100vh' }}</code></div></li>
+      <li><span class="rule-icon">✅</span><div class="rule-text">Export: <code>export default function ComponentName() {"{ ... }"}</code></div></li>
+      <li><span class="rule-icon">✅</span><div class="rule-text">Icons: inline <code>&lt;svg&gt;</code> elements only</div></li>
+    </ul>
+    <h3>Available Globals</h3>
+    <pre><code>window.Motion   // Framer Motion (full API)
+window.GSAP     // GSAP core
+React           // React 19 (global, no import)
+ReactDOM        // ReactDOM (global)</code></pre>
+    <h3>Auto-Processing</h3>
+    <table>
+      <tr><th>Transform</th><th>Where</th></tr>
+      <tr><td><code>.onChange(cb)</code> → <code>.on('change', cb)</code></td><td><code>autoFixCode()</code> + sandbox HTML polyfill</td></tr>
+      <tr><td><code>export default function Foo</code> → <code>function Foo</code></td><td><code>buildSandboxHTML()</code> — so Babel Standalone can hoist it</td></tr>
+    </table>
+  </section>
+
+  <!-- Architecture Facts -->
+  <section id="facts">
+    <h2>Architecture Facts</h2>
+    <p>Non-obvious facts that cause bugs when missed. Read before touching pipeline, sandbox, auth, or DB queries.</p>
+    <div class="facts-grid">
+      <div class="fact">
+        <div class="fact-num">Fact 1 — Auth</div>
+        <div class="fact-text"><strong>Auth is not enforced.</strong> <code>middleware.ts</code> refreshes Supabase sessions but never redirects. Dashboard is publicly accessible by design. Add route protection only if explicitly asked.</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">Fact 2 — Globals Only</div>
+        <div class="fact-text"><strong>Sandbox uses globals, not imports.</strong> <code>window.Motion</code>, global <code>React</code>, <code>window.GSAP</code>. Any <code>import</code> statement crashes Babel Standalone.</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">Fact 3 — ideas vs assets</div>
+        <div class="fact-text"><strong>Separate tables, separate lifecycles.</strong> <code>ideas</code> = pipeline work queue. <code>assets</code> = published inventory. <code>ingestAsset()</code> is the one-way bridge.</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">Fact 4 — getPublishedAssets()</div>
+        <div class="fact-text"><strong>Has no <code>is_published</code> filter.</strong> Returns all assets. Use <code>getLandingAssets()</code> for public-facing pages.</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">Fact 5 — Slug Upsert</div>
+        <div class="fact-text"><strong>Slug is the upsert key.</strong> Publishing the same component name twice silently overwrites the existing asset.</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">Fact 6 — JS Aggregation</div>
+        <div class="fact-text"><strong><code>getDashboardData()</code> aggregates in JavaScript, not SQL.</strong> Fetches all idea rows and counts in-memory. Fine at current scale; avoid at thousands of rows.</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">Fact 7 — FM v11 Polyfill</div>
+        <div class="fact-text"><strong>Framer Motion v11 <code>.onChange()</code> is polyfilled.</strong> Both the sandbox HTML and <code>autoFixCode()</code> handle this. Keep both polyfills.</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">Fact 8 — sessionRef</div>
+        <div class="fact-text"><strong><code>sessionRef</code> in GeneratePage is intentional.</strong> Maintains both <code>useState</code> (re-renders) and <code>useRef</code> (async fetch loop access). Do not simplify to one.</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">Fact 9 — Pipeline Fallback</div>
+        <div class="fact-text"><strong>Fallback to Claude 3.5 Sonnet</strong> if <code>pipelines</code> table has no <code>is_default=true</code> row. System works without DB pipeline config.</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">Fact 10 — export default stripped</div>
+        <div class="fact-text"><strong><code>buildSandboxHTML()</code> strips <code>export default</code>.</strong> Replaces <code>export default function Foo</code> with <code>function Foo</code> so Babel Standalone can hoist it. Name extracted separately for render call.</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">Fact 11 — Token Budget</div>
+        <div class="fact-text"><strong>40k token budget project-wide.</strong> Enforced by <code>lib/pipeline/validationRuntime.ts</code>. Vertex AI pipeline gets the full budget.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<script>
+// Highlight active nav link based on scroll position
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('nav a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + entry.target.id) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}, { threshold: 0.2 });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.page{padding:2rem 0;display:flex;flex-direction:column;gap:2rem}
+.label{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:0.75rem}
+.divider{height:0.5px;background:var(--color-border-tertiary)}
+.row{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* Brand colors — warm coral-rose meets sage green */
+:root{
+  --v-rose:#E8473F;
+  --v-rose-soft:#F5C4C2;
+  --v-rose-pale:#FDF0EF;
+  --v-sage:#3D6B52;
+  --v-sage-soft:#A8C4B4;
+  --v-sage-pale:#EEF4F1;
+  --v-cream:#FAF7F2;
+  --v-ink:#1C1917;
+  --v-stone:#6B6560;
+  --v-warm:#F0EBE3;
+}
+
+.hero-logo{background:var(--v-cream);border-radius:24px;padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;gap:1.5rem;border:0.5px solid #E8E3DC}
+.wordmark{display:flex;align-items:center;gap:14px}
+.wm-name{font-size:36px;font-weight:500;color:var(--v-ink);letter-spacing:-0.04em;font-family:var(--font-sans)}
+.wm-ui{color:var(--v-rose)}
+.tagline-sub{font-size:13px;color:var(--v-stone);letter-spacing:0.04em;font-family:var(--font-mono)}
+
+.logo-variations{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.var-card{border-radius:20px;padding:1.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.6rem;min-height:110px}
+.var-dark{background:var(--v-ink)}
+.var-sage{background:var(--v-sage)}
+.var-warm{background:var(--v-warm);border:0.5px solid #E8E3DC}
+.var-name-white{font-size:20px;font-weight:500;color:#ffffff;letter-spacing:-0.03em}
+.var-name-ink{font-size:20px;font-weight:500;color:var(--v-ink);letter-spacing:-0.03em}
+.var-sub-white{font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:0.08em;font-family:var(--font-mono)}
+.var-sub-stone{font-size:10px;color:var(--v-stone);letter-spacing:0.08em;font-family:var(--font-mono)}
+
+.palette-row{display:flex;gap:0.5rem;flex-wrap:wrap}
+.swatch{flex:1;min-width:80px;border-radius:16px;padding:1rem 0.75rem}
+.sw-name{font-size:12px;font-weight:500;margin-bottom:3px}
+.sw-hex{font-size:11px;font-family:var(--font-mono);opacity:0.6}
+
+.type-stack{display:flex;flex-direction:column;gap:1.25rem;padding:0.25rem 0}
+.type-row{display:flex;align-items:baseline;gap:1rem}
+.type-meta{font-size:11px;color:var(--color-text-tertiary);font-family:var(--font-mono);min-width:110px;flex-shrink:0}
+
+.tagline-options{display:flex;flex-direction:column;gap:0.6rem}
+.tpill{padding:0.65rem 1rem;border-radius:12px;border:0.5px solid var(--color-border-tertiary);font-size:14px;color:var(--color-text-secondary);cursor:pointer;transition:all 0.15s}
+.tpill:hover{border-color:var(--v-rose);color:var(--color-text-primary)}
+.tpill.on{border-color:var(--v-rose);background:var(--v-rose-pale);color:var(--v-rose)}
+
+.cards-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.comp-card{border-radius:20px;padding:1.25rem;display:flex;flex-direction:column;gap:0.6rem}
+.comp-dark{background:var(--v-ink)}
+.comp-light{background:var(--v-cream);border:0.5px solid #E8E3DC}
+.comp-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500;width:fit-content}
+.badge-rose{background:rgba(232,71,63,0.15);color:var(--v-rose)}
+.badge-sage{background:rgba(61,107,82,0.15);color:var(--v-sage)}
+.comp-title-w{font-size:15px;font-weight:500;color:#ffffff;letter-spacing:-0.02em}
+.comp-title-d{font-size:15px;font-weight:500;color:var(--v-ink);letter-spacing:-0.02em}
+.comp-meta-w{font-size:11px;color:rgba(255,255,255,0.35);font-family:var(--font-mono)}
+.comp-meta-d{font-size:11px;color:var(--v-stone);font-family:var(--font-mono)}
+
+.motion-strip{background:var(--v-warm);border-radius:20px;padding:1.5rem;display:flex;align-items:center;justify-content:center;border:0.5px solid #E8E3DC;overflow:hidden;position:relative;height:100px}
+</style>
+
+<div class="page">
+
+<div>
+<div class="label">Primary logo</div>
+<div class="hero-logo">
+  <div class="wordmark">
+    <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+      <ellipse cx="26" cy="26" rx="26" ry="26" fill="#FDF0EF"/>
+      <path d="M14 32 C16 24, 20 20, 24 24 C26 26, 27 28, 29 24 C31 20, 34 18, 37 22" stroke="#E8473F" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M14 32 C16 26, 19 23, 22 26 C24 28, 25 30, 27 27" stroke="#A8C4B4" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+      <circle cx="37" cy="22" r="3.5" fill="#E8473F" opacity="0.9"/>
+      <circle cx="37" cy="22" r="6" fill="#E8473F" opacity="0.15"/>
+    </svg>
+    <div>
+      <div class="wm-name">velox<span class="wm-ui">ui</span></div>
+      <div class="tagline-sub">animated components for react</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div>
+<div class="label">Logo on different surfaces</div>
+<div class="logo-variations">
+  <div class="var-card var-dark">
+    <svg width="32" height="32" viewBox="0 0 52 52" fill="none">
+      <ellipse cx="26" cy="26" rx="26" ry="26" fill="rgba(232,71,63,0.12)"/>
+      <path d="M14 32 C16 24, 20 20, 24 24 C26 26, 27 28, 29 24 C31 20, 34 18, 37 22" stroke="#E8473F" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M14 32 C16 26, 19 23, 22 26 C24 28, 25 30, 27 27" stroke="#A8C4B4" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+      <circle cx="37" cy="22" r="3.5" fill="#E8473F"/>
+    </svg>
+    <div class="var-name-white">velox<span style="color:#E8473F">ui</span></div>
+    <div class="var-sub-white">on dark</div>
+  </div>
+  <div class="var-card var-sage">
+    <svg width="32" height="32" viewBox="0 0 52 52" fill="none">
+      <ellipse cx="26" cy="26" rx="26" ry="26" fill="rgba(255,255,255,0.1)"/>
+      <path d="M14 32 C16 24, 20 20, 24 24 C26 26, 27 28, 29 24 C31 20, 34 18, 37 22" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M14 32 C16 26, 19 23, 22 26 C24 28, 25 30, 27 27" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <circle cx="37" cy="22" r="3.5" fill="#ffffff"/>
+    </svg>
+    <div class="var-name-white">velox<span style="color:rgba(255,255,255,0.6)">ui</span></div>
+    <div class="var-sub-white">on sage</div>
+  </div>
+  <div class="var-card var-warm">
+    <svg width="32" height="32" viewBox="0 0 52 52" fill="none">
+      <ellipse cx="26" cy="26" rx="26" ry="26" fill="#FDF0EF"/>
+      <path d="M14 32 C16 24, 20 20, 24 24 C26 26, 27 28, 29 24 C31 20, 34 18, 37 22" stroke="#E8473F" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M14 32 C16 26, 19 23, 22 26 C24 28, 25 30, 27 27" stroke="#A8C4B4" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <circle cx="37" cy="22" r="3.5" fill="#E8473F"/>
+    </svg>
+    <div class="var-name-ink">velox<span style="color:#E8473F">ui</span></div>
+    <div class="var-sub-stone">on cream</div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<div>
+<div class="label">Color palette</div>
+<div class="palette-row">
+  <div class="swatch" style="background:#E8473F">
+    <div class="sw-name" style="color:#ffffff">Rose</div>
+    <div class="sw-hex" style="color:rgba(255,255,255,0.7)">#E8473F</div>
+  </div>
+  <div class="swatch" style="background:#F5C4C2">
+    <div class="sw-name" style="color:#8B2E2B">Blush</div>
+    <div class="sw-hex" style="color:#A84442">#F5C4C2</div>
+  </div>
+  <div class="swatch" style="background:#3D6B52">
+    <div class="sw-name" style="color:#ffffff">Sage</div>
+    <div class="sw-hex" style="color:rgba(255,255,255,0.6)">#3D6B52</div>
+  </div>
+  <div class="swatch" style="background:#A8C4B4">
+    <div class="sw-name" style="color:#1C3D2C">Mist</div>
+    <div class="sw-hex" style="color:#2D5040">#A8C4B4</div>
+  </div>
+  <div class="swatch" style="background:#FAF7F2;border:0.5px solid #E8E3DC">
+    <div class="sw-name" style="color:#6B6560">Cream</div>
+    <div class="sw-hex" style="color:#8B857F">#FAF7F2</div>
+  </div>
+  <div class="swatch" style="background:#1C1917">
+    <div class="sw-name" style="color:#ffffff">Ink</div>
+    <div class="sw-hex" style="color:rgba(255,255,255,0.4)">#1C1917</div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<div>
+<div class="label">Typography scale</div>
+<div class="type-stack">
+  <div class="type-row">
+    <span class="type-meta">display 34px</span>
+    <span style="font-size:34px;font-weight:500;color:var(--color-text-primary);letter-spacing:-0.04em;line-height:1">Components, alive.</span>
+  </div>
+  <div class="type-row">
+    <span class="type-meta">heading 20px</span>
+    <span style="font-size:20px;font-weight:500;color:var(--color-text-primary);letter-spacing:-0.025em">Animated React components</span>
+  </div>
+  <div class="type-row">
+    <span class="type-meta">body 15px</span>
+    <span style="font-size:15px;color:var(--color-text-secondary);line-height:1.6">Describe what you want. Get production-ready motion.</span>
+  </div>
+  <div class="type-row">
+    <span class="type-meta">mono 12px</span>
+    <span style="font-size:12px;color:var(--color-text-tertiary);font-family:var(--font-mono)">npx veloxui add magnetic-button</span>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<div>
+<div class="label">Taglines — tap to pick</div>
+<div class="tagline-options" id="tg">
+  <div class="tpill on" onclick="tp(this)">Components, alive.</div>
+  <div class="tpill" onclick="tp(this)">Describe it. We animate it.</div>
+  <div class="tpill" onclick="tp(this)">Where prompts become motion.</div>
+  <div class="tpill" onclick="tp(this)">Craft without the grind.</div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<div>
+<div class="label">Component cards — in use</div>
+<div class="cards-row">
+  <div class="comp-card comp-dark">
+    <div class="comp-badge badge-rose">
+      <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="#E8473F"/></svg>
+      new
+    </div>
+    <div class="comp-title-w">Liquid Button</div>
+    <div class="comp-meta-w">framer-motion · tailwind</div>
+  </div>
+  <div class="comp-card comp-light">
+    <div class="comp-badge badge-sage">
+      <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="#3D6B52"/></svg>
+      pro
+    </div>
+    <div class="comp-title-d">Morphing Card</div>
+    <div class="comp-meta-d">framer-motion · tailwind</div>
+  </div>
+</div>
+</div>
+
+</div>
+<script>
+function tp(el){
+  document.querySelectorAll('.tpill').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');
+}
+</script>
